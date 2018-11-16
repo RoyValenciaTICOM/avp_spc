@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.15.10
--- https://www.phpmyadmin.net
+-- version 4.8.2
+-- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 15-11-2018 a las 19:19:53
--- Versión del servidor: 5.5.60-MariaDB
--- Versión de PHP: 5.6.38
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-11-2018 a las 17:43:17
+-- Versión del servidor: 10.1.34-MariaDB
+-- Versión de PHP: 5.6.37
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,32 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `soporte_ticom`
+-- Base de datos: `cake_limpio`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `adjuntos`
---
-
-CREATE TABLE IF NOT EXISTS `adjuntos` (
-  `adjunto_id` int(11) NOT NULL,
-  `servicio_id` int(11) NOT NULL,
-  `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `archivo` varchar(255) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `adjuntos`
---
-
-INSERT INTO `adjuntos` (`adjunto_id`, `servicio_id`, `descripcion`, `archivo`) VALUES
-(8, 56, '', '1536346028_324554.xlsx'),
-(9, 56, '', '1536351994_488311.jpg'),
-(10, 56, '', '1536352096_651580.txt'),
-(11, 56, 'hygfuy', '1536352272_389801.pdf'),
-(13, 60, 'prueba2', '1536940001_584275.jpg');
 
 -- --------------------------------------------------------
 
@@ -50,340 +28,22 @@ INSERT INTO `adjuntos` (`adjunto_id`, `servicio_id`, `descripcion`, `archivo`) V
 -- Estructura de tabla para la tabla `bitacoras`
 --
 
-CREATE TABLE IF NOT EXISTS `bitacoras` (
+CREATE TABLE `bitacoras` (
   `bitacora_id` int(11) NOT NULL,
   `usuario` varchar(20) DEFAULT NULL,
   `ip` varchar(15) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   `descripcion` longtext,
   `referencia` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `bitacoras`
 --
 
 INSERT INTO `bitacoras` (`bitacora_id`, `usuario`, `ip`, `fecha`, `descripcion`, `referencia`) VALUES
-(2, 'admin', '::1', '2017-01-30 14:45:25', 'Se elimino al usuario |{"co_user_id":4,"login":"oo","password":"$2y$10$xRZH6ABEwlzqfXHoR2RUIut03fr.zgcXmq20xY3vvELCB6msZnyCC","nombre":"","co_group_id":1,"last_login":null,"email":"","created":null,"modified":null,"centrale_id":0,"coordinacione_id":0,"active":true,"tokenhash":null}', 4),
-(3, 'admin', '::1', '2017-02-01 14:45:40', 'Se elimino al usuario |{"co_user_id":5,"login":"prueba","password":"$2y$10$gzkXDLK\\/iGuBsxxrZRc39e3fDsmiittcq2XNxDl6ofGN1mzVa\\/NhK","nombre":"p","co_group_id":2,"last_login":"2017-02-01T12:31:55-05:00","email":"","created":"2017-01-30T17:15:38-05:00","modified":"2017-02-01T12:31:42-05:00","centrale_id":0,"coordinacione_id":0,"active":true,"tokenhash":null}', 5);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `bitacoraservs`
---
-
-CREATE TABLE IF NOT EXISTS `bitacoraservs` (
-  `bitacoraserv_id` int(11) NOT NULL,
-  `servicio_id` int(11) NOT NULL,
-  `descripcion_evento` text COLLATE utf8_spanish_ci NOT NULL,
-  `created` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=300 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `bitacoraservs`
---
-
-INSERT INTO `bitacoraservs` (`bitacoraserv_id`, `servicio_id`, `descripcion_evento`, `created`) VALUES
-(1, 1, 'Finalizado por: Roonny Ruiz', '2018-09-18 15:41:56'),
-(2, 3, 'Finalizado por: Gabriel Guzman', '2018-09-18 17:47:07'),
-(3, 4, 'Finalizado por: José Román López Aguilar', '2018-09-19 09:42:23'),
-(4, 6, 'Finalizado por: Roonny Ruiz', '2018-09-19 10:48:31'),
-(5, 7, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-19 11:28:04'),
-(6, 9, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-19 11:41:13'),
-(7, 10, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-19 11:59:56'),
-(8, 11, 'Finalizado por: Gilberto Tun Hau', '2018-09-19 12:15:43'),
-(9, 12, 'Finalizado por: Gilberto Tun Hau', '2018-09-19 13:19:36'),
-(10, 13, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-19 13:37:23'),
-(11, 15, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-19 13:55:19'),
-(12, 5, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-19 15:40:02'),
-(13, 14, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-19 16:55:14'),
-(14, 16, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-20 11:04:16'),
-(15, 17, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-20 11:52:48'),
-(16, 18, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-20 11:55:10'),
-(17, 19, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-20 14:18:21'),
-(18, 20, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-20 14:24:40'),
-(19, 21, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-20 14:31:22'),
-(20, 22, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-20 14:40:48'),
-(21, 25, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-20 16:00:17'),
-(22, 27, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-20 16:29:06'),
-(23, 28, 'Finalizado por: Lic. Richard Martín Moguel', '2018-09-20 16:29:29'),
-(24, 29, 'Finalizado por: Gilberto Tun Hau', '2018-09-20 16:35:14'),
-(25, 31, 'Finalizado por: Gilberto Tun Hau', '2018-09-20 16:37:52'),
-(26, 30, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-20 16:40:01'),
-(27, 32, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-20 19:14:45'),
-(28, 33, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-21 08:50:24'),
-(29, 34, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-21 09:00:11'),
-(30, 26, 'Cancelado por: Lic. Eder Pastrana Castro', '2018-09-21 10:14:10'),
-(31, 35, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-21 10:16:46'),
-(32, 37, 'Finalizado por: Lic. Richard Martín Moguel', '2018-09-21 10:19:23'),
-(33, 39, 'Finalizado por: Luis Miguel Acosta', '2018-09-21 10:35:43'),
-(34, 38, 'Finalizado por: Luis Miguel Acosta', '2018-09-21 10:37:33'),
-(35, 40, 'Finalizado por: Luis Miguel Acosta', '2018-09-21 10:43:54'),
-(36, 41, 'Finalizado por: Luis Miguel Acosta', '2018-09-21 10:52:43'),
-(37, 43, 'Finalizado por: Luis Miguel Acosta', '2018-09-21 10:59:50'),
-(38, 42, 'Finalizado por: Ing. Efraín Beltran Ávila', '2018-09-21 11:02:54'),
-(39, 44, 'Finalizado por: Ing. Efraín Beltran Ávila', '2018-09-21 11:10:23'),
-(40, 46, 'Finalizado por: Ariel Perez Valdez', '2018-09-21 11:26:54'),
-(41, 45, 'Finalizado por: Ing. Efraín Beltran Ávila', '2018-09-21 11:30:48'),
-(42, 47, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-21 12:12:52'),
-(43, 48, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-21 12:30:04'),
-(44, 49, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-21 13:46:25'),
-(45, 50, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-21 13:50:29'),
-(46, 51, 'Finalizado por: Luis Miguel Acosta', '2018-09-21 13:54:24'),
-(47, 52, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-21 14:03:34'),
-(48, 53, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-21 14:56:54'),
-(49, 54, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-21 15:01:24'),
-(50, 55, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-21 15:18:51'),
-(51, 56, 'Finalizado por: Luis Miguel Acosta', '2018-09-21 15:42:15'),
-(52, 57, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-24 10:36:44'),
-(53, 23, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-09-24 10:44:52'),
-(54, 58, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-24 10:51:42'),
-(55, 59, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-09-24 10:59:14'),
-(56, 60, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-09-24 10:59:54'),
-(57, 61, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-09-24 11:05:17'),
-(58, 62, 'Finalizado por: Luis Miguel Acosta', '2018-09-24 11:28:10'),
-(59, 63, 'Finalizado por: Lic. Richard Martín Moguel', '2018-09-24 15:33:44'),
-(60, 64, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-24 17:33:21'),
-(61, 36, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-24 17:34:13'),
-(62, 65, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-25 08:48:44'),
-(63, 66, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-25 10:16:21'),
-(64, 67, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-25 10:30:39'),
-(65, 68, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-25 10:33:50'),
-(66, 69, 'Finalizado por: Luis Miguel Acosta', '2018-09-25 10:35:38'),
-(67, 70, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-25 10:57:40'),
-(68, 71, 'Finalizado por: Luis Miguel Acosta', '2018-09-25 12:07:25'),
-(69, 72, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-25 12:30:57'),
-(70, 73, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-26 09:27:15'),
-(71, 74, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-26 09:29:27'),
-(72, 75, 'Finalizado por: Luis Miguel Acosta', '2018-09-26 09:32:19'),
-(73, 76, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-26 10:24:23'),
-(74, 77, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-26 10:52:26'),
-(75, 78, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-09-26 10:55:18'),
-(76, 79, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-26 11:35:24'),
-(77, 80, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-26 11:39:29'),
-(78, 81, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-26 11:40:55'),
-(79, 82, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-26 11:46:31'),
-(80, 84, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-26 13:43:26'),
-(81, 85, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-09-26 13:49:23'),
-(82, 86, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-09-26 14:03:55'),
-(83, 87, 'Finalizado por: José Román López Aguilar', '2018-09-26 14:57:04'),
-(84, 88, 'Finalizado por: Luis Miguel Acosta', '2018-09-26 15:49:41'),
-(85, 89, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-09-27 08:53:54'),
-(86, 90, 'Finalizado por: Luis Miguel Acosta', '2018-09-27 10:25:12'),
-(87, 92, 'Finalizado por: José Román López Aguilar', '2018-09-27 11:35:50'),
-(88, 93, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-27 11:36:40'),
-(89, 95, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-27 12:42:25'),
-(90, 96, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-09-27 13:54:10'),
-(91, 97, 'Finalizado por: Gilberto Tun Hau', '2018-09-28 09:43:25'),
-(92, 94, 'Finalizado por: Gilberto Tun Hau', '2018-09-28 09:44:19'),
-(93, 99, 'Finalizado por: José Román López Aguilar', '2018-09-28 12:25:23'),
-(94, 2, 'Finalizado por: Gilberto Tun Hau', '2018-09-28 13:16:38'),
-(95, 101, 'Finalizado por: Gilberto Tun Hau', '2018-09-28 13:25:56'),
-(96, 103, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-09-28 16:08:30'),
-(97, 104, 'Finalizado por: Gilberto Tun Hau', '2018-09-28 16:14:20'),
-(98, 105, 'Finalizado por: Gilberto Tun Hau', '2018-09-28 16:17:23'),
-(99, 106, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-01 10:27:28'),
-(100, 107, 'Finalizado por: Luis Miguel Acosta', '2018-10-01 11:06:01'),
-(101, 108, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-10-01 11:20:11'),
-(102, 98, 'Finalizado por: Luis Miguel Acosta', '2018-10-01 12:04:49'),
-(103, 109, 'Finalizado por: Gilberto Tun Hau', '2018-10-01 15:34:11'),
-(104, 110, 'Finalizado por: Gilberto Tun Hau', '2018-10-01 15:38:21'),
-(105, 83, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-10-01 15:46:36'),
-(106, 111, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-10-01 15:56:26'),
-(107, 112, 'Finalizado por: Gilberto Tun Hau', '2018-10-01 16:10:27'),
-(108, 113, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-02 11:11:30'),
-(109, 114, 'Finalizado por: Gilberto Tun Hau', '2018-10-02 12:09:39'),
-(110, 116, 'Finalizado por: José Román López Aguilar', '2018-10-02 15:45:14'),
-(111, 100, 'Finalizado por: José Román López Aguilar', '2018-10-02 15:47:32'),
-(112, 117, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-03 08:16:05'),
-(113, 118, 'Finalizado por: Lic. Richard Martín Moguel', '2018-10-03 10:30:18'),
-(114, 119, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-03 11:22:12'),
-(115, 120, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-03 11:25:14'),
-(116, 121, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-03 14:18:07'),
-(117, 122, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-03 14:28:38'),
-(118, 123, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-04 11:47:13'),
-(119, 121, 'Usuario Responsable anterior: Ing. Gabriel Rodríguez Arévalo', '2018-10-04 12:04:47'),
-(120, 124, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-04 12:19:10'),
-(121, 102, 'Finalizado por: Gilberto Tun Hau', '2018-10-04 13:29:44'),
-(122, 125, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-05 09:27:06'),
-(123, 126, 'Finalizado por: José Román López Aguilar', '2018-10-05 11:56:23'),
-(124, 127, 'Finalizado por: Gilberto Tun Hau', '2018-10-05 13:09:22'),
-(125, 128, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-05 16:02:04'),
-(126, 129, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-05 16:08:36'),
-(127, 130, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-05 16:13:57'),
-(128, 131, 'Finalizado por: Gilberto Tun Hau', '2018-10-05 16:18:19'),
-(129, 134, 'Finalizado por: Luis Miguel Acosta', '2018-10-05 19:01:55'),
-(130, 135, 'Finalizado por: Luis Miguel Acosta', '2018-10-05 19:14:18'),
-(131, 136, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-08 09:22:49'),
-(132, 137, 'Finalizado por: José Román López Aguilar', '2018-10-08 14:40:54'),
-(133, 138, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-08 14:53:30'),
-(134, 139, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-08 16:01:38'),
-(135, 140, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-09 09:47:33'),
-(136, 141, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-09 09:49:44'),
-(137, 143, 'Finalizado por: Lic. Richard Martín Moguel', '2018-10-09 10:39:05'),
-(138, 144, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-09 10:45:50'),
-(139, 145, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-09 11:37:13'),
-(140, 146, 'Finalizado por: Luis Miguel Acosta', '2018-10-09 11:51:27'),
-(141, 148, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-09 14:19:48'),
-(142, 149, 'Finalizado por: José Román López Aguilar', '2018-10-09 14:41:31'),
-(143, 150, 'Finalizado por: José Román López Aguilar', '2018-10-09 14:47:37'),
-(144, 151, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-09 15:39:42'),
-(145, 152, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-09 16:08:24'),
-(146, 153, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-09 16:28:20'),
-(147, 154, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-09 17:27:03'),
-(148, 155, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-09 17:36:38'),
-(149, 156, 'Finalizado por: Luis Miguel Acosta', '2018-10-09 18:29:07'),
-(150, 157, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-10 10:08:24'),
-(151, 158, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-10 11:17:39'),
-(152, 159, 'Finalizado por: José Román López Aguilar', '2018-10-10 11:58:55'),
-(153, 160, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-10 12:06:53'),
-(154, 161, 'Finalizado por: José Román López Aguilar', '2018-10-10 15:04:14'),
-(155, 162, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-10 16:04:23'),
-(156, 163, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-10 16:25:56'),
-(157, 164, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-11 08:55:45'),
-(158, 165, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-11 14:06:12'),
-(159, 166, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-11 14:09:52'),
-(160, 167, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-10-15 10:27:38'),
-(161, 168, 'Finalizado por: Ing. Efraín Beltrán Ávila', '2018-10-15 10:31:50'),
-(162, 169, 'Finalizado por: Gilberto Tun Hau', '2018-10-15 11:04:46'),
-(163, 170, 'Finalizado por: Gilberto Tun Hau', '2018-10-15 11:47:13'),
-(164, 171, 'Finalizado por: Luis Miguel Acosta', '2018-10-15 13:31:02'),
-(165, 172, 'Finalizado por: Luis Miguel Acosta', '2018-10-15 13:54:17'),
-(166, 173, 'Finalizado por: José Román López Aguilar', '2018-10-15 14:13:32'),
-(167, 174, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-15 15:25:41'),
-(168, 175, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-15 16:51:08'),
-(169, 176, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-10-16 10:35:27'),
-(170, 177, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-10-16 10:37:46'),
-(171, 179, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-16 11:11:27'),
-(172, 115, 'Finalizado por: Ing. Wilberth Novelo  Villa', '2018-10-16 12:15:24'),
-(173, 181, 'Finalizado por: Ing. Wilberth Novelo  Villa', '2018-10-16 12:21:48'),
-(174, 182, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-10-16 12:52:32'),
-(175, 183, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-16 12:56:36'),
-(176, 184, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-16 12:58:34'),
-(177, 186, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-17 09:16:15'),
-(178, 187, 'Finalizado por: Gilberto Tun Hau', '2018-10-17 10:44:18'),
-(179, 188, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-10-17 10:59:43'),
-(180, 189, 'Finalizado por: Gilberto Tun Hau', '2018-10-17 12:30:54'),
-(181, 190, 'Finalizado por: Gilberto Tun Hau', '2018-10-17 12:54:34'),
-(182, 191, 'Finalizado por: Gilberto Tun Hau', '2018-10-17 12:56:26'),
-(183, 192, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-18 12:14:28'),
-(184, 178, 'Finalizado por: Ariel Perez Valdez', '2018-10-18 13:48:23'),
-(185, 133, 'Finalizado por: Ariel Perez Valdez', '2018-10-18 13:48:28'),
-(186, 180, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-18 13:55:55'),
-(187, 185, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-18 15:21:22'),
-(188, 193, 'Finalizado por: Luis Miguel Acosta', '2018-10-18 15:50:41'),
-(189, 194, 'Finalizado por: Gilberto Tun Hau', '2018-10-18 16:04:19'),
-(190, 195, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-18 16:17:49'),
-(191, 196, 'Finalizado por: Gilberto Tun Hau', '2018-10-18 16:35:07'),
-(192, 197, 'Finalizado por: José Román López Aguilar', '2018-10-19 09:27:11'),
-(193, 198, 'Finalizado por: José Román López Aguilar', '2018-10-19 09:33:25'),
-(194, 200, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-19 12:09:38'),
-(195, 132, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-19 12:12:45'),
-(196, 91, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-19 12:14:59'),
-(197, 24, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-19 12:17:23'),
-(198, 201, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-10-19 12:25:06'),
-(199, 147, 'Finalizado por: Gilberto Tun Hau', '2018-10-19 12:41:57'),
-(200, 202, 'Finalizado por: Gilberto Tun Hau', '2018-10-19 17:02:19'),
-(201, 203, 'Finalizado por: Luis Miguel Acosta', '2018-10-22 10:33:28'),
-(202, 199, 'Finalizado por: Luis Miguel Acosta', '2018-10-22 10:38:13'),
-(203, 205, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-23 05:37:51'),
-(204, 206, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-23 05:41:10'),
-(205, 207, 'Finalizado por: Luis Miguel Acosta', '2018-10-23 05:42:53'),
-(206, 208, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-10-23 09:29:46'),
-(207, 209, 'Finalizado por: José Román López Aguilar', '2018-10-23 10:37:51'),
-(208, 210, 'Finalizado por: José Román López Aguilar', '2018-10-23 10:40:43'),
-(209, 211, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-23 10:49:43'),
-(210, 212, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-23 12:04:43'),
-(211, 213, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-23 12:07:10'),
-(212, 214, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-23 12:20:09'),
-(213, 215, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-23 14:58:49'),
-(214, 216, 'Finalizado por: Gilberto Tun Hau', '2018-10-24 07:49:25'),
-(215, 217, 'Finalizado por: Lic. Richard Martín Moguel', '2018-10-24 07:54:42'),
-(216, 218, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-24 17:30:40'),
-(217, 219, 'Finalizado por: Lic. Richard Martín Moguel', '2018-10-25 14:24:29'),
-(218, 220, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-25 20:21:03'),
-(219, 221, 'Finalizado por: José Román López Aguilar', '2018-10-26 09:08:20'),
-(220, 222, 'Finalizado por: Administrador del Sistema', '2018-10-26 09:56:08'),
-(221, 222, 'Cancelado por: Administrador del Sistema', '2018-10-26 09:56:30'),
-(222, 223, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-26 10:10:43'),
-(223, 224, 'Finalizado por: José Román López Aguilar', '2018-10-26 10:21:35'),
-(224, 225, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-10-26 11:02:33'),
-(225, 226, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-26 11:11:55'),
-(226, 228, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-26 11:19:18'),
-(227, 229, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-26 11:57:42'),
-(228, 230, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-26 15:16:01'),
-(229, 231, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-10-26 15:35:21'),
-(230, 232, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-26 17:11:03'),
-(231, 233, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-26 17:13:55'),
-(232, 234, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-29 09:47:48'),
-(233, 236, 'Finalizado por: Gilberto Tun Hau', '2018-10-29 13:41:27'),
-(234, 237, 'Finalizado por: Luis Miguel Acosta', '2018-10-29 13:55:21'),
-(235, 238, 'Finalizado por: Luis Miguel Acosta', '2018-10-29 13:59:55'),
-(236, 239, 'Finalizado por: Ariel Perez Valdez', '2018-10-30 11:16:47'),
-(237, 240, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-30 15:42:05'),
-(238, 241, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-30 16:08:35'),
-(239, 243, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-31 12:14:20'),
-(240, 244, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-31 12:16:14'),
-(241, 245, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-10-31 12:22:29'),
-(242, 246, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-10-31 15:17:39'),
-(243, 247, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-01 09:36:33'),
-(244, 248, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-01 09:42:58'),
-(245, 249, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-01 09:47:08'),
-(246, 250, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-05 10:03:46'),
-(247, 251, 'Finalizado por: Luis Miguel Acosta', '2018-11-05 11:20:32'),
-(248, 252, 'Finalizado por: Luis Miguel Acosta', '2018-11-05 11:27:31'),
-(249, 253, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-05 12:12:31'),
-(250, 254, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-11-05 12:32:28'),
-(251, 255, 'Finalizado por: Lic. Rodrigo Valencia Alcocer', '2018-11-05 12:35:44'),
-(252, 256, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-05 12:54:47'),
-(253, 257, 'Finalizado por: Lic. Richard Martín Moguel', '2018-11-06 09:22:02'),
-(254, 258, 'Finalizado por: Gilberto Tun Hau', '2018-11-06 10:33:03'),
-(255, 259, 'Finalizado por: Gilberto Tun Hau', '2018-11-06 10:34:28'),
-(256, 260, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-06 10:35:43'),
-(257, 261, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-06 12:40:29'),
-(258, 262, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-06 13:12:49'),
-(259, 263, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-06 16:09:40'),
-(260, 264, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-06 16:11:47'),
-(261, 265, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-06 16:14:38'),
-(262, 266, 'Finalizado por: Ing. Gabriel Guzmán Quezada', '2018-11-06 16:18:59'),
-(263, 267, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-06 20:28:13'),
-(264, 268, 'Finalizado por: Gilberto Tun Hau', '2018-11-07 09:59:16'),
-(265, 269, 'Finalizado por: Luis Miguel Acosta', '2018-11-07 11:28:09'),
-(266, 270, 'Finalizado por: Luis Miguel Acosta', '2018-11-07 11:31:42'),
-(267, 271, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-07 13:47:24'),
-(268, 272, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-08 08:33:40'),
-(269, 273, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-08 08:52:33'),
-(270, 274, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-08 09:32:08'),
-(271, 275, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-08 11:35:56'),
-(272, 276, 'Finalizado por: Ing. Wilberth Novelo  Villa', '2018-11-08 12:54:51'),
-(273, 277, 'Finalizado por: Ing. Wilberth Novelo  Villa', '2018-11-08 12:58:58'),
-(274, 278, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-09 16:28:11'),
-(275, 279, 'Finalizado por: Ariel Perez Valdez', '2018-11-12 12:28:04'),
-(276, 280, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-12 13:34:01'),
-(277, 281, 'Finalizado por: José Román López Aguilar', '2018-11-12 14:28:00'),
-(278, 282, 'Finalizado por: José Román López Aguilar', '2018-11-12 14:30:01'),
-(279, 283, 'Finalizado por: Luis Miguel Acosta', '2018-11-12 15:20:57'),
-(280, 284, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-12 15:50:13'),
-(281, 285, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-12 15:53:41'),
-(282, 286, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-12 15:56:07'),
-(283, 287, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-13 09:34:48'),
-(284, 288, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-13 11:08:35'),
-(285, 289, 'Finalizado por: Josue Cupul Sanchez', '2018-11-13 11:23:46'),
-(286, 290, 'Finalizado por: Luis Miguel Acosta', '2018-11-13 11:28:30'),
-(287, 291, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-13 11:42:33'),
-(288, 292, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-13 16:01:00'),
-(289, 293, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-13 16:04:09'),
-(290, 294, 'Finalizado por: José Román López Aguilar', '2018-11-14 10:31:15'),
-(291, 295, 'Finalizado por: Lic. Eder Pastrana Castro', '2018-11-14 13:01:40'),
-(292, 296, 'Finalizado por: Gilberto Tun Hau', '2018-11-14 13:44:28'),
-(293, 297, 'Finalizado por: Gilberto Tun Hau', '2018-11-14 13:47:39'),
-(294, 298, 'Finalizado por: Gilberto Tun Hau', '2018-11-14 13:52:08'),
-(295, 204, 'Finalizado por: Gilberto Tun Hau', '2018-11-14 13:54:43'),
-(296, 299, 'Finalizado por: Luis Miguel Acosta', '2018-11-15 09:57:05'),
-(297, 300, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-11-15 13:42:53'),
-(298, 301, 'Finalizado por: Adolfo Zabdi Navarrete Lagos', '2018-11-15 13:51:47'),
-(299, 302, 'Finalizado por: Lic. Roonny Ruiz Ramirez', '2018-11-15 14:08:42');
+(2, 'admin', '::1', '2017-01-30 14:45:25', 'Se elimino al usuario |{\"co_user_id\":4,\"login\":\"oo\",\"password\":\"$2y$10$xRZH6ABEwlzqfXHoR2RUIut03fr.zgcXmq20xY3vvELCB6msZnyCC\",\"nombre\":\"\",\"co_group_id\":1,\"last_login\":null,\"email\":\"\",\"created\":null,\"modified\":null,\"centrale_id\":0,\"coordinacione_id\":0,\"active\":true,\"tokenhash\":null}', 4),
+(3, 'admin', '::1', '2017-02-01 14:45:40', 'Se elimino al usuario |{\"co_user_id\":5,\"login\":\"prueba\",\"password\":\"$2y$10$gzkXDLK\\/iGuBsxxrZRc39e3fDsmiittcq2XNxDl6ofGN1mzVa\\/NhK\",\"nombre\":\"p\",\"co_group_id\":2,\"last_login\":\"2017-02-01T12:31:55-05:00\",\"email\":\"\",\"created\":\"2017-01-30T17:15:38-05:00\",\"modified\":\"2017-02-01T12:31:42-05:00\",\"centrale_id\":0,\"coordinacione_id\":0,\"active\":true,\"tokenhash\":null}', 5);
 
 -- --------------------------------------------------------
 
@@ -391,7 +51,7 @@ INSERT INTO `bitacoraservs` (`bitacoraserv_id`, `servicio_id`, `descripcion_even
 -- Estructura de tabla para la tabla `cat_adscripciones`
 --
 
-CREATE TABLE IF NOT EXISTS `cat_adscripciones` (
+CREATE TABLE `cat_adscripciones` (
   `cat_adscripcione_id` int(11) NOT NULL,
   `cve_ads` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `nom_ads` varchar(250) COLLATE utf8_spanish_ci NOT NULL,
@@ -404,7 +64,7 @@ CREATE TABLE IF NOT EXISTS `cat_adscripciones` (
   `anio` year(4) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=19976 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cat_adscripciones`
@@ -2878,10 +2538,10 @@ INSERT INTO `cat_adscripciones` (`cat_adscripcione_id`, `cve_ads`, `nom_ads`, `c
 (19316, '23-13-01-04-00-01-10-00-00-00-02-00-04', 'DEPARTAMENTO DE CONTROL DE INFORMACION FINANCIERA', 3, 4, 0, 1, NULL, NULL, 2018, '2014-03-28 14:18:29', '0000-00-00 00:00:00'),
 (19317, '23-13-02-09-63-00-01-01-00-00-09-00-05', 'DEPARTAMENTO DE ASESORIAS Y TUTORIAS', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:18:27', '0000-00-00 00:00:00'),
 (19318, '23-13-02-09-63-00-01-01-00-00-10-00-05', 'DEPARTAMENTO DE INVESTIGACION Y DESARROLLO TECNOLOGICO', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:19:17', '0000-00-00 00:00:00'),
-(19319, '23-13-02-09-63-00-01-01-01-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO "1"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:19:50', '0000-00-00 00:00:00'),
-(19320, '23-13-02-09-63-00-01-01-02-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO "2"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:20:20', '0000-00-00 00:00:00'),
-(19321, '23-13-02-09-63-00-01-01-03-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO "3"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:20:56', '0000-00-00 00:00:00'),
-(19322, '23-13-02-09-63-00-01-01-04-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO "4"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:21:31', '0000-00-00 00:00:00'),
+(19319, '23-13-02-09-63-00-01-01-01-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO \"1\"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:19:50', '0000-00-00 00:00:00'),
+(19320, '23-13-02-09-63-00-01-01-02-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO \"2\"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:20:20', '0000-00-00 00:00:00'),
+(19321, '23-13-02-09-63-00-01-01-03-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO \"3\"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:20:56', '0000-00-00 00:00:00'),
+(19322, '23-13-02-09-63-00-01-01-04-00-00-00-05', 'DIRECCION DE PROGRAMA ACADEMICO \"4\"', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:21:31', '0000-00-00 00:00:00'),
 (19323, '23-13-02-09-63-00-01-00-02-00-00-00-05', 'DIRECCION DE VINCULACION, DIFUSION Y EXTENSION UNIVERSITARIA', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:22:06', '0000-00-00 00:00:00'),
 (19324, '23-13-02-09-63-00-01-00-02-00-01-00-05', 'DEPARTAMENTO DE CENTRO EMPRENDEDOR', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:22:39', '0000-00-00 00:00:00'),
 (19325, '23-13-02-09-63-00-01-00-02-00-02-00-05', 'DEPARTAMENTO DE GESTION EMPRESARIAL', 89, 9, 63, 1, NULL, NULL, 2018, '2014-03-31 17:23:06', '0000-00-00 00:00:00'),
@@ -3060,9 +2720,9 @@ INSERT INTO `cat_adscripciones` (`cat_adscripcione_id`, `cve_ads`, `nom_ads`, `c
 (19498, '23-13-02-09-21-00-00-00-00-00-00-00-10-01', 'TELEBACHILLERATO BUENAVISTA', 75, 9, 21, 1, NULL, NULL, 2018, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (19499, '23-13-02-09-21-00-00-00-00-00-00-00-10-02', 'TELEBACHILLERATO MARGARIA MAZA DE JUAREZ', 75, 9, 21, 1, NULL, NULL, 2018, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (19500, '23-13-02-09-21-00-00-00-00-00-00-00-10-03', 'TELEBACHILLERATO NUEVO JERUSALEN', 75, 9, 21, 1, NULL, NULL, 2018, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19501, '23-13-02-09-21-00-00-00-00-00-00-00-10-04', 'TELEBACHILLERATO REFORMA', 75, 9, 21, 1, NULL, NULL, 2018, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(19502, '23-13-02-09-21-00-00-00-00-00-00-00-10-05', 'TELEBACHILLERATO SAN ISIDRO LA LAGUNA', 75, 9, 21, 1, NULL, NULL, 2018, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(19501, '23-13-02-09-21-00-00-00-00-00-00-00-10-04', 'TELEBACHILLERATO REFORMA', 75, 9, 21, 1, NULL, NULL, 2018, '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 INSERT INTO `cat_adscripciones` (`cat_adscripcione_id`, `cve_ads`, `nom_ads`, `cat_institucione_id`, `cveusuad`, `cveucoad`, `estatus`, `vigencia_inicial`, `vigencia_final`, `anio`, `created`, `modified`) VALUES
+(19502, '23-13-02-09-21-00-00-00-00-00-00-00-10-05', 'TELEBACHILLERATO SAN ISIDRO LA LAGUNA', 75, 9, 21, 1, NULL, NULL, 2018, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (19503, '23-13-02-09-21-00-00-00-00-00-00-00-02-07', 'TELEBACHILLERATO TEPICH', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-07 17:08:02', '0000-00-00 00:00:00'),
 (19504, '23-13-04-03-59-00-01-00-12-00-00-00-01', 'GERENCIA DE DESARROLLO COSTERO DE COZUMEL', 44, 3, 59, 1, NULL, NULL, 2018, '2015-10-08 14:45:30', '0000-00-00 00:00:00'),
 (19505, '23-13-01-13-00-01-00-01-08-00-01-00-04', 'DEPARTAMENTO DE CONTROL INTERNO', 12, 13, 0, 0, NULL, NULL, 2018, '2015-10-16 15:24:46', '2017-01-24 17:00:04'),
@@ -3096,7 +2756,7 @@ INSERT INTO `cat_adscripciones` (`cat_adscripcione_id`, `cve_ads`, `nom_ads`, `c
 (19533, '23-13-02-09-21-00-00-00-00-00-00-00-02-10', 'TELEBACHILLERATO KOPCHEN', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:18:57', '0000-00-00 00:00:00'),
 (19534, '23-13-02-09-21-00-00-00-00-00-00-00-02-11', 'TELEBACHILLERATO POLYUC', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:19:25', '0000-00-00 00:00:00'),
 (19535, '23-13-02-09-21-00-00-00-00-00-00-00-02-12', 'TELEBACHILLERATO SANTA ROSA SEGUNDO', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:19:56', '0000-00-00 00:00:00'),
-(19536, '23-13-02-09-21-00-00-00-00-00-00-00-02-13', 'TELEBACHILLERATO X''YATIL', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:20:23', '0000-00-00 00:00:00'),
+(19536, '23-13-02-09-21-00-00-00-00-00-00-00-02-13', 'TELEBACHILLERATO X\'YATIL', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:20:23', '0000-00-00 00:00:00'),
 (19537, '23-13-02-09-21-00-00-00-00-00-00-00-03-01', 'TELEBACHILLERATO FRANCISCO MAY', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:20:49', '0000-00-00 00:00:00'),
 (19538, '23-13-02-09-21-00-00-00-00-00-00-00-04-11', 'TELEBACHILLERATO JOSE N. ROVIROSA', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:21:15', '0000-00-00 00:00:00'),
 (19539, '23-13-02-09-21-00-00-00-00-00-00-00-04-12', 'TELEBACHILLERATO LA UNION', 75, 9, 21, 1, NULL, NULL, 2018, '2015-10-22 18:21:42', '0000-00-00 00:00:00'),
@@ -3543,7 +3203,7 @@ INSERT INTO `cat_adscripciones` (`cat_adscripcione_id`, `cve_ads`, `nom_ads`, `c
 -- Estructura de tabla para la tabla `cat_instituciones`
 --
 
-CREATE TABLE IF NOT EXISTS `cat_instituciones` (
+CREATE TABLE `cat_instituciones` (
   `cat_institucione_id` int(11) NOT NULL,
   `num_adscripcion` int(11) NOT NULL,
   `num_organo` int(11) NOT NULL DEFAULT '0',
@@ -3555,7 +3215,7 @@ CREATE TABLE IF NOT EXISTS `cat_instituciones` (
   `partida_convertida_sag` int(11) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cat_instituciones`
@@ -3603,7 +3263,7 @@ INSERT INTO `cat_instituciones` (`cat_institucione_id`, `num_adscripcion`, `num_
 (40, 22, 1, 'Servicio Estatal del Empleo y Capacitación para el Trabajo de Quintana Roo (SEECAT)', 2, 1, 1, NULL, NULL, NULL, '2012-08-22 14:01:35'),
 (41, 2, 0, 'Secretaría de Cultura', 1, 0, 1, NULL, NULL, NULL, '2013-11-08 10:27:24'),
 (42, 15, 62, 'HIDROPONÍA MAYA S.A. DE C.V.', 5, 0, 0, 'HMA041125IH9', NULL, NULL, '2017-09-22 12:09:18'),
-(43, 15, 61, 'PROCESADORA DE CARNES ''LA ALIANZA'' S.A DE C.V.', 5, 1, 0, 'PCA9703048W1', 4221, NULL, '2014-11-21 14:17:00'),
+(43, 15, 61, 'PROCESADORA DE CARNES \'LA ALIANZA\' S.A DE C.V.', 5, 1, 0, 'PCA9703048W1', 4221, NULL, '2014-11-21 14:17:00'),
 (44, 3, 59, 'ADMINISTRACIÓN PORTUARIA INTEGRAL DE QUINTANA ROO, S.A DE C.V. APIQROO', 5, 1, 0, 'API940317RZA', NULL, NULL, '2014-11-05 14:54:57'),
 (45, 3, 60, 'VIP SERVICIOS AEREOS EJECUTIVOS, S.A. DE C.V.', 5, 1, 0, 'VSA940526H49', NULL, NULL, '2014-11-05 14:55:35'),
 (46, 8, 56, 'FIDEICOMISO DE PROMOCIÓN TURISTICA DEL MUNICIPIO DE BENITO JUAREZ (O.V.C.)', 4, 1, 0, 'GEL741008GY9', 4151, NULL, '2014-11-21 14:09:07'),
@@ -3638,7 +3298,7 @@ INSERT INTO `cat_instituciones` (`cat_institucione_id`, `num_adscripcion`, `num_
 (74, 9, 51, 'UNIVERSIDAD INTERCULTURAL DE LA ZONA MAYA DEL ESTADO Q. ROO (UIMQROO)', 3, 1, 0, 'UIM61030AKA', 4151, NULL, '2014-11-21 14:23:36'),
 (75, 9, 21, 'SERVICIOS EDUCATIVOS DE QUINTANA ROO (SEQ)', 3, 1, 0, 'SEQ920520ME3', 4151, NULL, '2014-11-21 14:18:23'),
 (76, 9, 22, 'COLEGIO DE BACHILLERES DEL ESTADO DE QUINTANA ROO (COBAQROO)', 3, 1, 0, 'CBE8008274T6', 4151, NULL, '2014-11-21 14:03:51'),
-(77, 9, 23, 'CENTRO DE ESTUDIOS DE BACHILLERATO TECNICO ''EVA SAMANO DE LOPEZ MATEOS''', 3, 1, 0, 'CEB940803KL2', 4151, NULL, '2014-11-21 14:03:14'),
+(77, 9, 23, 'CENTRO DE ESTUDIOS DE BACHILLERATO TECNICO \'EVA SAMANO DE LOPEZ MATEOS\'', 3, 1, 0, 'CEB940803KL2', 4151, NULL, '2014-11-21 14:03:14'),
 (78, 9, 24, 'COLEGIO DE ESTUDIOS CIENTÍFICOS Y TECNOLÓGICOS DEL ESTADO DE QUINTANA ROO ( CECYTE )', 3, 1, 0, 'CEC960902VC0', 4151, NULL, '2014-11-21 14:05:06'),
 (79, 9, 25, 'COLEGIO NACIONAL DE EDUCACION PROFESIONAL TECNICA DEL ESTADO DE QUINTANA ROO (CONALEP)', 3, 1, 0, 'CEP990226J97', 4151, NULL, '2014-11-21 14:05:37'),
 (80, 9, 26, 'INSTITUTO DE CAPACITACIÓN PARA EL TRABAJO DEL ESTADO ( ICAT)', 3, 1, 0, 'ICT960201V64', 4151, NULL, '2014-11-21 14:11:21'),
@@ -3676,46 +3336,23 @@ INSERT INTO `cat_instituciones` (`cat_institucione_id`, `num_adscripcion`, `num_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `coordinaciones`
---
-
-CREATE TABLE IF NOT EXISTS `coordinaciones` (
-  `coordinacione_id` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `telefono` varchar(20) NOT NULL,
-  `direccion` varchar(150) NOT NULL,
-  `nombre_contacto` varchar(150) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Volcado de datos para la tabla `coordinaciones`
---
-
-INSERT INTO `coordinaciones` (`coordinacione_id`, `nombre`, `telefono`, `direccion`, `nombre_contacto`) VALUES
-(1, 'Dirección', '', '', '');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `co_groups`
 --
 
-CREATE TABLE IF NOT EXISTS `co_groups` (
+CREATE TABLE `co_groups` (
   `co_group_id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
   `home_page` varchar(100) DEFAULT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `co_groups`
 --
 
 INSERT INTO `co_groups` (`co_group_id`, `name`, `home_page`, `created`, `modified`) VALUES
-(1, 'Administradores', '/', '2011-11-14 15:46:33', '2016-04-30 11:57:34'),
-(2, 'Supervisores', '/', '2018-08-15 14:19:27', '2018-09-17 13:27:49'),
-(3, 'Responsables', '/', '2018-08-15 14:21:41', '2018-08-15 14:21:41');
+(1, 'Administradores', '/', '2011-11-14 15:46:33', '2016-04-30 11:57:34');
 
 -- --------------------------------------------------------
 
@@ -3723,11 +3360,11 @@ INSERT INTO `co_groups` (`co_group_id`, `name`, `home_page`, `created`, `modifie
 -- Estructura de tabla para la tabla `co_groups_menus`
 --
 
-CREATE TABLE IF NOT EXISTS `co_groups_menus` (
+CREATE TABLE `co_groups_menus` (
   `id` int(11) NOT NULL,
   `co_group_id` int(11) NOT NULL,
   `co_menu_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `co_groups_menus`
@@ -3736,23 +3373,7 @@ CREATE TABLE IF NOT EXISTS `co_groups_menus` (
 INSERT INTO `co_groups_menus` (`id`, `co_group_id`, `co_menu_id`) VALUES
 (1, 1, 1),
 (2, 1, 2),
-(3, 1, 3),
-(4, 1, 4),
-(7, 1, 5),
-(8, 1, 6),
-(9, 1, 7),
-(10, 1, 8),
-(11, 1, 9),
-(12, 1, 10),
-(13, 1, 11),
-(23, 2, 10),
-(24, 2, 11),
-(25, 3, 10),
-(26, 3, 11),
-(27, 1, 12),
-(28, 2, 12),
-(29, 1, 13),
-(30, 2, 13);
+(3, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -3760,20 +3381,18 @@ INSERT INTO `co_groups_menus` (`id`, `co_group_id`, `co_menu_id`) VALUES
 -- Estructura de tabla para la tabla `co_groups_permissions`
 --
 
-CREATE TABLE IF NOT EXISTS `co_groups_permissions` (
+CREATE TABLE `co_groups_permissions` (
   `id` int(11) NOT NULL,
   `co_group_id` int(11) NOT NULL,
   `co_permission_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `co_groups_permissions`
 --
 
 INSERT INTO `co_groups_permissions` (`id`, `co_group_id`, `co_permission_id`) VALUES
-(1, 1, 1),
-(2, 2, 1),
-(3, 3, 1);
+(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -3781,7 +3400,7 @@ INSERT INTO `co_groups_permissions` (`id`, `co_group_id`, `co_permission_id`) VA
 -- Estructura de tabla para la tabla `co_menus`
 --
 
-CREATE TABLE IF NOT EXISTS `co_menus` (
+CREATE TABLE `co_menus` (
   `co_menu_id` int(11) NOT NULL,
   `id_padre` int(11) NOT NULL DEFAULT '0',
   `posicion` int(11) DEFAULT '1',
@@ -3789,7 +3408,7 @@ CREATE TABLE IF NOT EXISTS `co_menus` (
   `destino` varchar(100) NOT NULL,
   `icono` varchar(40) DEFAULT NULL,
   `etiqueta` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `co_menus`
@@ -3798,17 +3417,7 @@ CREATE TABLE IF NOT EXISTS `co_menus` (
 INSERT INTO `co_menus` (`co_menu_id`, `id_padre`, `posicion`, `nombre`, `destino`, `icono`, `etiqueta`) VALUES
 (1, 0, 1, 'Administración', '#', '', 'Administrar la App'),
 (2, 1, 1, 'Usuarios', '/co-users/index', '', 'Usuarios del Sistema'),
-(3, 1, 2, 'Menus', '/co-menus/index', '', 'Menus del Sistema'),
-(4, 0, 2, 'Catálogos', '#', '', ''),
-(5, 4, 1, 'Grupos', '/Grupos/Index', '', ''),
-(6, 4, 2, 'Tipo de Servicios', '/TipoServicios/Index', '', ''),
-(7, 4, 3, 'Tipo de Incidencias', '/TipoIncidencias/Index', '', ''),
-(8, 4, 4, 'Status', '/Status/Index', '', ''),
-(9, 4, 5, 'Prioridades', '/Prioridades/Index', '', ''),
-(10, 0, 3, 'Servicios', '#', '', ''),
-(11, 10, 1, 'Registro', '/Servicios/Index', '', ''),
-(12, 0, 4, 'Reportes', '#', '', 'Reportes'),
-(13, 12, 1, 'Estadísticas', '/reportes', '', 'Estadísticas');
+(3, 1, 2, 'Menus', '/co-menus/index', '', 'Menus del Sistema');
 
 -- --------------------------------------------------------
 
@@ -3816,31 +3425,19 @@ INSERT INTO `co_menus` (`co_menu_id`, `id_padre`, `posicion`, `nombre`, `destino
 -- Estructura de tabla para la tabla `co_permissions`
 --
 
-CREATE TABLE IF NOT EXISTS `co_permissions` (
+CREATE TABLE `co_permissions` (
   `co_permission_id` int(11) NOT NULL,
   `name` varchar(40) NOT NULL,
   `created` datetime NOT NULL,
   `modified` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `co_permissions`
 --
 
 INSERT INTO `co_permissions` (`co_permission_id`, `name`, `created`, `modified`) VALUES
-(1, '*', '2011-11-14 15:46:33', '2014-11-07 11:16:21'),
-(2, 'pages:display', '2011-11-14 15:46:33', '2011-11-14 15:46:33'),
-(4, 'cousers:changepassword', '2015-10-01 16:17:00', '2015-10-01 16:17:00'),
-(5, 'ayudas:*', '2015-10-01 16:17:21', '2015-10-01 16:17:21'),
-(6, 'localidades:*', '2016-04-30 12:07:51', '2016-04-30 12:07:51'),
-(7, 'co-users:password', '2017-01-30 17:22:02', '2017-01-30 17:23:26'),
-(26, 'Bitacoras:*', '2017-01-31 17:01:48', '2017-01-31 17:01:48'),
-(27, 'Bitacoras:index', '2017-01-31 17:01:48', '2017-01-31 17:01:48'),
-(28, 'Clientes:*', '2017-01-31 17:01:48', '2017-01-31 17:01:48'),
-(29, 'Bitacoras:add', '2017-01-31 17:13:31', '2017-01-31 17:13:31'),
-(30, 'Bitacoras:edit', '2017-01-31 17:13:31', '2017-01-31 17:13:31'),
-(31, 'Bitacoras:delete', '2017-01-31 17:13:31', '2017-01-31 17:13:31'),
-(32, 'CoUsers:*', '2017-02-01 12:10:42', '2017-02-01 12:10:42');
+(1, '*', '2011-11-14 15:46:33', '2014-11-07 11:16:21');
 
 -- --------------------------------------------------------
 
@@ -3848,7 +3445,7 @@ INSERT INTO `co_permissions` (`co_permission_id`, `name`, `created`, `modified`)
 -- Estructura de tabla para la tabla `co_users`
 --
 
-CREATE TABLE IF NOT EXISTS `co_users` (
+CREATE TABLE `co_users` (
   `co_user_id` int(11) NOT NULL,
   `login` varchar(150) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -3863,524 +3460,24 @@ CREATE TABLE IF NOT EXISTS `co_users` (
   `active` tinyint(1) DEFAULT NULL,
   `tokenhash` varchar(130) DEFAULT NULL,
   `image` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `co_users`
 --
 
 INSERT INTO `co_users` (`co_user_id`, `login`, `password`, `nombre`, `co_group_id`, `last_login`, `email`, `created`, `modified`, `centrale_id`, `coordinacione_id`, `active`, `tokenhash`, `image`) VALUES
-(1, 'admin', '$2y$10$CBo4GM3mkM8sncm51ZbP.O5g/BUbGMsdZUMDzh4ReiAohOS/noCKK', 'Administrador del Sistema', 1, '2018-11-15 11:33:07', 'mail@mail.com', '2011-11-14 15:46:33', '2018-09-21 13:56:18', 1, 1, 1, NULL, '1537556178_659114.png'),
-(2, 'rodrigo.valencia', '$2y$10$YZRbg4HBG6Avs7LBE2iLjOtsHxpO1a59YIqkbjLo5.x3HyPVQA5wO', 'Lic. Rodrigo Valencia Alcocer', 3, '2018-11-05 12:28:36', 'jrvalencia@live.com', '2018-08-16 16:52:35', '2018-09-17 13:04:01', 0, 0, 1, NULL, '1536338688_91247.jpg'),
-(3, 'supervisor', '$2y$10$utiWfczT6YlJ8y0smSuCrezz0kBTia6d9EKuqk3tIAqNKsKFiieri', 'Supervisor', 2, '2018-09-17 13:28:46', 'supervisor@hotmail.com', '2018-08-17 11:22:21', '2018-08-17 11:22:21', 0, 0, 1, NULL, ''),
-(4, 'eder.pastrana', '$2y$10$02PLtke.33xjZ7L/BE1aMuKZAB1YCF3RELbmuU8A19qTfO2INSJwe', 'Lic. Eder Pastrana Castro', 2, '2018-11-14 12:55:42', '', '2018-09-17 12:04:52', '2018-09-17 12:52:02', 0, 0, 1, NULL, ''),
-(5, 'rodrigo.poot', '$2y$10$HU0fZ84//3X4s5nbqQvjtOpL5//.iHn3bR2H0EwoKSaKv5RZApPmy', 'Rodrigo Poot Fuentes', 2, '2018-10-29 11:57:44', '', '2018-09-17 12:04:52', '2018-09-17 13:01:24', 0, 0, 1, NULL, ''),
-(6, 'roonny.ruiz', '$2y$10$03Om7/g3N/PLodYg1YJ5WuDKAVUee6xQlMLb8LHSJ5bkeml6O1MYa', 'Lic. Roonny Ruiz Ramirez', 2, '2018-11-15 14:06:58', '', '2018-09-17 12:04:52', '2018-09-18 14:36:13', 0, 0, 1, NULL, '1537299373_312377.jpg'),
-(7, 'gabriel.rodriguez', '$2y$10$eMyG9DD2vrLWm2.adXNaRejN3JJ.R5MOkXBCnRnOaNewxK050uhk2', 'Ing. Gabriel Rodríguez Arévalo', 2, '2018-11-14 16:35:47', '', '2018-09-17 12:04:52', '2018-09-18 15:30:08', 0, 0, 1, NULL, '1537302599_196083.png'),
-(8, 'richard.martin', '$2y$10$znLH7CGNgl.nIW3ssDC7burkXhjtnmcCyod2HgxlzL24FAy799tuy', 'Lic. Richard Martín Moguel', 3, '2018-11-06 09:20:03', '', '2018-08-16 16:52:35', '2018-09-17 13:18:02', 0, 0, 1, NULL, ''),
-(9, 'gilberto.tun', '$2y$10$SovSWbuhf7vZTuYGhF0VK..1sZ6T4VD/NyjA.LZafT9mPBmJPaLFm', 'Gilberto Tun Hau', 3, '2018-11-14 13:16:39', '', '2018-08-16 16:52:35', '2018-09-28 09:36:09', 0, 0, 1, NULL, ''),
-(10, 'wilberth.novelo', '$2y$10$9H/0o1bqh4Wc56FjAE6S2ujI5EzpUcnxPP0.vOFIpzreDE9sjnSLC', 'Ing. Wilberth Novelo  Villa', 3, '2018-11-08 12:50:33', '', '2018-08-16 16:52:35', '2018-09-21 11:51:53', 0, 0, 1, NULL, ''),
-(11, 'josue.cupul', '$2y$10$6A8dmIYqWNASJHta4X2gvO6cXlSU3FK/8ynk7w05FSroM5B29/hPa', 'Josue Cupul Sanchez', 3, '2018-11-13 11:20:14', '', '2018-08-16 16:52:35', '2018-09-19 09:47:56', 0, 0, 1, NULL, ''),
-(12, 'luis.acosta', '$2y$10$YAxI2r4rvajTFiR4q6uvSOsfiWQ1PdTaC1dq0GnSuvL9ie367ayE.', 'Luis Miguel Acosta', 3, '2018-11-15 09:44:45', '', '2018-08-16 16:52:35', '2018-09-21 11:29:11', 0, 0, 1, NULL, ''),
-(13, 'roman.lopez', '$2y$10$KHc1I9nqODkC3tzf.0lP5eSZ5YZ5j2Dkutr5jHl19lp7Wly873S7e', 'José Román López Aguilar', 3, '2018-11-14 13:41:51', '', '2018-08-16 16:52:35', '2018-09-28 12:39:22', 0, 0, 1, NULL, ''),
-(14, 'gabriel.guzman', '$2y$10$GmI0EbUmprNCLkdEUKyUsuUncN.dod4ZbeKO1beD2iGHYvXpOW8Ka', 'Ing. Gabriel Guzmán Quezada', 3, '2018-11-06 16:06:38', '', '2018-08-16 16:52:35', '2018-09-19 09:06:43', 0, 0, 1, NULL, ''),
-(15, 'efrain.beltran', '$2y$10$4U8rdh7o0LwsFUNrgY3w4uckpelQ8O6k6jLJ/6oa95/22ODVtKCD2', 'Ing. Efraín Beltrán Ávila', 3, '2018-10-15 10:24:20', '', '2018-08-16 16:52:35', '2018-09-21 11:50:03', 0, 0, 1, NULL, ''),
-(16, 'ariel.perez', '$2y$10$uBtnYFkjt037GnUgCw8pvuMYbyR9i7QAhdlhBkOey1wKnT7phoikq', 'Ariel Perez Valdez', 3, '2018-11-12 12:16:49', '', '2018-08-16 16:52:35', '2018-09-21 11:17:13', 0, 0, 1, NULL, '1537546633_870214.jpg'),
-(17, 'adolfo.navarrete', '$2y$10$8os4AJHhlTvtezNuLlvR/ONFE0lZmyqV2HIiEV6xI8bjd3rR9oBp2', 'Adolfo Zabdi Navarrete Lagos', 3, '2018-11-15 13:37:06', '', '2018-08-16 16:52:35', '2018-09-20 16:34:20', 0, 0, 1, NULL, ''),
-(18, 'hilario.huerta', '$2y$10$bbzHs0gILtEREjmDBRpgEe/ndpntJI2BoKMH6XKSR9M66isRfEPE.', 'Hilario Huerta Asencio', 3, '2018-09-10 15:21:27', '', '2018-08-16 16:52:35', '2018-09-17 13:21:46', 0, 0, 1, NULL, ''),
-(19, 'gertrudis.gonzalez', '$2y$10$2doDQp8TQwLN1YFUx5HCx.SuHhff.3B43HqTV3yhPnfXYtezA64xi', 'Gertrudis Gonzalez Rodríguez', 3, '2018-09-21 11:32:21', '', '2018-08-16 16:52:35', '2018-09-21 11:41:46', 0, 0, 1, NULL, '');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `grupos`
---
-
-CREATE TABLE IF NOT EXISTS `grupos` (
-  `grupo_id` int(11) NOT NULL,
-  `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `grupos`
---
-
-INSERT INTO `grupos` (`grupo_id`, `descripcion`) VALUES
-(1, 'Soporte Técnico'),
-(2, 'Redes'),
-(3, 'Sistemas'),
-(4, 'CD-QROO'),
-(5, 'Administración');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `prioridades`
---
-
-CREATE TABLE IF NOT EXISTS `prioridades` (
-  `prioridade_id` int(11) NOT NULL,
-  `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `prioridades`
---
-
-INSERT INTO `prioridades` (`prioridade_id`, `descripcion`) VALUES
-(1, 'Media'),
-(2, 'Baja'),
-(3, 'Alta');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `servicios`
---
-
-CREATE TABLE IF NOT EXISTS `servicios` (
-  `servicio_id` int(11) NOT NULL,
-  `fecha_solicitud` date NOT NULL,
-  `descripcion_corta` varchar(200) COLLATE utf8_spanish_ci NOT NULL,
-  `tipo_servicio_id` int(11) NOT NULL,
-  `tipo_incidencia_id` int(11) NOT NULL,
-  `problematica` text COLLATE utf8_spanish_ci NOT NULL,
-  `no_inventario` varchar(10) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `prioridade_id` int(11) NOT NULL,
-  `cat_institucione_id` int(11) NOT NULL,
-  `cat_adscripcione_id` int(11) NOT NULL,
-  `nombre_solicitante` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `cargo_solicitante` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono_solicitante` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `email_solicitante` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `fecha_limite_solucion` date NOT NULL,
-  `co_user_id` int(11) NOT NULL,
-  `solucion` text COLLATE utf8_spanish_ci,
-  `fecha_solucion` date DEFAULT NULL,
-  `statu_id` int(11) NOT NULL,
-  `notas` text COLLATE utf8_spanish_ci,
-  `created` datetime NOT NULL,
-  `modified` datetime NOT NULL,
-  `created_by` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `servicios`
---
-
-INSERT INTO `servicios` (`servicio_id`, `fecha_solicitud`, `descripcion_corta`, `tipo_servicio_id`, `tipo_incidencia_id`, `problematica`, `no_inventario`, `prioridade_id`, `cat_institucione_id`, `cat_adscripcione_id`, `nombre_solicitante`, `cargo_solicitante`, `telefono_solicitante`, `email_solicitante`, `fecha_limite_solucion`, `co_user_id`, `solucion`, `fecha_solucion`, `statu_id`, `notas`, `created`, `modified`, `created_by`) VALUES
-(1, '2018-09-15', 'Reglamento interior actualizado', 20, 1, 'Se requería la publicación del nuevo Reglamento interior de la OM', '', 3, 10, 18899, 'LIC. MARIA DEL CARMEN CURA LOPEZ', 'DIRECTORA JURIDICA Y DE ACCESO A LA INFORMACION', '98350500', 'carmen.cura@qroo.gob.mx', '2018-09-18', 6, ' Se publicó en esta dirección \r\nhttps://qroo.gob.mx/om/reglamento-interior ', '2018-09-15', 3, ' solo se copió y pegó el texto en la pagina de drupal', '2018-09-18 14:40:45', '2018-09-18 15:41:56', 6),
-(2, '2018-09-13', 'Tablero de control para sideol', 9, 3, 'Se requiere que  para el Tabulador de Entidades en SIDEOL, se pueda llevar un control de las entidades; para saber cuáles reportan, no reportan o están desfasadas, además de requerir un reporte gráfico y tabular de la información.', '', 1, 10, 18684, 'Lic. Marisol Canto Celis', 'Directora de recursos Humanos', '8350500', 'marisolcanto3@hotmail.com', '2018-09-30', 9, ' Se desarrolló el modulo de tablero de control ', '2018-09-28', 3, ' ', '2018-09-18 15:43:53', '2018-09-28 13:16:38', 9),
-(3, '2018-09-18', 'Quitar contraseña a computadora ', 1, 1, 'El usuario solicita  que se le quite la contraseña al equipo ya que es un equipo personal \r\nSe procedio a quitar  la contraseña de administrador al equipo\r\n\r\nGATEWAY ALL IN ONE ', '', 2, 10, 18863, 'Elves Cabrera Cruz', 'Analista profesional', 'ext 41279', '', '2018-09-18', 14, ' Se procedió a quitarle la contraseña al equipo antes mencionado', '2018-09-18', 3, ' ', '2018-09-18 17:46:29', '2018-09-18 17:47:07', 14),
-(4, '2018-09-19', 'ERROR EN HORA Y FECHA DE PC', 1, 2, 'LA HORA Y LA FECHA DEL EQUIPO ESTABA MAL. SE CORRIGIÓ EL PROBLEMA Y SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE.', '8052', 1, 10, 18501, 'TANIA SALAZAR VARGAZ', '', '', '', '2018-09-19', 13, ' SE CORRIGIÓ EL PROBLEMA Y SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE', '2018-09-19', 3, ' ', '2018-09-19 09:41:24', '2018-09-19 09:42:23', 13),
-(5, '2018-09-19', 'Documento para cambio de proyector', 6, 1, 'El proyector Marca EPSON Modelo Epson PowerLite x17 XGA 3LCD ha estado dando problemas debido a que la imagen sale  opaca y los colores  Rojo y Azul no se muestran,sino que los dichos tonos los muestra negros claros además el puerto HDMI está dañado, al conectar una fuente HDMI la imagen sale pixelada.\r\n\r\nModelo de la lámpara : ELPLP 78', 'S/N', 1, 10, 18542, 'SERGIO MANZANERO SALAZAR', 'SECRETARIO PARTICULAR', '9838350500; Ext. 41057', 'sergio.manzanero@qroo.gob.mx', '2018-09-19', 14, 'Se le cambió el cable VGA y el proyector se pude usar pero los tonos rojos y azules los muestra en color gris obscuro.\r\nProbablemente debido a la lámpara que  ya agotó su vida útil.\r\nEn vista de que el proyector tiene el puerto HDMI dañado y la lámpara  requiere cambio , se sugiere adquirir un proyector como el Epson PowerLite U42+ 3600 Lumenes que cumple con las especificaciones necesarias para funcionar correctamente en las diferentes presentaciones y en las videoconferencias que se se llevan a cabo en la sala de juntas.  De igual manera es capaz de trabajar sometido al uso  intensivo que se requiere en las diferentes actividades.  \r\n ', '2018-09-19', 3, ' ', '2018-09-19 09:53:38', '2018-09-19 15:49:35', 14),
-(6, '2018-09-18', 'Archivos terceros y fovissste quincena 17 2018', 13, 1, 'Archivos quincenales para fovissste y terceros\r\ntitulo del correo\r\nreportes qna 17 fovissste tramites y qna 17 terceros', '', 3, 10, 18870, 'Santos San Román García', 'Analista Profesional', '20021', 'sanroman_88@hotmail.com', '2018-09-18', 6, ' Se subieron ambos archivos', '2018-09-19', 3, ' ', '2018-09-19 10:48:17', '2018-09-19 10:48:31', 6),
-(7, '2018-09-17', 'SSL para ticom.qroo.gob.mx', 17, 1, 'SSL para el dominio vritual ticom.qroo.gob.mx', '', 3, 10, 19238, 'Lic. Rodrigo Valencia Alcocer', 'Analista Profesional', '8350700', 'jrvalencia@live.com', '2018-09-19', 6, ' Se creó el dominio virtual y con certbot el ssl\r\nhttps://ticom.qroo.gob.mx', '2018-09-19', 3, ' ', '2018-09-19 11:27:09', '2018-09-19 11:28:04', 6),
-(8, '2018-09-19', 'Ajustes a la Bolsa de Trabajo', 9, 3, 'Agregar adecuaciones y desarrollar nuevas características y funcionalidades al sistema', '', 1, 10, 18356, 'Psic. Melissa Shultz', '', '', '', '2018-12-31', 8, ' ', NULL, 1, ' ', '2018-09-19 11:38:41', '2018-09-19 11:38:41', 8),
-(9, '2018-09-19', 'Habilitar vínculo para la página de transparencia', 20, 1, 'Gracias al IQUIT , y al ponerle SSL al unisitio, ya no permite la inclusión de la parte pública del sistema de transparencia de SECOES. el cual no tiene SSL.', '', 3, 10, 18899, 'Nahim Martin Arjona Perez', 'AUXILIAR ADMINISTRATIVO', '830500', '', '2018-09-19', 6, ' se agregó la leyenda "si no puede ver la página, haga clic en éste vínculo" en ésta página :\r\nhttps://qroo.gob.mx/om/transparencia/', '2018-09-19', 3, ' ', '2018-09-19 11:40:20', '2018-09-19 11:41:13', 6),
-(10, '2018-09-19', 'Transferencia de Bien a otra unidad', 10, 1, 'No pueden transferir un bien a otra Unidad', '67623', 1, 10, 18862, 'William Cosgalla', 'Jefe de Oficina', '', '', '2018-09-20', 2, 'Se verificó y se creo la solicitud, la cual se desconoce por que no pudo el usuario en su momento, ya que si es posible hacer la transferencia. ', '2018-09-19', 3, 'Se le notificó al usuario', '2018-09-19 11:49:35', '2018-09-19 11:59:56', 2),
-(11, '2018-09-19', 'Modificar Reporte de plantilla de Entidades', 11, 1, 'Se requiere que el reporte de plantilla de entidades refleje los datos generales de los empleados, capturados en los movimientos', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-09-19', 9, 'Se modificó el programa que genera el reporte de Plantilla de Entidades para incluir los datos generales de los empleados', '2018-09-19', 3, ' ', '2018-09-19 12:14:49', '2018-09-19 12:15:43', 9),
-(12, '2018-09-19', 'Eliminación de empleados tipo suplencias', 12, 1, 'Se requiere eliminar los registros de de empleados suplentes en la base de datos. Ya que el tipo no fue proporcionado adecuadamente en la carga de la qna 18 por lo no se eliminaron de manera automática en el cierre.', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-09-19', 9, ' Se eliminó manualmente todos los registros de la plantilla que tengan al principio de numero de plaza ''SE-'' y que correspondan a SESA', '2018-09-19', 3, ' ', '2018-09-19 13:18:38', '2018-09-19 13:19:36', 9),
-(13, '2018-09-19', 'Capacitación sistema PAOM', 6, 1, 'Capacitar personal para el uso del Sistema PAOM', '', 1, 10, 18542, 'Verónica Galán', '', '', '', '2018-09-19', 4, ' Se capacitó a la persona para el uso del sistema de PAOM', '2018-09-19', 3, ' ', '2018-09-19 13:36:49', '2018-09-19 13:37:23', 4),
-(14, '2018-09-19', 'Opción de descargar archivos de los Procedimientos', 9, 3, 'No se pueden descargar el listado de procedimientos en el sistema de PAOM', '', 1, 10, 18542, 'Verónica Galán', '', '', '', '2018-09-20', 4, ' Creación de la opción para descargar los procedimientos en archivo de excel', '2018-09-19', 3, ' ', '2018-09-19 13:40:31', '2018-09-19 16:55:14', 4),
-(15, '2018-09-19', 'Cambio de contraseña de modem', 6, 1, 'La usuaria solicita cambio de la contraseña del modem de Internet \r\nya que  hay demasiadas personas conectadas', '', 1, 10, 18646, 'DIANA FLORES ASTUDILLO', 'SECRETARIA', '20038', '', '2018-09-19', 14, ' Se procedió a realizar el cambio de contraseña como solicitó la usuaria, con lo cual la solicitud quedó atendida y resuelta la problematica', '2018-09-19', 3, ' ', '2018-09-19 13:54:21', '2018-09-19 13:55:19', 14),
-(16, '2018-09-20', 'Reunión por dudas en procedimientos', 21, 1, 'Problemática con determinados procedimientos que subieron al sistema', '', 1, 59, 17673, 'Guadalupe Chi', '', '', '', '2018-09-20', 4, ' Reunión donde se le explicó el por que de los detalles con los procedimientos', '2018-09-20', 3, ' ', '2018-09-20 11:03:38', '2018-09-20 11:04:16', 4),
-(17, '2018-09-20', 'Cambio de quincena sistema finiquitos', 11, 1, 'Cambio de quincena a la 19', '', 3, 10, 18861, 'Lic. Erandy Gomez Hernández', '', '9831358923', '', '2018-09-20', 6, ' Se cambió la fecha para la captura de finiqutios', '2018-09-20', 3, '', '2018-09-20 11:52:20', '2018-09-20 11:52:48', 6),
-(18, '2018-09-20', 'Reactivación de cuenta de usuario', 10, 1, 'El usuario no podía ingresar al sistema con su usuario', '', 1, 10, 18685, 'Erika Vazquez Calderón', '', '', '', '2018-09-20', 4, ' Reactivar cuenta de usuario y contraseña', '2018-09-20', 3, ' ', '2018-09-20 11:54:38', '2018-09-20 11:55:10', 4),
-(19, '2018-09-20', 'Actualización Servidor BD ', 17, 1, 'Actualización de paquetes:\r\n(1/2): kexec-tools-2.0.15-13.el7_5.1.x86_64.rpm            | 341 kB   00:00\r\n(2/2): microcode_ctl-2.1-29.16.el7_5.x86_64.rpm            | 1.4 MB   00:00\r\n', '', 3, 10, 19238, 'Roonny Ruiz', '', '9831344507', 'roonny7@hotmail.com', '2018-09-20', 6, 'Actualizado', '2018-09-20', 3, ' ', '2018-09-20 14:18:13', '2018-09-20 14:18:21', 6),
-(20, '2018-09-20', 'Compartir impresora ', 6, 1, 'El usuario solicita la instalación de la impresora marca HP LASERJET 1022', 'S/N', 1, 10, 18369, 'Noe santos ', 'Analista profesional', '', '', '2018-09-20', 14, ' Se procedió a descargar el Driver de la impresora de 64 Bits  ya que la computadora  donde estaba instalada la impresora era de 32 bits y luego se procedió a instalar la impresora.\r\nAdemás se le puso un acceso directo al usuario con la direccion del sistema SIGG', '2018-09-20', 3, ' ', '2018-09-20 14:22:51', '2018-09-20 14:24:40', 14),
-(21, '2018-09-20', 'Crear y compartir carpeta ', 2, 1, 'La usuaria solicito crear una carpeta compartida con el nombre de compartida y compartir dicha carpeta con todo su personal', 'S/N', 1, 10, 18368, 'ILEÑA KARIME DEL ANGEL CORAL', 'JEFA DPTO CONCURSOS Y PROCEDIMIENTOS', '', '', '2018-09-20', 14, ' Se procedió a crear la carpeta solicitada y compartirla con con 8 personas del Departamento , además se creó un acceso directo para cada uno en el escritorio', '2018-09-20', 3, ' ', '2018-09-20 14:30:04', '2018-09-20 14:31:22', 14),
-(22, '2018-09-20', 'Problemas de Internet y telefonía', 5, 1, 'Los  usuarios del Departamento de Proveeduría reportaron que no tienen servicio de Internet ni te telefonía IP.', 'S/N', 1, 10, 18369, 'Israel Augusto Ayuso Coaña', 'JEFA DPTO ', '8350500 EXT 41021', '', '2018-09-20', 14, ' Se revisó el equipo en compañía con personal del IQIT(Instituto Quintanarroense De Innovación y Tecnología)\r\nse hicieron las pruebas correspondiente, entre ellas verificación de las  configuraciones pertinentes en  ambas puntas de la conexión, prueba de testeo de los  puertos del equipo y pruebas de funcionamiento del mismo , encontrando que tiene varias series de puertos  dañados con los cuales no puede operar y los restantes están inestables causando que el Internet no funcione ni lo mínimamente requerido. \r\nAdemás se detectó que el cable que lleva Internet al Departamento está dañado en varios tramos, se procedió a sustituir el tramo de cable que conecta a proveeduría con palacio de gobierno y se instaló un switch prestado del Dpto de TICS de forma provisional con lo que quedó restablecido el servicio.\r\nEn vista de lo anterior se recomienda sustituir el equipo por otro, de preferencia CISCO modelo WS-C2960X-48TD-L con 48 puertos o dos switches del mismo modelo de 24 puertos cada uno. ', '2018-09-20', 3, ' ', '2018-09-20 14:40:24', '2018-09-20 14:40:48', 14),
-(23, '2018-09-20', 'Instalación de Equipo de Computo', 1, 1, 'El Usuario solicita la instalación de su equipo de computo.', '', 1, 10, 18369, 'Jesús Noe Santos Lima', 'Jefe de Almacen', '9838358373', '', '2018-09-20', 17, ' Se reinstalo el sistema operativo Windows 10 Pro, también se instalaron las paqueterias de Office Profesional 2010, antivirus, Adobe Flash Player, Adobe Acrobat Reader.\r\nSe llevo a cabo la instalación del equipo en su área de trabajo.', '2018-09-24', 3, ' ', '2018-09-20 14:54:19', '2018-09-24 10:44:52', 17),
-(24, '2018-09-20', 'Computadora lenta', 1, 1, 'La usuaria reporta que la computadora está muy lenta y no puede imprimir', '', 1, 10, 18356, 'ROSMERY SIERRA SOLIS', 'JEFA DPTO ', '', '', '2018-09-20', 14, 'Revisé el equipo y no encontré nada malo en  el mismo , envié a imprimir una pagina de prueba y se imprimio sin ningún problema. Con respecto a la lentitud del equipo , probablemente se debe a que es un equipo con muy poca memoria RAM y un procesador amd muy básico, se recomienda completar la memoria a por lo menos 6 GB de RAM', '2018-10-19', 3, ' ', '2018-09-20 15:23:55', '2018-10-19 12:17:23', 14),
-(25, '2018-09-20', 'Instalacion de fuente para la computadora', 6, 1, 'Usuario solicita instalacion de una fuente llamada AR DELANEY', '', 1, 10, 18368, 'FELIPE LICEAS', 'Jefe de Oficina', '', '', '2018-09-20', 14, ' fui a la oficina del usuario e instalé la fuente solicitada', '2018-09-20', 3, ' ', '2018-09-20 15:34:11', '2018-09-20 16:00:17', 14),
-(26, '2018-09-20', 'Reunión para reportes Ejecutivos del PAOM', 7, 1, 'Verificar los Reportes ejecutivos del PAOM para las adecuaciones necesarias', '', 1, 10, 18542, 'José Dacak', '', '', '', '2018-09-20', 4, ' ', NULL, 4, ' se suspendió', '2018-09-20 16:07:11', '2018-09-21 10:14:09', 4),
-(27, '2018-09-20', 'Asesoría a blue ocean', 21, 1, 'Detalles en el archivo que van a generar del web service', '', 1, 10, 18543, 'Jesus Uitz ', 'Especialista de producto', '', '', '2018-09-20', 6, ' Se asesoró en el formato de los campos y como sacar la clave de la dependencias.', '2018-09-20', 3, ' Se acordó la fecha AAAA-MM-DD', '2018-09-20 16:28:34', '2018-09-20 16:29:06', 6),
-(28, '2018-09-20', 'Asesoría', 6, 1, 'El usuario tiene problemas con el uso del portal de proveedores', '', 1, 10, 18543, 'Jazmín Campos', '', '', '', '2018-09-20', 8, ' Se le indicó el procedimiento que debía realizar', '2018-09-20', 3, ' ', '2018-09-20 16:29:09', '2018-09-24 15:32:20', 8),
-(29, '2018-09-20', 'Generación de Calificaciones Finales', 11, 1, 'No se generan las calificaciones finales de la 2a. evaluación cuatrimestral de 2018', '', 1, 10, 18890, 'NIRVA LORIA', '', '', '', '2018-09-20', 9, ' Se corrió manualmente el proceso de cálculo de calificaciones finales', '2018-09-20', 3, ' Solicitar a Roonny que verifique el cron que se ejecuta periodicamente para generar las calificaciones', '2018-09-20 16:32:45', '2018-09-20 16:35:14', 9),
-(30, '2018-09-20', 'REunión en RH para definir la calculadora financiera', 20, 1, 'Requieren publicar las calculadoras financieras en la página de om.', '', 1, 10, 18685, 'LIC. MARISOL CANTO CELIS', 'DIRECTORA DE RECURSOS HUMANOS', '', '', '2018-09-20', 6, ' Enviarán la información el dia 20 y 21.', '2018-09-20', 3, '1. Se programa entrega para el día 2 de octubre(revisión)\r\n2. Siempre y cuando envíen la info el día 21 de sept.\r\n3. Se informó a Reina que envíen el excel sin que sea solo lectura y desprotegido.\r\n4. se acordó un solo formato para envio, el cual fue Credi express y de pagos quincenales\r\n', '2018-09-20 16:36:54', '2018-09-20 16:40:01', 6),
-(31, '2018-09-20', 'Modificar el reporte de resumen de excel para las dictaminaciones', 11, 1, 'Los nombres de las adscripciones propuestas en el resumen de excel salen con caracteres raros', '', 1, 10, 18684, 'MARIA DEL CARMEN ALVARADO', '', '', '', '2018-09-20', 9, 'Se modificó el reporte para que la descripción de la adscripción propuesta aparezca correctamente', '2018-09-20', 3, ' ', '2018-09-20 16:37:01', '2018-09-20 16:37:52', 9),
-(32, '2018-09-20', 'Sistema de seguridad e higiene', 21, 1, 'Requeria info para los formatos históricos', '', 1, 10, 18681, 'Ricardo Lara Velez', 'AUXILIAR ADMINISTRATIVO', '', '', '2018-09-20', 6, ' Se le explicó que es necesario entrar a versión para imprimir para generar el archivado del documento y se vaya a histórico.', '2018-09-20', 3, ' ', '2018-09-20 19:14:04', '2018-09-20 19:14:45', 6),
-(33, '2018-09-21', 'Respaldo de archivos', 18, 1, 'Ninguna', '', 1, 10, 19238, 'Roonny Ruiz', '', '9831344507', 'roonny7@hotmail.com', '2018-09-21', 6, ' Respaldo de arcchivos de Correspondencia, RH y PAOM', '2018-09-21', 3, ' Sideol es cada 15 dias por el volumen, algunos archivos no se descargan por filezilla por caracteres y nombres de archivos, por eso se comprime y descarga', '2018-09-21 08:49:09', '2018-09-21 08:50:24', 6),
-(34, '2018-09-21', 'Respaldo de BD', 18, 1, 'Respaldo de la información de los servidores de mysql.', '', 3, 10, 19238, 'Roonny Ruiz', '', '9831344507', 'roonny7@hotmail.com', '2018-09-21', 6, 'Se descargó los archivos tar de las bases de datos', '2018-09-21', 3, '', '2018-09-21 08:59:21', '2018-09-21 09:00:11', 6),
-(35, '2018-09-21', 'Reunión para reportes Ejecutivos del PAOM', 7, 3, 'Verificar los Reportes ejecutivos del PAOM para las adecuaciones necesarias', '', 1, 10, 18542, 'José Dacak', '', '', '', '2018-09-21', 4, ' Se llevó a cabo la reunión en la cual se establecieron nuevas funciones y modificaciones para el tablero ejecutivo', '2018-09-21', 3, ' ', '2018-09-21 10:15:59', '2018-09-21 10:16:46', 4),
-(36, '2018-09-21', 'Agregar nuevas funciones al tablero ejecutivo', 9, 3, 'En la reunión realizada se establecieron nuevas mejoras a desarrollar para el tablero ejecutivo ', '', 1, 10, 18542, 'José Dacak', '', '', '', '2018-09-24', 4, ' Se realizaron las modificaciones al tablero ejecutivo del PAOM', '2018-09-24', 3, ' ', '2018-09-21 10:18:53', '2018-09-24 17:34:13', 4),
-(37, '2018-09-21', 'Agregar línea al padrón de proveedores', 9, 3, 'Agregar línea al padrón de proveedores', '', 1, 10, 18366, 'Arq. Mariana Gómez', '', '', '', '2018-09-21', 8, ' Se agregó la línea requerida', '2018-09-21', 3, ' ', '2018-09-21 10:19:13', '2018-09-21 10:19:23', 8),
-(38, '2018-09-20', 'Subir información a Seguridad e higiene', 12, 1, 'No pueden elaborar reportes', '', 3, 10, 18681, 'Ricardo ', '', '', '', '2018-09-21', 12, ' Se capturo la información que enviaron para la generación de sus reportes', '2018-09-20', 3, ' Falto información para completar todas las areas que solicito el usuario', '2018-09-21 10:23:44', '2018-09-21 10:37:33', 12),
-(39, '2018-09-18', 'Apoyo a personal de inventarios', 24, 1, 'Duda en el inventario del departamento', '', 1, 10, 18862, 'Usuario de inventario', '', '', '', '2018-09-18', 12, ' Se acompaño al personal de inventario para corroborar los números asignados a los bienes inmuebles', '2018-09-18', 3, ' Se verificaron los números de inventarios que a ellos les aparecían como asignados al departamento de tecnologias de la oficiala mayor', '2018-09-21 10:33:29', '2018-09-21 10:35:43', 12),
-(40, '2018-09-18', 'Antivirus', 11, 1, 'Monitorio diario', '', 3, 10, 19238, 'Ing. Rodriguez Arevalo', '', '', '', '2018-09-18', 12, ' Se monitoria el correcto funcionamiento de la consola del antivirus', '2018-09-18', 3, ' ', '2018-09-21 10:40:28', '2018-09-21 10:43:54', 12),
-(41, '2018-09-18', 'Subir informacion de incidencias', 13, 1, 'Descargar información del lector de huellas', '', 3, 10, 18685, 'Jose Caceres', '', '', '', '2018-09-18', 12, ' Se descarga la información del reloj checador, para subirlo al sistema de recursos humanos', '2018-09-18', 3, ' ', '2018-09-21 10:51:36', '2018-09-21 10:52:43', 12),
-(42, '2018-09-19', 'Internet Ayudantia', 4, 1, 'Fallo internet ayudantia', '', 3, 10, 18454, 'Luis Cob', '', '', '', '2018-09-19', 15, 'Se restableció el servicio de internet en ayudantia,  mediante  un acess point temporal, se configuro el nuevo direccionamiento IP, SSID, claves e impresora. ', '2018-09-19', 3, ' El repetidor ImageStream se desconfiguro por completo (no se tenian las claves para administrarlo), por lo cual se instalo un ap provisional para dar servicio de internet, quedando pendiente coseguir dichas claves por parte de luis cob para posteriormente configurar el ImageStream.', '2018-09-21 10:58:10', '2018-09-21 11:02:54', 15),
-(43, '2018-09-19', 'Antivirus', 11, 1, 'Monitoreo de la consola del antiviruz', '', 3, 10, 19238, 'Ing. Rodriguez Arevalo', '', '', '', '2018-09-19', 12, ' Se monitorea el correcto funcionamiento de la consola del antivirus', '2018-09-19', 3, ' Verificar las actualizaciones', '2018-09-21 10:58:57', '2018-09-21 10:59:50', 12),
-(44, '2018-09-19', 'Telefonía IP Caseta Principal', 5, 1, 'Falla en servicio VoIP en caseta principal', '', 3, 10, 18454, 'Luis Cob', '', '', '', '2018-09-19', 15, ' Se detecto que el Switch PoE de la caseta principal sufrió daño por descarga eléctrica, por lo cual ya no encendía y no proporcionaba corriente al teléfono IP ni antena de WiFi, se instalo otro switch PoE (prestado de caseta tordo) restableciendo servicio de VoIP', '2018-09-19', 3, ' Se solicito comprar regulador o UPS para evitar daños en los equipos eléctricos.', '2018-09-21 11:05:20', '2018-09-21 11:10:23', 15),
-(45, '2018-09-19', 'Telefonía IP Caseta Tordo', 5, 1, 'Fallo de servicio VoIP en caseta tordo', '', 3, 10, 18454, 'Luis Cob', '', '', '', '2018-09-19', 15, ' El teléfono IP Denwa-310p se encontraba en modo post, se actualizo el firmware  mediante telnet, dando como resultado el funcionamiento correcto del teléfono.  \r\n\r\n ', '2018-09-19', 3, ' No se instalo el teléfono en caseta tordo ya que el switch PoE se presto en caseta principal ', '2018-09-21 11:11:52', '2018-09-21 11:30:48', 15),
-(46, '2018-09-21', 'cable UTP', 4, 1, 'SOLICITAN 20 MTROS UTP', '', 3, 10, 19238, 'RODRIGO POOT', '', '', '', '2018-09-21', 16, ' SE MIDIÓ 20 METROS DE UTP CAT 6, SE INSTALO LOS CONECTORES EN CADA EXTREMO, SE REALIZO LAS PRUEBAS CORRESPONDIENTES DEL FUNCIONAMIENTO DEL CABLE. \r\n\r\nSE LE SOLICITO A HILARIO HUERTA ASCENCIO LLEVAR EL CABLE AL DEPTO DE PROVEEDURIA(NOE DEL ÁREA DEL ALMACEN).', '2018-09-21', 3, 'SE PRESTO HERRAMIENTA (PONCHADORA Y FLEXO METRO ) A JORGE GACEL MEDINA  PARA REALIZAR EL TRABAJO  ', '2018-09-21 11:20:38', '2018-09-21 11:26:54', 16),
-(47, '2018-09-20', 'Configuración de AP ImageStream', 4, 1, 'Configuración de Acces Point ImageStream para habilitar el servicio de internet en Ayudantia', '', 3, 10, 18454, 'Luis Cob', '', '', '', '2018-09-20', 15, ' Se obtuvieron las claves de administrador del access point ImageStream, se configuro con los parámetros (direccionamiento IP, SSID, contraseñas ) correctos  y se instalo en ayudantia.  ', '2018-09-20', 3, ' Ya teniendo configurado el ImageStream se sustituyo por el ap que se instalo provisionalmente para dar servicio.', '2018-09-21 11:50:34', '2018-09-21 12:12:52', 15),
-(48, '2018-09-21', 'Asesoría a Usuario', 21, 1, 'Se asesoro al usuario con la forma en generar sus reportes de nivel Unidad Ejecutora o Responsable', '', 1, 21, 18843, 'Doña Rosy', '', '', '', '2018-09-21', 2, ' Se le informó como generar sus reportes', '2018-09-21', 3, ' ', '2018-09-21 12:29:43', '2018-09-21 12:30:04', 2),
-(49, '2018-09-20', 'Servicio VoIP caseta tordo', 5, 1, 'Habilitar  Servicio VoIP caseta tordo', '', 3, 10, 18454, 'Luis Cob', '', '', '', '2018-09-20', 15, ' A falta de switch PoE en caseta tordo, se procedió a seguir la linea de cableado detectado que se conecta directamente al switch PoE del site, por consiguiente se realiza pruebas necesarias, dando como resultado la habilitación del teléfono IP denwa-310p en caseta tordo mediante cable de red directo a PoE, funcionando correctamente el servicio de VoIP.', '2018-09-20', 3, ' ', '2018-09-21 13:41:07', '2018-09-21 13:46:25', 15),
-(50, '2018-09-21', 'Asesoría en iPad', 6, 1, 'Solicitan asesoría en uso de iPad', '', 3, 10, 18454, 'Señora Noemí', '', '', '', '2018-09-20', 15, ' Se procede a explicar detalladamente cada una de las funciones del ipad, así como, el uso de cada una de las aplicaciones, previo a esto, se configuro parámetros (wifi, icloud, etc) necesarios en el dispositivo.', '2018-09-20', 3, ' ', '2018-09-21 13:49:02', '2018-09-21 13:51:31', 15),
-(51, '2018-09-20', 'Subir informacion de incidencias', 13, 1, 'Descargar la información del aparato registrador de incidencias', '', 3, 10, 18685, 'Jose Caceres', '', '', '', '2018-09-20', 12, ' Se descargo la información del reloj checador y se subió al sistema de incidencias de recursos humanos', '2018-09-20', 3, ' ', '2018-09-21 13:52:57', '2018-09-21 13:54:24', 12),
-(52, '2018-09-21', 'Reporte General de Inventarios', 21, 1, 'El usuario solicito se le genere un reporte general de inventarios para entregárselo al área de contabilidad.', '', 3, 10, 18862, 'Erik Astudillo', 'Analista', '', '', '2018-09-21', 2, ' Se le generó el Reporte en excel', '2018-09-21', 3, ' ', '2018-09-21 14:03:13', '2018-09-21 14:03:34', 2),
-(53, '2018-09-20', 'Actualizar Servidores', 14, 1, 'Actualización semanal de servidores de la nube', '', 3, 10, 19238, 'Ronny Ruiz', '', '', '', '2018-09-20', 15, ' Se ejecuto playbook de ansible con las instrucciones de actualización (yum-update) de los siguientes servidores:\r\n\r\n10.1.90.13\r\n10.1.90.15\r\n10.1.90.16\r\n10.1.90.18\r\n10.1.90.21\r\n10.1.90.24\r\n10.1.90.30', '2018-09-20', 3, ' ', '2018-09-21 14:54:10', '2018-09-21 14:56:54', 15),
-(54, '2018-09-21', 'Conexión WiFi', 4, 1, 'Habilitar  nueva conexion wifi ', '', 3, 10, 18454, 'Señora Noemí', '', '', '', '2018-09-21', 15, ' Se habilito nueva difusión SSID del módem de telmex del site, para que exista cobertura y acceso a Internet en el área del cuarto de la señora aracely y el área de cocina principal.\r\n\r\n', '2018-09-21', 3, ' ', '2018-09-21 14:58:58', '2018-09-21 15:01:24', 15),
-(55, '2018-09-18', 'Servidor Virtual', 14, 1, 'Creación de nuevo servidor virtual', '', 3, 10, 19238, 'Rodrigo Valencia ', '', '', '', '2018-09-18', 15, ' se crea nuevo servidor virtual en la nube, con especificaciones previamente acordadas, se instala LAMP, accesos ssh y se crea base de datos en phpmyadmin y credenciales para soporte_tic (rodrigo valencia)', '2018-09-18', 3, ' ', '2018-09-21 15:17:09', '2018-09-21 15:18:51', 15),
-(56, '2018-09-21', 'Respaldar Archivos', 12, 1, 'Respaldo de Archivos de la nube', '', 3, 10, 19238, 'Lic. Roonny Ruiz', '', '', '', '2018-09-21', 12, ' Se respalda la informacion de los sistemas que se encuentran la (cloud) nube', '2018-09-21', 3, ' ', '2018-09-21 15:40:52', '2018-09-21 15:42:15', 12),
-(57, '2018-09-24', 'Conectar computadora   Internet', 6, 1, 'Usuario solicita conectar su computadora de forma inalambrica a Internet.', '', 1, 10, 18646, 'Jorge Diaz Sanchez', 'Fotografo', '', '', '2018-09-24', 14, ' Se  procedió a conectar la computadora del usuario al modem Infinitum de prensa', '2018-09-24', 3, ' ', '2018-09-24 10:36:14', '2018-09-24 10:36:44', 14),
-(58, '2018-09-24', 'Usuario solicita instalar cable de red', 6, 1, 'Me  dieron un cable de red Ethernet de 20 metros para conectar al usuario a la red de gobierno', '', 1, 0, 0, 'Jose Elias Martinez Simon', 'Auxiliar administrativo', '', '', '2018-09-24', 14, ' Se buscó el cable en el almacen , y al momento de ir instalarlo no se pudo instalar ya que  el color del cable era azul y no se vería bien  ,con el resto de la oficina . Además , no tenían sujetadores de concreto para  sujetar el cable', '2018-09-24', 3, ' ', '2018-09-24 10:49:38', '2018-09-24 10:51:42', 14),
-(59, '2018-09-24', 'Instalacion de cable vga', 6, 1, 'Cable  vga del cañon dañado', '', 1, 10, 18542, 'SERGIO MANZANERO SALAZAR', 'SECRETARIO PARTICULAR', '9838350500; Ext. 41057', 'sergio.manzanero@qroo.gob.mx', '2018-09-19', 14, ' Se quitaron los anteriores cables que se habían dañado y se procedió a instalar por el techo el nuevo cable VGA para el cañon con una logitud de 20 metros, con lo cual quedó resuelta la problemática', '2018-09-24', 3, ' ', '2018-09-24 10:57:51', '2018-09-24 10:59:14', 14),
-(60, '2018-09-21', 'Conectar computadora a la red inalambrica', 6, 1, 'El Usuario solicita conectar su computadora a la red inalambrica.', '', 1, 10, 18366, 'Javier Mena Ceh', 'Analista Técnico', '', '', '2018-09-21', 17, 'Se procedió a conectar mediante la red inalambrica la computadora', '2018-09-21', 3, ' ', '2018-09-24 10:59:18', '2018-09-24 10:59:54', 17),
-(61, '2018-09-21', 'Conectar computadora a la red inalambrica', 6, 1, 'La usuaria solicita la conexión de su computadora laptop a la red inalambrica', '', 1, 10, 18692, 'Maria del Carmen Cura López', 'Directora', '', '', '2018-09-21', 17, ' Se procedió a conectar el equipo a la red inalambrica de la sala de juntas', '2018-09-21', 3, ' ', '2018-09-24 11:04:16', '2018-09-24 11:05:17', 17),
-(62, '2018-09-24', 'Conexion a la Red', 4, 1, 'Sin conexion a la red de gobierno', '', 1, 10, 19238, 'Josue  cupul', '', '', '', '2018-09-24', 12, ' Se habilito un nodo para que el usuario pueda conectarse a la red de datos del gobierno', '2018-09-24', 3, ' ', '2018-09-24 11:27:27', '2018-09-24 11:28:10', 12),
-(63, '2018-09-24', 'Asesoría', 21, 1, 'El usuario tenía problemas durante su registro en el padrón de proveedores', '', 1, 10, 18543, 'Jazmín Campos', '', '', '', '2018-09-24', 8, ' Se le guió paso a paso a la usuaria para que pudiera finalizar su captura.', '2018-09-24', 3, ' ', '2018-09-24 15:33:17', '2018-09-24 15:33:44', 8),
-(64, '2018-09-24', 'Aumentar la capacidad de subida de archivos en el PAOM', 9, 3, 'No pueden subir archivos a la plataforma de PAOM, ya que actualmente solo permite subir archivos de 15 MB y quieren subir archivos de 16 MB', '', 1, 10, 19019, 'Oscar Luna', '', '', '', '2018-09-24', 4, ' Se modificaron los archivos en el servidor para que los usuarios puedan subir archivos de hasta 18 MB', '2018-09-24', 3, ' ', '2018-09-24 17:32:36', '2018-09-24 17:33:21', 4),
-(65, '2018-09-25', 'Constancias del Sargazo', 7, 1, 'Generación de constancias del Sargazo vía sistema . día 1 y 2', '', 1, 10, 18646, 'MONICA MARCELA HERNANDEZ MENDOZA', 'ANALISTA PROFESIONAL', '9982770449', '', '2018-09-25', 6, 'Se subieron los excels, con los participantes.\r\nSe creó la constancia.\r\nse publicó para Milka y Monica, según la solicitud.', '2018-09-25', 3, ' ', '2018-09-25 08:47:57', '2018-09-25 08:48:44', 6),
-(66, '2018-09-25', 'Adjudicación de proveedores con valores a cero', 9, 2, 'En la plataforma de PAOM en la etapa para adjudicar proveedores, se pueden adjudicar con valores en el numero de partidas y monto propuestas a cero para los proveedores seleccionados para adjudicar', '', 3, 15, 18618, 'Roxana', '', '', '', '2018-09-25', 4, ' Se modificó el programa correspondiente para que el o los proveedores que se adjudiquen les tengan que ingresar valores mayores a cero en lo que se refiere al número de partidas y monto adjudicado', '2018-09-25', 3, ' ', '2018-09-25 10:14:59', '2018-09-25 10:16:21', 4),
-(67, '2018-09-25', 'No sale la leyenda bodega de inventarios', 21, 1, 'Me comentan que no sale la leyenda de transferencia a bodega de inventarios', '', 1, 10, 18862, 'William Cosgalla', 'Jefe de Oficina', '', '', '2018-09-25', 2, ' Se le informó al usuario que están consultando una solicitud mal. La solictud correcta es 101873', '2018-09-25', 3, ' ', '2018-09-25 10:29:50', '2018-09-25 10:30:39', 2),
-(68, '2018-09-25', 'Saber quien hizo las transferencias', 21, 1, 'proporcionaron una serie de números para consultar que dependencia hizo la transferencia', '', 1, 10, 18862, 'William Cosgalla', 'Jefe de Oficina', '', '', '2018-09-25', 2, ' se le informó al usuario que dependencia hizo la transferencia. Resultando ser Sefiplan', '2018-09-25', 3, '', '2018-09-25 10:32:27', '2018-09-25 10:33:50', 2),
-(69, '2018-09-24', 'Subir informacion de incidencias', 12, 1, 'Descargar la información de incidencias del aparato reloj checador', '', 1, 10, 18862, 'Jose Caceres', '', '', '', '2018-09-24', 12, ' Se descarga la información de las incidencias y se sube al sistema de recursos humanos', '2018-09-24', 3, ' ', '2018-09-25 10:34:24', '2018-09-25 10:35:38', 12),
-(70, '2018-09-25', 'Actualizar Gráfico por Áreas del sistema de servicios', 9, 3, 'El gráfico anterior no se apreciaba bien las áreas que han requerido servicios', '', 1, 10, 19238, 'Gabriel Rodriguez', '', '', '', '2018-09-25', 4, ' Se cambió el gráfico de tipo Pie por uno de tipo Bar', '2018-09-25', 3, ' ', '2018-09-25 10:57:06', '2018-09-25 10:57:40', 4),
-(71, '2018-09-25', 'Antivirus', 11, 1, 'Actualización de la base de datos del antiviruz', '', 3, 10, 19238, 'Ing. Rodriguez Arevalo', '', '', '', '2018-09-25', 12, ' Se verifica la actualización de la base de datos de los virus', '2018-09-25', 3, ' ', '2018-09-25 12:06:52', '2018-09-25 12:07:25', 12),
-(72, '2018-09-25', 'CRON para servidor SIDEOL', 14, 1, 'Ejecutar el cron para sideol', '', 1, 10, 19238, 'GILBERTO TUN HAU', 'JEFE DE OFICINA', '', '', '2018-09-25', 6, ' Se verificó que se ejecute el cron para el cálculo', '2018-09-25', 3, ' ', '2018-09-25 12:30:41', '2018-09-25 12:30:57', 6),
-(73, '2018-09-26', 'Documentación a subir en el PAOM', 9, 1, 'En la documentación que se sube de los procedimientos,  en lo que se refiere al documento CARTA DE AUSENCIA DE CONFLICTOS DE INTERÉS este debe estar como NO OBLIGATORIO y se encuentra en estos momentos como OBLIGATORIO', '', 1, 10, 18863, 'Oscar Luna', '', '', '', '2018-09-26', 4, ' Se cambió al documento CARTA DE AUSENCIA DE CONFLICTOS DE INTERÉS para que sea NO OBLIGATORIO', '2018-09-26', 3, ' ', '2018-09-26 09:26:49', '2018-09-26 09:27:15', 4),
-(74, '2018-09-26', 'Sistema de seguridad e higiene.', 21, 1, 'Dudas sobre la subida del archivo del acta entregada por el issste del formato CSST.', '', 1, 10, 18681, 'RICARDO LARA VELEZ', 'AUXILIAR ADMINISTRATIVO', '', '', '2018-09-26', 6, ' Se le asesoró que primero debe aprobarse el documento, despues abrirlo para imprimir, llevar al issste con las firmas y el documento recibido será escaneado. el vínculo no aparece hasta que se apruebe', '2018-09-26', 3, ' ', '2018-09-26 09:28:39', '2018-09-26 09:29:27', 6),
-(75, '2018-09-26', 'Subir informacion de incidencias', 12, 1, 'Descargar la información del aparato reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-09-26', 12, ' Se descargo la información del reloj checador y se subió al sistema de recursos humanos', '2018-09-26', 3, ' ', '2018-09-26 09:31:33', '2018-09-26 09:32:19', 12),
-(76, '2018-09-26', 'Actualizar el catálogo de Fundamentos de los contratos en el Sistema PAOM', 13, 1, 'No se encuentra el fundamento ARTÍCULO 35 - LEY DE ADQUISICIONES, ARRENDAMIENTOS Y PRESTACIÓN DE SERVICIOS RELACIONADOS CON BIENES MUEBLES DEL ESTADO DE QUINTANA ROO.', '', 1, 10, 18863, 'Oscar Luna', '', '', '', '2018-09-26', 4, ' Agregar al catálogo de Fundamentos el ARTÍCULO 35 - LEY DE ADQUISICIONES, ARRENDAMIENTOS Y PRESTACIÓN DE SERVICIOS RELACIONADOS CON BIENES MUEBLES DEL ESTADO DE QUINTANA ROO.', '2018-09-26', 3, ' ', '2018-09-26 10:24:04', '2018-09-26 10:24:23', 4),
-(77, '2018-09-25', 'Access Point Linksys', 4, 1, 'La pc de josue no se encontraba en la red 10.1.80.xxx', '', 3, 10, 19238, 'Rodrigo Poot', '', '', '', '2018-09-25', 15, 'Se configuro el access point en forma de puente para que el dhcp proporcione ip del segmento de red requerido (10.1.80.xxx)', '2018-09-25', 3, ' ', '2018-09-26 10:51:35', '2018-09-26 10:52:26', 15),
-(78, '2018-09-25', 'Información de Servicios Cablemas', 4, 1, 'Identificación de servicios contratados en casa de gobierno', '', 3, 10, 19238, 'Rodrigo Poot', '', '', '', '2018-09-25', 15, ' Se identifico servicios requeridos por parte de rodrigo, en el site de casa de gobierno y se proporciono información requerida.', '2018-09-25', 3, ' quedo pendiente verificar numero de series de cajas digitales de vídeo, ya que la casa estaba ocupada y no se podia acceder.', '2018-09-26 10:53:46', '2018-09-26 10:55:18', 15),
-(79, '2018-09-26', 'Aumentar capacidad para subir archivos en el PAOM', 9, 1, 'No pueden subir un archivo al sistema debido a que lo máximo permitido son 18MB y el archivo pesa 27MB', '', 1, 10, 18863, 'Sara Avelar', '', '', '', '2018-09-26', 4, ' Se aumentó la capacidad a 30MB en el servidor para que puedan subir sus archivos', '2018-09-26', 3, ' ', '2018-09-26 11:34:57', '2018-09-26 11:35:24', 4),
-(80, '2018-09-26', 'Nueva Fecha Reportes', 9, 1, 'Agregar fecha de corte 30 de Sep', '', 1, 21, 18869, 'Doña rosy', '', '', '', '2018-09-26', 2, ' Se agregó la fecha solicitada', '2018-09-26', 3, ' ', '2018-09-26 11:39:12', '2018-09-26 11:39:29', 2),
-(81, '2018-09-26', 'Constancias del Sargazo V2', 9, 1, 'Separar las constancias por días daba mas de 500 hojas y duplicaba segun', '', 1, 10, 18646, 'MONICA MARCELA HERNANDEZ MENDOZA', 'ANALISTA PROFESIONAL', '9982770449', '', '2018-09-26', 6, ' Se agrupó en la fecha, si fueron los dos días dirá 25 y 31 de agosto , para que no salgan dos constancias por día', '2018-09-26', 3, ' ', '2018-09-26 11:40:17', '2018-09-26 11:40:55', 6),
-(82, '2018-09-26', 'Generar reporte completo de Dependencia SSP', 21, 1, 'se requiere el reporte de todos los bienes de la SSP con sus usuarios responsables en excel', '', 1, 15, 18917, 'Issac Mendez', 'Jefe de Oficina', '', '', '2018-09-26', 2, ' se le genero el reporte', '2018-09-26', 3, ' ', '2018-09-26 11:46:22', '2018-09-26 11:46:31', 2),
-(83, '2018-09-26', 'T-DRM/DICP/OCBM/0192/2018 Se solicita la creación de unidades ejecutoras', 10, 1, 'Agregar unidades ejecutoras ya que se transfirieron de la SEFIPLAN a SEGOB', '', 1, 10, 18862, 'Dulce María Caballero Alonso', 'Jefa de Departamento', '', '', '2018-09-28', 2, ' Se transfirió las unidades a SEGOB', '2018-10-01', 3, ' ', '2018-09-26 12:16:13', '2018-10-01 15:46:36', 2),
-(84, '2018-09-26', 'Aviso de privacidad - licitaciones', 9, 1, 'Imprimir aviso de privacidad en la página de licitaciones', '', 1, 10, 18366, 'MARIANA GOMEZ SOLIS', 'JEFA DE DEPARTAMENTO DE ADQUISICIONES', '', '', '2018-09-26', 6, 'se anexó el aviso de privacidad al momento de generar el comprobante. ejemplo : \r\nhttp://om.qroo.gob.mx/portal/licitaciones/Comprobante.php?IdLicitacion=393\r\ny en el comprobante de participación', '2018-09-26', 3, ' ', '2018-09-26 13:42:35', '2018-09-26 13:43:26', 6),
-(85, '2018-09-26', 'Conectar computadora a la red inalambrica', 6, 1, 'El usuario solicita que se conecte su computadora a la red inalambrica', '', 1, 10, 18646, 'Jorge Díaz Sánchez', 'Fotografo', '41461', '', '2018-09-26', 17, 'Se llevó a cabo la conexión a internet mediante un dispositivo inalambrico tp-link', '2018-09-26', 3, ' ', '2018-09-26 13:48:38', '2018-09-26 13:49:23', 17),
-(86, '2018-09-25', 'Se solicita la conexión inalambrica a equipos de computo', 6, 1, 'La usuaria solicita la conexión de tres laptops a la red inalambrica.', '', 1, 10, 19110, 'Maria Eugenia Domínguez Lepe', 'Secretaria', '41209', '', '2018-09-25', 17, ' Se llevó a cabo la conexión inalambrica de las tres laptops', '2018-09-25', 3, ' ', '2018-09-26 14:02:46', '2018-09-26 14:03:55', 17),
-(87, '2018-09-26', 'CONFIGURACIÓN DE INTERNET', 6, 1, 'SE CONFIGURO UN EQUIPO AL SERVICIO DE INTERNET DE GOBIERNO', '312', 1, 10, 18890, 'ROBERTO PECH QUIJANO', '', '41417', '', '2018-09-26', 13, ' SE ACUDIÓ AL SITIO Y SE CONFIGURARON LOS PARÁMETROS PARA QUE PUDIERA EL CPU NAVEGAR EN INTERNET', '2018-09-26', 3, ' ', '2018-09-26 14:56:02', '2018-09-26 14:57:04', 13),
-(88, '2018-09-26', 'Antivirus', 11, 1, ' equipos con antivirus', '', 1, 10, 19238, 'Ing. Jesus Varela', 'Especialista en el Antivirus', '', '', '2018-09-26', 12, ' Se reubicaron equipos con antivirus a sus áreas correspondientes en la consola', '2018-09-26', 3, ' ', '2018-09-26 15:48:43', '2018-09-26 16:50:45', 12),
-(89, '2018-09-27', 'Constancias del Sargazo V3', 9, 1, 'Cambiar isla por playa', '', 1, 10, 18646, 'MONICA MARCELA HERNANDEZ MENDOZA', 'ANALISTA PROFESIONAL', '9982770449', '', '2018-09-27', 6, ' Se cambió en el pdf isla por playa  y se agregó a Ariel', '2018-09-27', 3, ' ', '2018-09-27 08:53:31', '2018-09-27 08:53:54', 6),
-(90, '2018-09-26', 'Subir Calendario Cursos', 20, 1, 'Subir el calendario de Cursos de Octubre', '', 1, 10, 18646, 'Monica Hernandez', '', '', '', '2018-09-26', 12, ' Se procedió a subir la información de los cursos que se impartirán en octubre a la página de profesionalización.', '2018-09-26', 3, ' ', '2018-09-27 10:22:59', '2018-09-27 10:25:12', 12),
-(91, '2018-09-27', 'Cambio de lugar de equipo', 6, 1, 'La usuaria solicita que se cambie un equipo de lugar y que se instale uno nuevo', '', 1, 10, 18356, 'MARTHA BELEN OLIVA MORA', 'ANALISTA PROFESIONAL', '', '', '2018-09-27', 14, ' Fui a la oficina ubicada en  arriba del archivo general del estado e  hice el cambio de equipo  solicitado y la instalación del nuevo equipo. ', '2018-10-19', 3, ' ', '2018-09-27 11:07:11', '2018-10-19 12:14:59', 14),
-(92, '2018-09-27', 'CPU SE APAGA DESPUÉS DE CIERTO TIEMPO DE USO', 1, 1, 'EL CPU ENCIENDE PERO DESPUÉS DE UN TIEMPO DE USO SE APAGA Y YA NO ENCIENDE.', '50797', 1, 10, 18646, 'ISAÍAS TOMÁS DÍAZ MARTÍNEZ', 'FOTÓGRAFO', '41461', '', '2018-09-27', 13, ' SE REVISO EL EQUIPO ENCONTRANDO QUE LA FUENTE DE PODER CAUSA LA FALLA. ESTO DEBIDO A QUE PRESENTA FALLA EN LA TARJETA LÓGICA DE LA MISMA. POR LO ANTERIOR ES NECESARIO SUSTITUIRLA.\r\n\r\nMATERIAL REQUERIDO:\r\n\r\n1 FUENTE DE PODER SEGÚN MUESTRA. NO. PARTE DE LA FUENTE DE PODER 503378-001 SPARE 508154-001. PARA CPU HP COMPAQ 6000 PRO MICROTOWER.', '2018-09-27', 3, ' ', '2018-09-27 11:27:48', '2018-09-27 11:35:50', 13),
-(93, '2018-09-27', 'Apoyo a usuario para cambio de número de partidas', 21, 1, 'El usuario ingresó mal el numero de partidas para el procedimiento con id 323 el cual tenía 9 partidas y debía ser 7', '', 1, 10, 18863, 'Sheila Anavid', '', '', '', '2018-09-27', 4, ' Se apoyó para la corrección del número de partidas', '2018-09-27', 3, ' ', '2018-09-27 11:36:10', '2018-09-27 11:36:40', 4),
-(94, '2018-09-27', 'Permitir la eliminación de archivos adjuntos en expedientes', 11, 3, 'Se requiere la función de eliminación en los expedientes de los empleados de las entidades. Ya que en actualmente solamente permite la sustitución.', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-09-28', 9, ' Se le modificó el programa de expedientes para que acepte la eliminación de expedientes', '2018-09-28', 3, ' ', '2018-09-27 11:38:44', '2018-09-28 09:44:19', 9),
-(95, '2018-09-27', 'Solicitud de Claves de acceso sistema de inventarios', 21, 1, 'Usuario nuevo requiere sus claves de acceso', '', 1, 10, 18899, 'Marcos Osorio', '', '', '', '2018-09-27', 2, ' Se le envió a su correo la contraseña ', '2018-09-27', 3, ' ', '2018-09-27 12:41:49', '2018-09-27 12:42:25', 2),
-(96, '2018-09-27', 'Creación Usuarios tablero ejecutivo PAOM', 10, 1, 'Nuevos usuario y cambio de Perfil en cuentas', '', 1, 10, 18542, 'José Dacak', '', '', '', '2018-09-27', 4, ' Cambiarle el perfil a la cuenta del OM por la del tablero ejecutivo y crearle una cuenta con el mismo perfil a Verónica Galán', '2018-09-27', 3, ' ', '2018-09-27 13:53:25', '2018-09-27 13:54:10', 4),
-(97, '2018-09-27', 'Consultar expedientes desde los movimientos en Entidades', 11, 3, 'Se requiere que al consultar un movimiento, se pueda entrar a los expedientes del empleado, actualmente solo se puede consultar a través de la plantilla y al agregar o editar un movimiento.', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-09-28', 9, ' Se agregó un vínculo a la consulta de movimientos para que se pueda entrar al expediente del empleado', '2018-09-28', 3, ' ', '2018-09-28 09:41:55', '2018-09-28 09:43:25', 9),
-(98, '2018-09-27', 'Antivirus', 1, 1, 'Equipos de computo con problemas de archivos y carpetas como acceso directo', '', 3, 10, 18356, 'Roque', '', '', '', '2018-10-03', 12, ' Se estubiron monitoreando los equipos por posibles reincidencias, quedando el usuario satisfecho, se cierra el caso ', '2018-10-01', 3, ' Estaremos al pendiente de posibles nuevas amenazas', '2018-09-28 12:09:23', '2018-10-01 12:04:49', 12),
-(99, '2018-09-28', 'SIN ACCESO A INTERNET', 6, 1, 'EL CPU NO TENIA ACCESO A INTERNET Y NO PODÍA ABRIR UN ARCHIVO DE EXCEL', '3568', 1, 10, 18369, 'LIZBETH GONGORA MOGUEL', 'SECRETARIA', '41021', '', '2018-09-28', 13, ' SE REVISO EL CABLE DE RED EL CUAL PRESENTABA EL PROBLEMA PUES ESTABA DESCONECTADO. EN CUANTO AL ARCHIVO SE ENCONTRÓ QUE ERA UN ACCESO DIRECTO DE UN ARCHIVO DE EXCEL QUE FUE REMOVIDO. SE UBICO EL ARCHIVO Y SE LOGRO ABRIR CORRECTAMENTE.', '2018-09-28', 3, ' ', '2018-09-28 12:22:56', '2018-09-28 12:25:23', 13),
-(100, '2018-09-28', 'CONFIGURACIÓN DE IMPRESORA EN RED', 6, 1, 'SE CONFIGURO EL CPU A IMPRESORA EN RED', '1251', 1, 10, 18899, 'RODOLFO RODRIGUEZ PIÑA', 'SECRETARIO', '41045', '', '2018-09-28', 13, ' SE CONFIGURO LA IMPRESORA COMPARTIDA EN LA RED. SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE.', '2018-09-28', 3, ' ', '2018-09-28 12:46:46', '2018-10-02 15:47:32', 13),
-(101, '2018-09-28', 'Optimizar el tiempo de ejecución del index de los movimientos', 11, 1, 'La visualización del listado de los movimientos es muy lento', '', 1, 10, 19238, 'GILBERTO TUN HAU', '', '', '', '2018-09-28', 9, 'Se modificó la función index y se modificó la consulta que genera el listado de movimientos, para agilizar su ejecución', '2018-09-28', 3, ' ', '2018-09-28 13:24:35', '2018-09-28 13:25:56', 9),
-(102, '2018-09-28', 'En los movimientos de plazas vacantes no deben capturarse los datos generales', 12, 3, 'Se solicita que al ingresar un nuevo movimiento, validar que no se capturen los datos generales en caso de tratarse de plazas vacantes', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-02', 9, ' Se desarrolló la función y la vista para el tipo de movimiento cambio-categoría, que no pidan los datos generales del empleados cuando se trate de una plaza vacante', '2018-10-04', 3, ' ', '2018-09-28 13:34:31', '2018-10-04 13:29:44', 9),
-(103, '2018-09-28', 'Solicitan Reporte de Usuario', 21, 1, 'No podían generar reporte de usuario', '', 1, 10, 18685, 'Ricardo Lara', '', '', '', '2018-09-28', 2, ' se le ayudo con su navegador de internet para poder generar el reporte', '2018-09-28', 3, ' ', '2018-09-28 16:08:11', '2018-09-28 16:08:30', 2),
-(104, '2018-09-28', 'subir percepciones de las dependencias correspondiente a qna 18 de 2018 al PAOM', 13, 1, 'Se solicita subir la las percepciones de la quincena 18 (segunda quincena de septiembre de 2018) de las dependencias al PAOM', '', 1, 10, 19238, 'LIC. EDER PASTRANA', '', '', '', '2018-09-28', 9, ' Se verificó,  se convirtió el archivo a csv y se subió al PAOM', '2018-09-28', 3, ' ', '2018-09-28 16:12:38', '2018-09-28 16:14:20', 9),
-(105, '2018-09-28', 'subir movimientos de las dependencias correspondiente a qna 18 de 2018 al PAOM', 13, 1, 'Se solicita subir la los movimientos de la quincena 18 (segunda quincena de septiembre de 2018) de las dependencias al PAOM', '', 1, 10, 19238, 'LIC. EDER PASTRANA', '', '', '', '2018-09-28', 9, ' Se verificó, se convirtió el archivo a csv y se subió al PAOM', '2018-09-28', 3, ' ', '2018-09-28 16:16:44', '2018-09-28 16:17:23', 9),
-(106, '2018-10-01', 'Sin Espacio para almacenar en el Servidor 74', 17, 1, 'El espacio de almacenamiento en el servidor 74 se llenó, por lo que se requiere borrar información', '', 1, 10, 19238, 'Richard Martín', '', '', '', '2018-10-01', 4, ' Se borraron los respaldos que se hacen de forma automática de los sistemas que se encuentran en el servidor para poder liberar espacio de almacenamiento', '2018-10-01', 3, ' ', '2018-10-01 10:26:31', '2018-10-01 10:27:28', 4),
-(107, '2018-10-01', 'Subir informacion de incidencias', 13, 1, 'Descargar la información del aparato reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-10-01', 12, ' Subir la información del reloj checador al sistema de Recursos Humanos', '2018-10-01', 3, ' ', '2018-10-01 11:05:08', '2018-10-01 11:06:01', 12),
-(108, '2018-10-01', 'Solicitud de reporte de fechas nivel dirección', 11, 1, 'Solicitan corte de reporte 24 de septiembre', '', 1, 3, 18426, 'Carmen', '', '', '', '2018-10-01', 2, ' se agrego la fecha 24 de septiembre al reporte para entrega recepción de un subsecretario de segob', '2018-10-01', 3, ' ', '2018-10-01 11:19:29', '2018-10-01 11:20:11', 2),
-(109, '2018-10-01', 'Subir las percepciones variables de COBAQROO correspondiente a la 1a. qna de octubre de 2018', 13, 1, 'subir a SIDEOL las percepciones variables de la qna 19 ( primero de octubre ) de 2018 del COBAQROO', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-01', 9, ' Se importó del archivo de excel a la tabla de la base de datos, y se ejecutaron las consultas correspondientes para guardar la información en el sistema.', '2018-10-01', 3, ' ', '2018-10-01 15:32:32', '2018-10-01 15:34:11', 9),
-(110, '2018-10-01', 'Ejecución del programa de carga plantilla en SIDEOL', 13, 1, 'El proceso de carga de plantilla no se estaba ejecutando de manere automática', '', 1, 10, 18684, 'MARIA DEL CARMEN ALVARADO', '', '', '', '2018-10-01', 9, 'Se revisó el programa encargado del proceso de carga y se ejecutó', '2018-10-01', 3, ' ', '2018-10-01 15:37:46', '2018-10-01 15:38:21', 9),
-(111, '2018-10-01', 'Solicitud de cambio de Director Administrativo', 10, 1, 'se requiere cambio de director Administrativo', '', 1, 16, 19031, 'Lic. José Rigoberto Uc chi', 'Director Administrativo', '', '', '2018-10-01', 2, ' Se cambio el nombre del dir adm', '2018-10-01', 3, ' ', '2018-10-01 15:56:02', '2018-10-01 15:56:26', 2),
-(112, '2018-10-01', 'Subir suplencias de SESA de la 1a qna de octubre de 2018 en SIDEOL', 13, 1, 'Subir la información de plazas de tipo suplencias de SESA, correspondiente a la qna19 (primera qna de octubre) de 2018, en SIDEOL', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-01', 9, ' Se validó y convirtió el archivo excel en formato csv. Y se importó a la base de datos', '2018-10-01', 3, ' ', '2018-10-01 16:09:39', '2018-10-01 16:10:27', 9);
-INSERT INTO `servicios` (`servicio_id`, `fecha_solicitud`, `descripcion_corta`, `tipo_servicio_id`, `tipo_incidencia_id`, `problematica`, `no_inventario`, `prioridade_id`, `cat_institucione_id`, `cat_adscripcione_id`, `nombre_solicitante`, `cargo_solicitante`, `telefono_solicitante`, `email_solicitante`, `fecha_limite_solucion`, `co_user_id`, `solucion`, `fecha_solucion`, `statu_id`, `notas`, `created`, `modified`, `created_by`) VALUES
-(113, '2018-10-02', 'Cambiar tipo de documento como no obligatorio en el PAOM', 10, 1, 'El tipo de documento RECIBO OFICIAL DE ADQUISICIÓN DE LAS BASES en lo que se refiere a los procedimientos por invitación a cuando menos 3 proveedores actualmente está como obligatorio cuando no debe ser así.', '', 1, 10, 18542, 'Carlos Leal', '', '', '', '2018-10-02', 4, ' Se cambió a No Obligatorio el tipo de documento', '2018-10-02', 3, ' ', '2018-10-02 11:11:05', '2018-10-02 11:11:30', 4),
-(114, '2018-10-02', 'subir las percepciones variables de SESA correspondiente a la primera qna de octubre de 2018', 13, 1, 'subir a SIDEOL las percepciones variables de la qna 19 ( primero de octubre ) de 2018 de SESA', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-02', 9, ' Se importó del archivo de excel a la tabla de la base de datos, y se ejecutaron las consultas correspondientes para guardar la información en el sistema.', '2018-10-02', 3, ' ', '2018-10-02 12:09:13', '2018-10-02 12:09:39', 9),
-(115, '2018-09-26', 'Calculadora Financiera', 9, 3, 'Se requiere una calculadora que genere los pagos quincenales a raíz de un monto y n° de quincenas dadas, todo ellos reflejado en tablas de amortizaciones de pagos.', '', 1, 10, 19238, 'Roonny Ruiz', '', '', '', '2018-10-05', 10, 'Creación de la calculadora financiera web', '2018-10-05', 3, ' ', '2018-10-02 13:18:20', '2018-10-16 12:15:24', 10),
-(116, '2018-10-02', 'MANTO. PREVENTIVO Y CORRECTIVO A PC', 2, 1, 'LENTITUD EN EL DESEMPEÑO DEL EQUIPO', '67550', 1, 10, 18684, 'ELSA AYDE JARAMILLO GUTIERREZ', 'JEFA DEL DEPTO.', '41434', '', '2018-10-02', 13, ' SE INSTALÓ EL SISTEMA OPERATIVO WINDOWS 7 PROFESIONAL SP1, OFFICE 2010, ANTIVIRUS KASPERKY ACTUALIZADO, WINRAR, JAVA, FLASH PLAYER , ACROBAT .\r\nCONTROLADORES DE RED, VIDEO Y AUDIO.\r\nSE APLICO MANTENIMIENTO PREVENTIVO\r\n\r\nSE RECOMIENDA AL USUARIO GUARDAR LOS ARCHIVOS QUE GENERE EN LA UNIDAD D:\r\n\r\nRECORDATORIO: SE RECOMIENDA AL USUARIO REALIZAR RESPALDO PERIODICO DE SU INFORMACION EN CD, DVD O UNIDAD EXTERNA DE ALMACENAMIENTO.\r\n', '2018-10-02', 3, ' ', '2018-10-02 15:43:07', '2018-10-02 15:45:14', 13),
-(117, '2018-10-03', 'Archivos terceros y fovissste quincena 18 2018', 10, 1, 'Reporte de terceros y fovisste', '', 1, 10, 18870, 'Santos San Román García', '', '', '', '2018-10-03', 6, ' se subieron los archivos', '2018-10-03', 3, ' ', '2018-10-03 08:15:53', '2018-10-03 08:16:05', 6),
-(118, '2018-09-28', 'Crear reporte para Transparencia', 21, 1, 'Crear un reporte para entregar a Transparencia', '', 1, 10, 18366, 'Arq. Mariana Gómez', '', '', '', '2018-10-03', 8, ' Se generó el reporte', '2018-10-03', 3, ' ', '2018-10-03 10:30:11', '2018-10-03 10:30:18', 8),
-(119, '2018-10-03', 'Generar Usuario sistema Subastas', 10, 1, 'Generar un usuario para el sistema de subastas solicitados por el área de Inventarios', '', 1, 10, 18862, 'Landy Pinto', '', '', '', '2018-10-03', 4, ' Se creó el usuario para el área de inventarios para el uso del sistema de subastas', '2018-10-03', 3, ' ', '2018-10-03 11:21:46', '2018-10-03 11:22:12', 4),
-(120, '2018-10-03', 'Aumentar capacidad para subir archivos en el PAOM', 9, 1, 'Se requiere aumentar la capacidad en el servidor para subir archivos mayores a 30MB', '', 1, 10, 18366, 'Sara Avelar', '', '', '', '2018-10-03', 4, ' Aumento en el servidor para subir archivos de hasta 35MB', '2018-10-03', 3, ' ', '2018-10-03 11:24:50', '2018-10-03 11:25:14', 4),
-(121, '2018-10-03', 'Soporte técnico', 1, 1, 'El equipo está lento y  se bloquea constantemente al momento de usar word o cualquier otra aplicación', 'S/N', 1, 10, 18356, 'Rosmery sierra Solis', 'Jefe de Departamento', '', '', '2018-10-03', 14, ' Se revisó el equipo no encontrando mas problemas que la falta de memoria RAM de la computadora\r\nya que tiene 2 GB y solo 1.87 GB disponible. Además el procesador es un AMD athon II X2 240 @ 2.8 GHZ\r\n\r\nCon la finalidad de acelerar la velocidad del sistema y evitar que se siga congelando, se recomienda ponerle por lo menos 4GB más de memoria RAM del tipo pc2-6400u-666 LF\r\n', '2018-10-03', 3, ' ', '2018-10-03 14:10:11', '2018-10-04 12:04:47', 14),
-(122, '2018-10-03', 'Soporte técnico', 6, 1, 'La computadora está muy lenta y se bloquea constantemente al momento de usar cualquier aplicación como word o xcel', 'S/N', 1, 10, 18356, 'Rosmery sierra Solis', 'Jefe de Departamento', '', '', '2018-10-03', 14, ' Se revisó el equipo no encontrando más problemas que la falta de memoria RAM ya que solo cuenta con 2 GB de memoria RAM de los cuales solo tiene  utilizable 1.87 GB ,además el procesador es un Athlon II X2  240 a 2.80Ghz.\r\nEn vista de lo anterior se recomienda agregarle por lo menos 4 GB más de memoria del tipo PC2-6400U-666 LF\r\ncon la finalidad de aumentar la velocidad del sistema y evitar que se siga congelando.\r\n', '2018-10-03', 3, ' ', '2018-10-03 14:24:18', '2018-10-03 14:28:38', 14),
-(123, '2018-10-04', 'Aumentar capacidad para subir archivos en el PAOM', 9, 1, 'No pueden subir archivos con capacidad de 80 MB al sistema', '', 1, 10, 18366, 'Alondra', '', '', '', '2018-10-04', 4, ' Se aumentó la capacidad del servidor para subir archivos de hasta 85MB', '2018-10-04', 3, ' ', '2018-10-04 11:46:39', '2018-10-04 11:47:13', 4),
-(124, '2018-10-04', 'Documentación relacionada con el sistemas de compras', 6, 1, 'Tener documentada la información en cuanto a los procesos que se llevan a cabo en el sistema de compras', '', 1, 10, 18542, 'Carlos Leal', '', '', '', '2018-10-05', 4, ' Se documentó las etapas y procesos en lo que se refiere al sistema de compras, señalando las etapas, subetapas, que actores intervienen, documentación que se sube y manual de usuario.', '2018-10-04', 3, ' ', '2018-10-04 12:15:28', '2018-10-04 12:19:10', 4),
-(125, '2018-10-05', 'Actualización Servidor BD ', 17, 1, 'Actualización ', '', 1, 10, 19238, 'Roonny Ruiz', 'ANALISTA PROFESIONAL', '019831344507', 'roonny7@hotmail.com', '2018-10-05', 6, ' se actualizaron ', '2018-10-05', 3, ' ', '2018-10-05 09:26:53', '2018-10-05 09:27:06', 6),
-(126, '2018-10-05', 'SIN ACCESO AL SISTEMA DE CORRESPONDENCIAS', 6, 1, 'NO PODÍA LA USUARIA ACCESAR AL SISTEMA DE CORRESPONDENCIAS', '28409', 1, 10, 18473, 'LUZ MARÍA AGUILAR KUMUL', 'SECRETARIA', '41034', '', '2018-10-05', 13, ' SE BORRO EL HISTORIAL DEL NAVEGADOR CHROME LO CUAL SOLUCIONO EL PROBLEMA. SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE', '2018-10-05', 3, ' ', '2018-10-05 11:55:03', '2018-10-05 11:56:23', 13),
-(127, '2018-10-05', 'Modificación en Tablero de control para sideol', 9, 1, 'Se requiere que la gráfica del tablero de control refleje a las entidades que reportan en sideol y que tengan recursos propios', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-05', 9, ' Se modificó la función y la vista que genera el gráfico, para que, refleje las entidades que reportan en sideol, pero tienen recursos propios', '2018-10-05', 3, ' ', '2018-10-05 13:08:06', '2018-10-05 13:09:22', 9),
-(128, '2018-10-05', 'Ayuda reduciendo la calidad de un archivo jpg', 6, 1, 'La usuaria solicita que un par de archivos en su computadora  tengan un tamaño maximo de 500 kb', '', 1, 10, 18870, 'ANGELITA VALDEZ  ', 'Analista profesional', '', '', '2018-10-05', 14, ' Se editó el par de documentos con paint y se dejaron con un tamaño de menos de los 500 kb , como requería la usuaria', '2018-10-05', 3, ' ', '2018-10-05 16:01:03', '2018-10-05 16:02:04', 14),
-(129, '2018-10-05', 'Apoyo con Internet del Oficial mayor', 6, 1, 'Me piden apoyo para que apoye al personal de la empresa Lomaster  para  la instalación del servicio de Internet en el despacho del Oficial Mayor.', 'N/a', 1, 10, 18542, 'SERGIO MANZANERO SALAZAR', 'SECRETARIO PARTICULAR', '', '', '2018-09-27', 14, ' Acompañé al personal de Lomaster y apoyé en el seleccionado de la  ruta del cableado que se iba a instalar,\r\nDicho cableado no se  pudo hacer  este día , debido a que era de noche y se programó para el día siguiente', '2018-10-28', 3, ' ', '2018-10-05 16:06:51', '2018-10-05 16:08:36', 14),
-(130, '2018-10-05', 'Problemas de Internet ', 6, 1, 'El usuario reporta que  no hay servicio de Internet en la oficiana del Oficial mayor', 'N/a', 1, 10, 18542, 'SERGIO MANZANERO SALAZAR', 'SECRETARIO PARTICULAR', '', '', '2018-09-28', 14, ' Despúes de la instalacion del cableado por parte de la empresa lomaster , dejarojon conectado el equipo que daría internet  sin embargo el servicio no estuvo disponible por lo que  fue necesario ponerme en contacto con la empresa , la cual me indicó que trajera el equipo a mi oficina e hiciera  unas pruebas que ellos  me indicarían. Se hicieron las  pruebas  , y se  habilitó el dhcp con direcciones locales con lo que quedó resuelta la problemática. Subí nuevamente el equipo y lo conecté y ahora sí ya  había Internet.', '2018-10-05', 3, ' ', '2018-10-05 16:10:42', '2018-10-05 16:13:57', 14),
-(131, '2018-10-05', 'Al agregar una plaza a una actualización de Plantilla, da error', 11, 1, 'Al querer agregar una plaza  a una actualización el sistema da un error', '', 1, 10, 18684, 'MARIA DEL CARMEN ALVARADO', '', '', '', '2018-10-05', 9, ' Se modificó la función que agrega plazas a una actualización de plantilla, para que guarde plazas que no tengan curp o rfc.', '2018-10-05', 3, ' El error consistía en que el sistema valida que datos como rfc y curp sean no puedan estar vacíos, por lo tanto el error se da cuando se intenta agregar una plaza vacante.', '2018-10-05 16:15:08', '2018-10-05 16:18:19', 9),
-(132, '2018-10-05', 'Problemas de Internet', 6, 1, 'El usuario reporta que no hay internet en el despacho del Oficial Mayor.', 'S/N', 1, 10, 18542, 'SERGIO MANZANERO SALAZAR', 'SECRETARIO PARTICULAR', '', '', '2018-10-04', 14, 'Fui al despacho encontrando que efectivamente no había Internet, ni los equipos detectaban  el ssid de la red. Procedí a desconectar el equipo de la corriente eléctrica, por unos 30 segundos  con lo que quedó resuelta la problemática', '2018-10-19', 3, ' ', '2018-10-05 16:15:48', '2018-10-19 12:12:45', 14),
-(133, '2018-10-04', 'INSTALACIÓN BÁSICA', 2, 1, 'INSTALACIÓN DE PAQUETERA BÁSICA ', '', 3, 10, 18542, 'RODRIGO POOT', '', '', '', '2018-10-05', 16, ' ', '2018-10-18', 3, ' ', '2018-10-05 16:37:47', '2018-10-18 13:48:28', 16),
-(134, '2018-10-03', 'Subir informacion de incidencias', 10, 1, 'Descargar las incidencias del reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-10-03', 12, ' Se descargo la información del reloj checador y se subió al sistema de recursos humanos', '2018-10-03', 3, ' ', '2018-10-05 19:01:04', '2018-10-05 19:01:55', 12),
-(135, '2018-10-02', 'Modificar la pagina de profesionalización ', 20, 1, 'Cambiar los cuadros de apoyos a los trabajadores del gobierno en diferentes universidades', '', 3, 10, 18646, 'Enna Ceballos', '', '', '', '2018-10-05', 12, ' Se cambiaron los CUADROS CON LOS BENEFICIOS DE DESCUENTOS DE LAS 16 INSTITUCIONES EDUCATIVAS que actualmente apoyan a los trabajadores del gobierno estatal.', '2018-10-05', 3, ' Estos cambios se efectuaron en la plataforma de drupal.', '2018-10-05 19:09:17', '2018-10-05 19:14:18', 12),
-(136, '2018-10-05', 'Reunión sistema Compras', 9, 3, 'Nuevas mejoras al sistema de compras', '', 1, 10, 18542, 'Carlos Leal', '', '', '', '2018-10-05', 4, ' Se llevó a cabo la reunión en la cual se llegaron a acuerdos para la mejora del sistema de compras', '2018-10-05', 3, ' ', '2018-10-08 09:22:10', '2018-10-08 09:22:49', 4),
-(137, '2018-10-08', 'NO PUEDE ABRIR ARCHIVOS PDF', 6, 1, 'LA PC DEJO DE ABRIR ARCHIVOS PDF', '', 1, 10, 18473, 'LUZ MARÍA AGUILAR KUMUL', 'SECRETARIA', '41034', '', '2018-10-08', 0, ' SE CONFIGURO EL EQUIPO PARA QUE ABRIERA LOS ARCHIVOS PDF CON EL NAVEGADOR CHROME LO CUAL SOLUCIONO EL PROBLEMA.', '2018-10-08', 3, ' ', '2018-10-08 14:39:50', '2018-10-08 14:40:54', 13),
-(138, '2018-10-08', 'Cambio de oficina del personal', 6, 1, 'Cambio de oficina del personal', 'N/a', 1, 10, 18369, 'Israel Augusto Ayuso Coaña', 'JEFE DPTE', '', '', '2018-10-08', 14, 'Se hizo una inspección física del lugar para determinar los materiales necesarios para que  el personal  pueda tener acceso  Internet. Encontrando que se requiere lo siguiente:\r\n37 Metros de cable UTP(Cat 5E/6)\r\n10 Conectores Rj45\r\n Una bolsa de 100 unidades de Grapas 5 mm   de pared para cable RJ45', '2018-10-08', 3, ' ', '2018-10-08 14:43:41', '2018-10-08 14:53:30', 14),
-(139, '2018-10-08', 'Cableado telefónico', 6, 1, 'Teléfono ip no tiene señal  ni da tonos', 'S/N', 1, 10, 18646, ' Judith Esther Quiroz  Antonio', 'Coordinadora', '', '', '2018-10-08', 14, 'Para resolver la problemática se  necesita la sustitución del cableado Ethernet . Para ello se requieren los siguientes materiales:\r\n4 Conectores Rj45\r\nUna bolsa de 20 Grapas de pared para cable de Red RJ45\r\n', '2018-10-08', 3, ' Se  Instalarán unos 20 o 30 metros de cable, pero  ya los proporcionó el Departamento de TICS', '2018-10-08 15:57:22', '2018-10-08 16:01:38', 14),
-(140, '2018-10-09', 'Documentación relacionada con el sistemas de compras', 13, 1, 'Documentación en el sistema de compras que está como obligatoria y debe ser no obligatoria', '', 1, 10, 18366, 'Mariana Gomez', '', '', '', '2018-10-09', 4, ' Cambiar la documentación solicitada a no obligatoria', '2018-10-09', 3, ' ', '2018-10-09 09:47:09', '2018-10-09 09:47:33', 4),
-(141, '2018-10-05', 'Modificaciones al proceso del sistema de compras', 9, 3, 'Mejorar el proceso de compras', '', 1, 10, 18542, 'Carlos Leal', '', '', '', '2018-10-09', 4, 'Se realizaron las adecuaciones al sistema de compras, falta la aprobación para liberarlas', '2018-10-09', 3, ' ', '2018-10-09 09:49:07', '2018-10-09 09:49:44', 4),
-(142, '2018-10-09', 'cuadro comparativo - propuestas', 7, 1, 'Modificar el cuadro comparativo de las propuestas, para que no se repitan', '', 1, 10, 18684, 'MARIA DEL CARMEN ALVARADO', '', '', '', '2018-10-11', 0, ' ', NULL, 1, ' ', '2018-10-09 09:59:45', '2018-10-09 09:59:45', 9),
-(143, '2018-10-08', 'Reunión de trabajo', 9, 3, 'Reunión para revisión del proceso de asignación de vacantes de la Bolsa de Trabajo', '', 1, 10, 18356, 'Psic. Melissa Shultz', '', '', '', '2018-10-09', 8, ' Se llevó a cabo la reunión donde se trataron los asuntos relacionados al tema', '2018-10-09', 3, ' ', '2018-10-09 10:38:49', '2018-10-09 10:39:05', 8),
-(144, '2018-10-09', 'Pagina de trámires y servicios RETyS', 20, 1, 'por https no se muestra la página de retys', '', 1, 10, 19238, 'Ing. Gabriel Ulises Rodriguez Arevalo', '', '', '', '2018-10-09', 6, ' se anexó el link de si no puede ver la página\r\nhttp://tramites.gestionpublica.qroo.gob.mx/tramite_web/desplegard.php?dependencia=11', '2018-10-09', 3, ' ', '2018-10-09 10:45:35', '2018-10-09 10:45:50', 6),
-(145, '2018-10-09', 'Cambio de quincena sistema finiquitos', 9, 1, 'Cambio de incidencia a la QNA 20', '', 1, 10, 18861, 'Lic. Erandy Gomez Hernández', '', '', '', '2018-10-09', 6, ' Se cambió a la quincena 20-2018', '2018-10-09', 3, ' ', '2018-10-09 11:37:03', '2018-10-09 11:37:13', 6),
-(146, '2018-10-09', 'Subir informacion de incidencias', 10, 1, 'Descargar la información del aparato reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-10-09', 12, ' Se descargo la información del reloj checador y se subió al sistema de Recursos Humanos', '2018-10-09', 3, ' ', '2018-10-09 11:50:49', '2018-10-09 11:51:27', 12),
-(147, '2018-10-09', 'comparativo de ocupacionales', 11, 1, 'Se solicita un reporte comparativo ocupacional entre la plantilla actual y la propuesta en actualización de plantilla, para  las dependencias que soliciten cambios de adscripción', '', 1, 10, 18684, 'MIGUEL ANGEL KUMUL CANCHÉ', '', '', '', '2018-10-15', 9, '  Se desarrolló el reporte para excel', '2018-10-19', 3, ' ', '2018-10-09 13:07:49', '2018-10-19 12:41:57', 9),
-(148, '2018-10-09', 'Adecuación recibos SSP PEP FASP', 9, 1, 'SSP /PEP/FASP se quitan firmantes y se agrega el oficio de nuevo', '', 3, 10, 18861, 'RIGOBERTO ECHEVERRIA CORAL', '', '', '', '2018-10-09', 6, ' Se agregaron if y otros if para el recibo de honorarios , contrato y oficio de propuesta', '2018-10-09', 3, ' ', '2018-10-09 14:19:21', '2018-10-09 14:19:48', 6),
-(149, '2018-10-09', 'NO PODÍA ENTRAR AL SISTEMA SIGG', 6, 1, 'NO PODÍA ENTRAR LA USUARIA AL SISTEMA SIGG', '3400', 1, 10, 18366, 'CARMEN SANCHEZ MONTALVO', 'SECRETARIA', '41040-41035', '', '2018-10-09', 13, ' SE REVISO EL USUARIO Y CONTRASEÑA Y SE DETECTO QUE SE ESTABAN INGRESANDO INCORRECTAMENTE. SE MOSTRÓ A LA USUARIA LA FORMA CORRECTA Y SE SOLUCIONO EL PROBLEMA.', '2018-10-09', 3, ' ', '2018-10-09 14:39:43', '2018-10-09 14:41:31', 13),
-(150, '2018-10-09', 'EL ANTIVIRUS SCAN SATURA LA PARTICIÓN D: DEL EQUIPO ', 6, 1, 'EL ANTIVIRUS SCAN SATURA LA PARTICIÓN D: DEL EQUIPO ', '29873', 1, 10, 18366, 'VÍCTOR CASTILLO', 'ANALISTA', '41001', '', '2018-10-09', 13, ' SE APLICARON LOS PERMISOS DE ADMINISTRADOR PARA PODER FORMATEAR LA PARTICIÓN D: QUE SE SATURA POR ARCHIVOS DEL ANTIVIRUS SCAN', '2018-10-09', 3, ' ', '2018-10-09 14:46:32', '2018-10-09 14:47:37', 13),
-(151, '2018-10-09', 'Layout de vehículos para inventarios', 21, 1, 'Generar un layout de los vehículos', '', 1, 10, 18862, 'Erick Astudillo', '', '', '', '2018-10-09', 4, ' Generar el layout de los vehiculos', '2018-10-09', 3, ' ', '2018-10-09 15:39:29', '2018-10-09 15:39:42', 4),
-(152, '2018-10-09', 'Constancias de tres firmas', 9, 1, 'La firma central debe ir un poco más arriba', '', 1, 10, 18646, 'MONICA MARCELA HERNANDEZ MENDOZA', '', '', '', '2018-10-09', 6, ' Se cambió con SetXY para la firma central', '2018-10-09', 3, ' ', '2018-10-09 16:08:10', '2018-10-09 16:08:24', 6),
-(153, '2018-10-09', 'Formato ISSSTE CSST', 9, 1, 'Para el trimestre 1 no se incluye el calendario', '', 1, 10, 18681, 'MAGALY MADARIAGA', '', '', '', '2018-10-09', 6, ' Se resolvió poniendo a espacios en blanco la info. La info salía directo de la BD, pero ya no se deben inicializar porque se aplica para la 2,3,4 en las actividades programadas', '2018-10-09', 3, ' ', '2018-10-09 16:27:27', '2018-10-09 16:28:20', 6),
-(154, '2018-10-09', 'cambio de computadora', 1, 1, 'La usuaria solicita que se cambie el equipo Hp compaq sin  numero de inventario visible por otra computadora marca  Lenovo ', '', 1, 10, 18356, 'Rosmery Sierra Solis', 'Jefa de Dpto', '', '', '2018-10-09', 14, ' Se realizó el cambio de computadora solicitado, aquí en palacio quedó instalada y con Internet y la otra se llevará al Dpto de prestaciones ubicado  arriba del archivo general del estado', '2018-10-09', 3, ' ', '2018-10-09 17:25:04', '2018-10-09 17:27:03', 14),
-(155, '2018-10-09', 'Conectar computadora del Oficial a Internet', 6, 1, 'Usuario solicita conectar la computadora del Oficial Mayor al nuevo enlace de Internet', '', 1, 10, 18542, 'Sergio Manzanero Salazar', 'Secretario particular', '', '', '2018-10-09', 14, ' Se procedió a  desconectar la computadora del Internet de telmex y se conectó vía cable ethernet al switch con el nuevo servicio de Internet. De igual manera se desabilitó el  inalambrico en la computadora y se testeó la velocidad del nuevo Internet estando este entre los 70 y 80 Mbps', '2018-10-09', 3, ' ', '2018-10-09 17:34:04', '2018-10-09 17:36:38', 14),
-(156, '2018-10-09', 'Subir Calendario Cursos', 9, 1, 'Subir el calendario de los cursos de octubre', '', 3, 10, 18646, 'Monica Hernandez', '', '', '', '2018-10-09', 12, ' Se subio el calendario de cursos de octubre a la pagina de profesionalizacion en OM', '2018-10-09', 3, ' ', '2018-10-09 18:28:32', '2018-10-09 18:29:07', 12),
-(157, '2018-10-10', 'Nueva función en el reporteador para generar reporte de vehículos funcionales', 9, 3, 'No podían generar listados de los vehículos que clasifican como funcionales', '', 1, 10, 18862, 'Erick Astudillo', '', '', '', '2018-10-10', 4, 'Se agregó al reporteador una opción en la cual pueden generar los listados de los vehículos funcionales', '2018-10-10', 3, ' ', '2018-10-10 10:07:28', '2018-10-10 10:08:24', 4),
-(158, '2018-10-10', 'Contratos SSP/PEP/FASP', 9, 1, 'Que tampoco en el punto de supervisión debe salir la admva.', '', 1, 10, 18861, 'RIGOBERTO ECHEVERRIA CORAL', '', '', '', '2018-10-10', 6, ' Se puso un if para SSP/PEP/FASP', '2018-10-10', 3, ' ', '2018-10-10 11:17:11', '2018-10-10 11:17:39', 6),
-(159, '2018-10-10', 'CONFIGURACIÓN DE IMPRESORA EN RED', 6, 1, 'SE RECONFIGURO LA IMPRESORA HP LASERJET M1132', '1251', 1, 10, 18899, 'RODOLFO RODRIGUEZ PIÑA', '', '', '', '2018-10-10', 0, ' LA IMPRESORA HABÍA PERDIDO CONECTIVIDAD. SE RE CONFIGURO LA IMPRESORA. SE REALIZARON PRUEBAS CON RESULTADOS SATISFACTORIOS. SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE.', '2018-10-10', 3, ' ', '2018-10-10 11:57:41', '2018-10-10 11:58:55', 13),
-(160, '2018-10-10', 'Adecuaciónes del reporte de prima de antigüedad - finiquitos', 9, 1, 'Anexar periodo de Busquda y exportar a excel', '', 1, 10, 18356, 'FRANKLIN CASTILLO IXTEPAN', '', '', '', '2018-10-10', 6, ' Se anexo el periodo para busqueda, y la opción de excel', '2018-10-10', 3, ' ', '2018-10-10 12:06:18', '2018-10-10 12:06:53', 6),
-(161, '2018-10-10', 'SIN ACCESO A INTERNET', 6, 1, 'EL USUARIO MANIFIESTA QUE LAS PAGINAS DE LOS SISTEMAS QUE UTILIZA PARA SUS LABORES NO ABREN', '310', 1, 10, 18870, 'SANTOS SAN ROMÁN GARCÍA', 'ANALISTA PROFESIONAL', '41278', '', '2018-10-10', 13, ' SE RESTABLECIÓ LA CONFIGURACIÓN DE LA RED. SE PROBARON LAS PAGINAS DE TRABAJO DEL USUARIO CON RESULTADOS SATISFACTORIOS. SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE.', '2018-10-10', 3, ' ', '2018-10-10 15:02:41', '2018-10-10 15:04:14', 13),
-(162, '2018-10-10', 'Actualización del link de timbrado', 9, 1, 'la página de timbrado en el módulo de consulta se iba a not found', '', 1, 10, 18861, 'BENJAMIN CASTRO', '', '', '', '2018-10-10', 6, ' ahora es esta :\r\nhttps://www.timbradoquintanaroo.com/OficialiaMayorEmpleados/', '2018-10-10', 3, ' ', '2018-10-10 16:03:54', '2018-10-10 16:04:23', 6),
-(163, '2018-10-10', 'Notificación por correo', 9, 1, 'cuando se enviaba el correo no se veía de que centro de trabajo era, y el revisor no recibía copia cuando notificaba', '', 1, 10, 18681, 'RICARDO LARA VELEZ', '', '', '', '2018-10-10', 6, 'Se anexó el centro de trabajo en el correo. y la revisión se anexó copia', '2018-10-10', 3, ' ', '2018-10-10 16:25:34', '2018-10-10 16:25:56', 6),
-(164, '2018-10-10', 'Contratos IQIT', 9, 1, 'Adecuación para los contratos para IQIT.', '', 1, 10, 18861, 'RIGOBERTO ECHEVERRIA CORAL', '', '', '', '2018-10-10', 6, ' Se anexo un IF para la entidad IQIT. El resto lo puede editar Rigo', '2018-10-10', 3, ' ', '2018-10-11 08:54:57', '2018-10-11 08:55:45', 6),
-(165, '2018-10-11', 'Respaldo de archivos', 18, 1, 'Respaldos', '', 1, 10, 19238, 'ROONNY RUIZ', 'ANALISTA PROFESIONAL', '019831344507', 'roonny7@hotmail.com', '2018-10-11', 6, ' Se respaldaron archivos de paom, sideol, RH, correspondencia', '2018-10-11', 3, ' ', '2018-10-11 14:05:37', '2018-10-11 14:06:12', 6),
-(166, '2018-10-11', 'Captura normateca transparencia', 7, 1, 'Normateca dinámica', '', 1, 10, 18899, 'Nahim Martin Arjona Perez', '', '', '', '2018-10-11', 6, ' Se el entrego el usuario vía correo electrónico y se le dió asesoría telefónica para la captura. \r\n\r\nEl front end se entrega el lunes-martes. Wilbert registrara la entrega del front', '2018-10-11', 3, ' ', '2018-10-11 14:08:29', '2018-10-11 14:09:52', 6),
-(167, '2018-10-15', 'Let´s encrypt', 4, 1, 'Renovar los Certificados de seguridad', '', 3, 10, 18543, 'Ronny Ruiz', '', '', '', '2018-10-15', 15, ' Se actualizo la vigencia de certificados de https de los servidores de la nube, quedando como vigencia hasta el 13 de enero de 2019. ', '2018-10-15', 3, ' ', '2018-10-15 10:26:48', '2018-10-15 10:27:38', 15),
-(168, '2018-10-15', 'Actualizar Servidores', 4, 1, 'Actualización semanal de servidores de la nube', '', 3, 10, 19238, 'Ronny Ruiz', '', '', '', '2018-10-15', 15, ' Se ejecuto playbook de ansible con las instrucciones de actualización (yum-update) de los siguientes servidores: 10.1.90.13 10.1.90.15 10.1.90.16 10.1.90.18 10.1.90.21 10.1.90.24 10.1.90.30', '2018-10-15', 3, ' ', '2018-10-15 10:31:45', '2018-10-15 10:31:50', 15),
-(169, '2018-10-11', 'Sustitución de la Plantilla de SESA qna20 2018', 13, 1, 'Se solicita eliminar la plantilla actual de SESA y sustituirla por la que se envía en archivo de Excel', '', 1, 10, 18685, 'Lic. Marisol Canto Celis', 'Directora de recursos Humanos', '', '', '2018-10-15', 9, ' Se eliminó la plantilla actuay se subió la nueva, también se eliminaron los registros en el tabulador de plazas para no dejar registros huérfanos', '2018-10-15', 3, ' Se le informó al area de Estructuras Orgánicas, que con esta acción se pierden todo tipo de historial y movimientos de la entidad', '2018-10-15 11:02:18', '2018-10-15 11:04:46', 9),
-(170, '2018-10-11', 'Sustitución de la Plantilla de APIQROO', 13, 1, 'Se solicita sustituir la plantilla actual de APIQROO para el periodo de corte 15 de octubre 2018', '', 1, 10, 18685, 'Lic. Marisol Canto Celis', 'Directora de recursos Humanos', '', '', '2018-10-15', 9, ' Se eliminó la plantilla actual y se sustituyó con la nueva que se envió en archivo de Excel', '2018-10-15', 3, ' No se cargaron datos generales. Se informó al Departamento de Estructuras Organicas que con esta acción se pierden el historial de la plantilla y de movimientos', '2018-10-15 11:26:56', '2018-10-15 11:47:13', 9),
-(171, '2018-10-15', 'Subir informacion de incidencias', 13, 1, 'Descargar información del aprato reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-10-15', 12, ' Se descargo la información del reloj checador y se subio al sistema de recursos humanos', '2018-10-15', 3, ' ', '2018-10-15 13:29:56', '2018-10-15 13:31:02', 12),
-(172, '2018-10-15', 'Antivirus', 17, 1, 'Actualización de la base de datos de virus', '', 3, 10, 19238, 'Ing. Varela', '', '', '', '2018-10-15', 12, ' Se encontraba apagado el servidor, por lo que se precedió a encenderlo y actualizar', '2018-10-15', 3, ' ', '2018-10-15 13:53:28', '2018-10-15 13:54:17', 12),
-(173, '2018-10-15', 'ERROR EN IMPRESORA', 6, 1, 'ERROR 0xc4eb841a EN LA PANTALLA DE LA IMPRESORA', '66575', 1, 10, 18473, 'LUZ MARÍA AGUILAR KUMUL', 'SECRETARIA', '41034', '', '2018-10-15', 13, ' SE REVISO LA IMPRESORA ENCONTRANDO DAÑADO EL CABEZAL DE IMPRESIÓN. ES NECESARIO SUSTITUIRLO. SIN EMBARGO LA PIEZA NO ES POSIBLE CONSEGUIRLA EN EL MERCADO LOCAL. DEBIDO AL TIPO DE IMPRESORA Y SU COSTO SE RECOMIENDA LA BAJA Y SUSTITUCIÓN DE LA IMPRESORA', '2018-10-15', 3, ' ', '2018-10-15 14:11:31', '2018-10-15 14:13:32', 13),
-(174, '2018-10-15', 'Actualización de normateca', 9, 1, 'Que no le ponga en el url el \r\nhttp://om.qroo.gob.mx/portal/documentos/normatividad/ ', '', 1, 10, 18899, 'Nahim Martin Arjona Perez', 'Analista Profesional', '', '', '2018-10-11', 6, ' solo se pondrá el nombre del archivo, por defaul ya viene\r\nhttp://om.qroo.gob.mx/portal/documentos/normatividad/ ', '2018-10-15', 3, ' ', '2018-10-15 15:25:24', '2018-10-15 15:25:41', 6),
-(175, '2018-10-15', 'no abre word', 6, 1, 'La usuaria reporta que no puede abrir los archivos de word en su computadora', 'N/a', 1, 10, 18542, 'BETSABE RODRIGUEZ', 'SECRETARIA', '', '', '2018-10-15', 14, ' Se intentó reparar el office , pero no fue posible, por lo que se procedió a desinstalar la version del office instalada y  a la reinstalacion del office profesional plus 2010', '2018-10-15', 3, ' ', '2018-10-15 16:50:10', '2018-10-15 16:51:08', 14),
-(176, '2018-10-15', 'Integración AVP', 9, 3, 'Se agotó el espacio del servidor donde se encontraba el AVP', '', 3, 10, 18685, 'Miguel Cumul', '', '', '', '2018-10-16', 2, 'Se habilitó el Sistema AVP en el servidor de la Nube', '2018-10-16', 3, ' ', '2018-10-16 10:34:49', '2018-10-16 10:35:27', 2),
-(177, '2018-10-16', 'Reporte de todos los inventarios conciliados con documento de contabilidad', 21, 1, 'Requieren un reporte cruzado con datos enviados por contabilidad', '', 1, 10, 18862, 'Erik Astudillo', '', '', '', '2018-10-16', 2, ' Se generó el reporte', '2018-10-16', 3, ' ', '2018-10-16 10:37:33', '2018-10-16 10:37:46', 2),
-(178, '2018-10-09', 'CONFIGURACIÓN DE ACCESS POINT', 4, 1, 'FALTA DE ACCESO A INTERNET', '', 3, 10, 18717, 'JAVIER RODRIGUEZ', '', '', '', '2018-10-09', 16, ' ', '2018-10-18', 3, ' ', '2018-10-16 11:04:40', '2018-10-18 13:48:23', 16),
-(179, '2018-10-16', 'Constancias de cursos', 9, 1, 'Reducir espacio para evitar firmas encimadas', '', 1, 10, 18646, 'MILKA RACHELL PANIAGUA OLVERA', '', '', '', '2018-10-16', 6, 'A petición de Milka, se redujo el espacio entre nombre del curso y detalles del mismo', '2018-10-16', 3, ' ', '2018-10-16 11:10:43', '2018-10-16 11:11:27', 6),
-(180, '2018-10-16', 'Cambio de CURP para modulo de consulta', 10, 1, 'cambio de curp para el empleado , ', '', 1, 10, 18356, 'FRANKLIN CASTILLO IXTEPAN', '', '', '', '2018-10-16', 6, ' se cambió el curp en la tabla del modulo de consulta', '2018-10-18', 3, ' ', '2018-10-16 11:53:28', '2018-10-18 13:55:55', 6),
-(181, '2018-10-09', 'Normateca', 9, 3, 'La visualización de las normas era fija y se requería de algo más dinamico', '', 1, 10, 19238, 'Roonny Ruiz', '', '', '', '2018-10-12', 10, ' Se creo una nueva plantilla para la vizualización de las normas de una manera más dinamica, por el orden indicado: Internacionales, Federales y Estatales', '2018-10-12', 3, ' ', '2018-10-16 12:20:36', '2018-10-16 12:21:48', 10),
-(182, '2018-10-16', 'Problemas al imprimir', 6, 1, 'El usuario manifiesta tener problemas al mandar a imprimir un documento, ya que sale una hoja en blanco antes de cada impresión.', '', 1, 10, 18369, 'Jesús Noe Santos Lima', 'Jefe de Almacen', '41027', '', '2018-10-16', 17, 'Se procedió a configurar de nuevo la impresora y se soluciono el problema', '2018-10-16', 3, ' ', '2018-10-16 12:50:20', '2018-10-16 12:52:32', 17),
-(183, '2018-10-15', 'Agregar un nuevo identificador de recurso para las compras federales', 10, 1, 'Se necesita agregar el identificador del recurso ALERTA DE VIOLENCIA DE GENERO CONTRA LAS MUJERES EN ESTADOS Y MUNICIPIOS para las compras federales', '', 1, 10, 18501, 'Sheila Anavid', '', '', '', '2018-10-15', 4, ' se agregó el identificador ALERTA DE VIOLENCIA DE GENERO CONTRA LAS MUJERES EN ESTADOS Y MUNICIPIOS para las compras federales', '2018-10-15', 3, ' ', '2018-10-16 12:56:13', '2018-10-16 12:56:36', 4),
-(184, '2018-10-16', 'Actualizar el manual de compras', 9, 1, 'Actualizar el manual de compras, ya que se han actualizado procesos dentro del sistema', '', 1, 10, 18542, 'Carlos Leal', '', '', '', '2018-10-16', 4, ' Se actualizó el manual de usuario para el sistema de compras', '2018-10-16', 3, ' ', '2018-10-16 12:58:15', '2018-10-16 12:58:34', 4),
-(185, '2018-10-16', 'Adecuaciones al sistema de subastas', 9, 3, 'Por medio del oficio OM/DGA/DRM/DICP/1373/2018 solicitan adecuaciones al sistema de subastas', '', 1, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-19', 4, ' Realizados los cambios solicitados por el departamento de inventarios para el sistema de subastas', '2018-10-18', 3, ' ', '2018-10-16 13:02:00', '2018-10-18 15:21:22', 4),
-(186, '2018-10-17', 'Nodo de red falla', 6, 1, 'El usuario reporta que el nodo, falsea y se desconecta el Internet', 'N/A', 1, 10, 18369, 'SAUL AUGUSTO DIAZ ', 'Jefe de Oficina', '', '', '2018-10-17', 14, 'Se hizo una inspección física encontrando que el nodo está roto y necesita se cambiado, para lo cual se requieren los siguientes materiales: 1 Jack rj45.  1 Caja con  Faceplate(Tapa para caja)   montaje al ras dos salidas color blanco,4 Conectores rj45, 2 Metros de cable Ethernet cat 5e/6', '2018-10-17', 3, ' ', '2018-10-17 08:55:57', '2018-10-17 09:16:15', 14),
-(187, '2018-10-16', 'subir percepciones de las dependencias correspondiente a qna 19 de 2018 al PAOM', 13, 1, 'Se solicita subir la las percepciones de la quincena 19 (primera quincena de octubre de 2018) de las dependencias al PAOM', '', 1, 10, 19238, 'LIC. EDER PASTRANA', '', '', '', '2018-10-17', 9, ' Se verificó, se convirtió el archivo a csv y se subió al PAOM', '2018-10-17', 3, ' ', '2018-10-17 10:44:03', '2018-10-17 10:44:18', 9),
-(188, '2018-10-17', 'Solicitud de Cambio a Reporte', 9, 1, 'A los Usuarios les cuesta trabajo leer el dictamen por el tamaño de letra. Requieren Aumentar tamaño al reporte', '', 1, 10, 19238, 'Ing. Gabriel Guzman', 'Jefe de departamento', '', '', '2018-10-17', 2, ' Se modifico el reporte para aumentarle más al tamaño de letra', '2018-10-17', 3, ' ', '2018-10-17 10:59:02', '2018-10-17 10:59:43', 2),
-(189, '2018-10-16', 'subir movimientos de las dependencias correspondiente a qna 19 de 2018 al PAOM', 13, 1, 'Se solicita subir la los movimientos de la quincena 19 (primera quincena de octubre de 2018) de las dependencias al PAOM', '', 1, 10, 19238, 'LIC. EDER PASTRANA', '', '', '', '2018-10-17', 9, ' Se verificó, se convirtió el archivo a csv y se subió al PAOM\r\n', '2018-10-17', 3, ' Se tuvo que pedir la modificación del archivo, ya que la columna de dependencia no era correcto.\r\n', '2018-10-17 12:29:09', '2018-11-14 13:39:01', 9),
-(190, '2018-10-17', 'Subir suplencias de SESA de la 2a qna de octubre de 2018 en SIDEOL', 13, 1, 'Subir la información de plazas de tipo suplencias de SESA, correspondiente a la qna20 (segunda qna de octubre) de 2018, en SIDEOL', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-17', 9, ' Se validó y convirtió el archivo excel en formato csv. Y se importó a la base de datos', '2018-10-17', 3, ' ', '2018-10-17 12:54:17', '2018-10-17 12:54:34', 9),
-(191, '2018-10-17', 'Subir las percepciones variables de SESA correspondiente a la segunda qna de octubre de 2018', 13, 1, 'Subir a SIDEOL las percepciones variables de la qna 20 ( segunda de octubre ) de 2018 de SESA', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-17', 9, ' Se importó del archivo de excel a la tabla de la base de datos, y se ejecutaron las consultas correspondientes para guardar la información en el sistema.', '2018-10-17', 3, ' ', '2018-10-17 12:56:10', '2018-10-17 12:56:26', 9),
-(192, '2018-10-18', 'Fotos para los empleados en el sistema de RH', 9, 1, 'mostrar la foto del empleado cuando se ponen su número de empleado', '', 1, 10, 18356, 'FRANKLIN CASTILLO IXTEPAN', '', '', '', '2018-10-18', 6, ' Se anexó en la búsqueda, pero a petición del usuario, es sólo cuando se ponga número de empleado', '2018-10-18', 3, ' ', '2018-10-18 12:11:32', '2018-10-18 12:14:28', 6),
-(193, '2018-10-18', 'Subir informacion de incidencias', 10, 1, 'Descargar los registros del aparato checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-10-18', 12, ' Se descargo la información del reloj checador y se subió al sistema de Recursos Humanos', '2018-10-18', 3, ' ', '2018-10-18 15:50:00', '2018-10-18 15:50:41', 12),
-(194, '2018-10-18', 'Al agregar una plaza a una actualización de Plantilla, da error', 11, 1, 'Cuando una dependencia agrega plazas a una actualización de plantilla da un error', '', 1, 10, 18684, 'MARIA DEL CARMEN ALVARADO', '', '', '', '2018-10-18', 9, 'Se revisó la función que agrega las plazas y se corrigió para cuando las plazas no tengan curp o rfc, no de el error', '2018-10-18', 3, ' ', '2018-10-18 16:03:11', '2018-10-18 16:04:19', 9),
-(195, '2018-10-18', 'Habilitar el tipo de documento OFICIO DE AUTORIZACIÓN DE PRESUPUESTO para los procedimientos Adj Directa Federales', 10, 1, 'No se puede subir el tipo de documento OFICIO DE AUTORIZACIÓN DE PRESUPUESTO para los procedimientos de Adjudicación Directa Federales', '', 1, 10, 18501, 'Sheila Anavid', '', '', '', '2018-10-18', 4, ' Habilitar el tipo de documento', '2018-10-18', 3, ' ', '2018-10-18 16:17:29', '2018-10-18 16:17:49', 4),
-(196, '2018-10-18', 'Regresar Licencias a un estado anterior (ids 10587,10588)', 11, 1, 'Se aceptaron las licencias de MONTEJO CAB PAULINA DEL CARMEN, y se requiere regresarlos a la dependencia para su corrección ya el tipo de licencia no es el correcto', '', 1, 10, 18890, 'AMALIA TUN', '', '', '', '2018-10-18', 9, ' Se cambió directamente el estado de las licencias para que el depto de personal pueda enviarlo de nuevo a la dependencia para su correción', '2018-10-18', 3, ' ', '2018-10-18 16:34:15', '2018-10-18 16:35:07', 9),
-(197, '2018-10-18', 'INSTALACIÓN DE SOFTWARE', 2, 1, 'EL USUARIO NECESITA EL PROGRAMA MICROSOFT VISIO', '295', 1, 10, 19240, 'HERNAN DIAZ TORRES', 'ANALISTA PROFESIONAL', '200618', '', '2018-10-18', 13, ' SE ACUDIÓ AL SITIO Y SE INSTALO EN LA COMPUTADORA DEL USUARIO EL PROGRAMA MICROSOFT VISIO 2010. SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE.', '2018-10-18', 3, ' ', '2018-10-19 09:26:04', '2018-10-19 09:27:11', 13),
-(198, '2018-10-19', 'SIN ACCESO A INTERNET', 6, 1, 'LA COMPUTADORA DE LA USUARIA NO PUEDE NAVEGAR EN INTERNET', '79836', 1, 10, 18685, 'GLORIA CORDOVA', 'SECRETARIA DE LA DIRECCIÓN', '41032', '', '2018-10-19', 13, ' SE REVISO EL EQUIPO DE COMPUTO DE LA USUARIA ENCONTRANDO TODOS LOS PARÁMETROS DE CONFIGURACIÓN A INTERNET CORRECTOS. SE REALIZARON PRUEBAS AL MÓDEM Y SE DETECTO QUE EL SERVICIO INÁLAMBRICO NO FUNCIONABA. SE CORRIGIÓ EL PROBLEMA. SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE. ', '2018-10-19', 3, ' ', '2018-10-19 09:29:38', '2018-10-19 09:33:25', 13),
-(199, '2018-10-19', 'Antivirus', 12, 1, 'Monitoriar la consola y efectuar las actualizaciones correspondientes', '', 3, 10, 19238, 'Ing. Jesus Varela', '', '', '', '2018-10-19', 12, ' Después de el monitoreo durante el día, y confirmar que continuaba funcionando sin novedad, se cierra el reporte\r\n', '2018-10-22', 3, ' ', '2018-10-19 11:27:17', '2018-10-22 10:38:13', 12),
-(200, '2018-10-19', 'Asignación de direcciones ips', 6, 1, 'Usuarios solicitan la asignación de 4 direcciones ips para sus  equipos de cómputo', '', 1, 0, 0, 'Personal de blue ocean', 'Programador', '', '', '2018-10-19', 14, 'Fui al lugar donde está ubicado el personal de blue ocean ,el cual es el tercer piso del palacio de gobierno, y le asigné las 4 direcciones ips solicitadas las cuales son las siguientes: 10.1.3.242,10.1.3.243,10.1.3.244 y 10.1.3.245', '2018-10-19', 3, ' ', '2018-10-19 12:06:54', '2018-10-19 12:09:37', 14),
-(201, '2018-10-17', 'Monitor con problemas de video', 6, 1, 'La usuaria comenta que la imagen de su monitor tiembla mucho.', '', 1, 10, 18890, 'Nirva Loria Pinto', 'Jefe de Oficina', '41320', '', '2018-10-17', 17, ' Se desconecto el monitor y se limpio la entrada del puerto, se reinicio el equipo y se volvió a conectar.', '2018-10-17', 3, ' ', '2018-10-19 12:23:23', '2018-10-19 12:25:06', 17),
-(202, '2018-10-19', 'Subir las percepciones variables de COBAQROO correspondiente a la 2a. qna de octubre de 2018', 13, 1, 'Subir a SIDEOL las percepciones variables de la qna 20 ( segunda de octubre ) de 2018 del COBAQROO', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-19', 9, ' Se importó del archivo de excel a la tabla de la base de datos, y se ejecutaron las consultas correspondientes para guardar la información en el sistema.', '2018-10-19', 3, ' ', '2018-10-19 17:01:54', '2018-10-19 17:02:19', 9),
-(203, '2018-10-22', 'Antivirus', 11, 1, 'Se encontraba apagado el equipo donde se encuentra la consola', '', 3, 10, 19238, 'Ing. Jesus Varela', '', '', '', '2018-10-22', 12, ' Se detecto que el equipo donde se encuentra instalada la consola del antivirus, se encontraba apagada.\r\nSe procedió a encender y verificar que carquen todos los módulos de la consola.', '2018-10-22', 3, ' Poner atención futura, ya que dicho equipo siempre debe permanecer encendido', '2018-10-22 10:31:29', '2018-10-22 10:33:28', 12),
-(204, '2018-10-16', 'Desarrollo del módulo de propuestas en SIDEOL', 7, 1, 'Se desarrolla el módulo de propuestas tanto para entidades como para dependencias.', '', 1, 10, 18684, 'LIC. AYDEE JARAMILLO', 'JEFE DEL DEPTO DE ANALISIS Y ESTRUCTURAS ORGANICAS', '', '', '2018-11-15', 9, '  Se terminó el desarrollo y se liberó para pruebas del departamento de estructuras orgánicas', '2018-11-14', 3, ' ', '2018-10-23 05:24:15', '2018-11-14 13:54:43', 9),
-(205, '2018-10-23', 'Instalacion de  cableado', 26, 1, 'La usuaria solicita la instalacion de 4 nodos de red en el edificio ubicado en la calle 5 de mayo.', '', 1, 10, 18369, 'Martha Patricia Dominguez Zepeda', 'Jefe de Oficina', '', '', '2018-10-23', 14, ' Fuimos  Román y yo a la oficina e instalamos  los  4 nodos . Aproximadamente 50 metros de cable.\r\nde igual manera  los conectamos a Internet.', '2018-10-23', 3, ' ', '2018-10-23 05:36:02', '2018-10-23 05:37:51', 14),
-(206, '2018-10-23', 'Cambio de paquetería Office', 2, 1, 'La usuaria solicita cambiar su office ya que le  dice que la licencia venció', '', 1, 10, 18356, 'ROSMERY SIERRA SOLIS', 'JEFA DPTO ', '', '', '2018-10-23', 14, ' Se procedió a desinstalar la version anterior de office ya que tenía el office 365\r\ny se le instaló el de gobierno, ya que argumentó que la computadora la usa unica y exclusivamente para  el trabajo\r\nDe igual forma se le instaló un antivirus, porque había caducado el que tenía instalado la computadora', '2018-10-23', 3, ' ', '2018-10-23 05:39:18', '2018-10-23 05:41:10', 14),
-(207, '2018-10-22', 'Subir informacion de incidencias', 10, 1, 'Descargar la información del reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-10-23', 12, ' Se descargo la información del reloj checador de inventarios y se subió al sistema de recursos humanos', '2018-10-22', 3, ' ', '2018-10-23 05:41:42', '2018-10-23 05:42:53', 12),
-(208, '2018-10-18', 'Formateo Y mantenimiento a equipo de computo', 1, 1, 'La usuaria comenta que tiene problemas con su equipo de computo, sistema operativo lento y con problemas al abrir algunos programas.', '67650', 1, 10, 18368, 'Martha Patricia Manrero Benitez', 'Analista Técnico', '200607', '', '2018-10-23', 17, ' Se llevo a cabo la instalación del Sistema Operativo Windows 7 Pro, paquetería de Office 2010 Pro, Antivirus y se llevo a cabo la instalación del equipo en el área de trabajo. ', '2018-10-23', 3, ' ', '2018-10-23 09:25:54', '2018-10-23 09:29:46', 17),
-(209, '2018-10-23', 'CABLEADO', 4, 1, 'CABLEADO DE RED LOCAL', '3568', 1, 10, 18369, 'PATRICIA DOMÍNGUEZ', 'JEFE DE OFICINA', '41331', '', '2018-10-23', 13, ' SE CABLEO LA RED LOCAL PARA TRES EQUIPOS DE COMPUTO', '2018-10-23', 3, ' ', '2018-10-23 10:37:17', '2018-10-23 10:37:51', 13),
-(210, '2018-10-23', 'INSTALACIÓN DE IMPRESORA', 6, 1, 'SE INSTALO LOCALMENTE IMPRESORA', '44239', 1, 0, 0, 'PATRICIA DOMÍNGUEZ', 'JEFE DE OFICINA', '41331', '', '2018-10-23', 13, ' SE INSTALO LA IMPRESORA LOCALMENTE. HP DESKJET 3050', '2018-10-23', 3, ' ', '2018-10-23 10:40:10', '2018-10-23 10:40:43', 13),
-(211, '2018-10-23', 'Cambio del menú de honorarios / finiquitos', 9, 1, 'Agrupacion por finiquitos, honorarios y td', '', 1, 10, 18861, 'LIC. ERANDY GOMEZ HERNANDEZ', '', '', '', '2018-10-23', 6, 'Se cambió el menú a Finiquitos, Honorarios y consulta', '2018-10-23', 3, ' ', '2018-10-23 10:49:16', '2018-10-23 10:49:43', 6),
-(212, '2018-10-23', 'Registro de subdominio', 14, 1, 'Dominio de las subastas', '', 1, 10, 19238, 'LIC. EDER MANUEL PASTRANA CASTRO', '', '', '', '2018-10-23', 6, 'Registro del dominio virtual \r\n\r\nSubasta.qroo.gob.mx\r\nSubastaadm.qroo.gob.mx', '2018-10-23', 3, ' ', '2018-10-23 12:03:53', '2018-10-23 12:04:43', 6),
-(213, '2018-10-23', 'Registro de subdominio bolsa de trabajo', 14, 1, 'Registro de dominio en el Cloud bpara migrar la bolsa de trabajo', '', 1, 10, 19238, 'LIC. RICHARD JOSÉ MARTIN MOGUEL', '', '', '', '2018-10-23', 6, ' Se registró el dominio virtual bolsatrabajo.qroo.gob.mx', '2018-10-23', 3, ' ', '2018-10-23 12:06:27', '2018-10-23 12:07:10', 6),
-(214, '2018-10-23', 'Sistema subasta 2018', 9, 1, 'Tener el sistema de subastas ya listo para su uso ya que el 26 de octubre se empieza con el registro de participantes', '', 3, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-25', 4, ' La liberado el sistema para poder realizar el registro de los participantes', '2018-10-23', 3, ' ', '2018-10-23 12:19:26', '2018-10-23 12:20:09', 4),
-(215, '2018-10-23', 'Opción de eliminar riesgos de trabajo', 9, 1, 'En seguridad e higiene desean borrar riesgos repetidos', '', 1, 10, 18681, 'RICARDO LARA VELEZ', '', '', '', '2018-10-23', 6, ' Se anexó la opción de ELIMINAR. Se guarda en bitácora quien borra algo', '2018-10-23', 3, ' ', '2018-10-23 14:58:10', '2018-10-23 14:58:49', 6),
-(216, '2018-10-23', 'El tablero de control para PAOM en SIDEOL no se genera', 11, 1, 'El tablero de control para PAOM en SIDEOL no se genera', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-10-23', 9, ' Se revisó el programa que genera un nuevo tablero y se solucionó el problema', '2018-10-23', 3, ' ', '2018-10-24 07:48:33', '2018-10-24 07:49:25', 9),
-(217, '2018-10-24', 'Ajustes al Padrón de Proveedores', 10, 1, 'Ajustar información a los registros de acuerdo a lo solicitado', '', 1, 10, 18366, 'Arq. Mariana Gómez', '', '', '', '2018-10-23', 8, ' Se realizaron los ajustes ', '2018-10-23', 3, ' ', '2018-10-24 07:54:31', '2018-10-24 07:54:42', 8),
-(218, '2018-10-24', 'Aplicación Quincena 17 y 18', 10, 1, 'Aplicar de nuevo quincena 17 y 18. HArweb arrojo mal el reporte y hubo procesos de captura después del envio', '', 1, 10, 18356, 'ING. ALMA ROSMERY SIERRA SOLIS', '', '', '', '2018-10-24', 6, ' Se aplicaron las quincenas 17 y 18', '2018-10-24', 3, ' ', '2018-10-24 17:30:23', '2018-10-24 17:30:40', 6),
-(219, '2018-10-25', 'Reunión de trabajo', 22, 3, 'Reunión de trabajo en la Coordinación de Profesionalización', '', 1, 10, 18646, 'Judith Quiroz', '', '', '', '2018-10-25', 8, 'Se llevó a cabo la reunión de trabajo', '2018-10-25', 3, ' ', '2018-10-25 14:24:05', '2018-10-25 14:24:29', 8),
-(220, '2018-10-25', 'Pagina de subastas', 20, 1, 'Tercera subasta 2018', '', 2, 10, 18862, 'LIC. EDER MANUEL PASTRANA CASTRO', '', '', '', '2018-10-25', 6, '1. pagina en el unisitio de subastas\r\n2. anexar los pdf de las bases y anexos\r\n3. Redirect desde om.qroo.gob.mx\r\n\r\nSE QUITÓ :\r\nANEXO 1, \r\nPREGUNTAS FRECUENTES\r\nJUNTA DE ACLARACIONES.\r\nMOTIVO : NO LO MANDARON', '2018-10-25', 3, ' ', '2018-10-25 20:18:59', '2018-10-25 20:21:03', 6),
-(221, '2018-10-25', 'CAMBIO DE  CONECTORES DE RED (RJ45)', 26, 1, 'CONECTORES DAÑADOS', '50757', 1, 10, 18366, 'DORA VALDES CHAN', 'ANALISTA TECNICO', '41337', '', '2018-10-25', 0, ' SE CAMBIARON LOS CONECTORES RJ45 (MACHO Y HEMBRA) DEL NODO DE LA USUARIA. SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE.', '2018-10-25', 3, ' ', '2018-10-26 09:06:31', '2018-10-26 09:08:20', 13),
-(222, '2018-10-26', 'fve', 24, 1, 'efdv', '', 1, 44, 16964, 'fev', '', '', '', '2018-10-26', 2, ' frv', '2018-10-26', 4, ' fv', '2018-10-26 09:56:05', '2018-10-26 09:56:30', 1),
-(223, '2018-10-25', 'Actualizar los formatos de registro y subir los datos de vehículos a subastar', 10, 1, 'Actualizar los formatos de registro de participantes, testigo social y subir los datos de los vehículos a subastar', '', 3, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-25', 4, ' Actualización de los formatos de registro y subir datos de vehículos a subastar', '2018-10-25', 3, ' ', '2018-10-26 10:09:18', '2018-10-26 10:10:43', 4),
-(224, '2018-10-25', 'CAMBIO DE  CONECTORES DE RED (RJ45)', 26, 1, 'CONECTORES DE RED RJ45 (MACHO Y HEMBRA) DAÑADOS', '50757', 1, 10, 18366, 'DORA VALDES CHAN', 'ANALISTA TECNICO', '41337', '', '2018-10-25', 13, ' SE CAMBIARON LOS CONECTORES RJ45 (MACHO Y HEMBRA). SE DEJO EL EQUIPO FUNCIONANDO CORRECTAMENTE.', '2018-10-25', 3, ' ', '2018-10-26 10:20:16', '2018-10-26 10:21:35', 13),
-(225, '2018-10-25', 'conectar equipo a la red', 6, 1, 'La usuaria no tiene conexión a internet.', '53061', 1, 10, 18366, 'Ingrid Pinelo', 'Analista', '41435', '', '2018-10-25', 17, ' Se conecto a la usuaria mediante un switch.', '2018-10-25', 3, ' ', '2018-10-26 11:01:40', '2018-10-26 11:02:33', 17),
-(226, '2018-10-26', 'windows no inicia', 2, 1, 'La usuaria reporta que no ha podido iniciar la computadora', 'S/N', 1, 10, 18646, 'Irene puerto', 'secretaria', '', '', '2018-10-26', 14, ' Fui a la oficina de la usuaria  y al llegar  ya había logrado iniciar el equipo sin embargo, el Chome  no abría por lo que procedí a desinstalar Chrome y hacer la instalación nuevamente, con lo cual quedó resuelta la problemática. Le recomendé a la usuaria respaldar su información y  enviar el equipo para un mantenimiento', '2018-10-26', 3, ' ', '2018-10-26 11:07:02', '2018-10-26 11:11:55', 14),
-(227, '2018-10-24', 'Instalación de cableado', 26, 1, 'Los usuarios de Nominas no contaban con internet.', '', 1, 10, 18861, 'Rodrigo Poot', '', '', '', '2018-10-24', 17, ' ', NULL, 1, ' ', '2018-10-26 11:14:28', '2018-10-26 11:14:28', 17),
-(228, '2018-10-26', 'Usuario reporta que no tiene  Internet', 6, 1, 'El usuario reporta que no tiene  Internet', '', 1, 10, 18542, 'Mnuel I. Alamilla Ceballos', 'Oficial Mayor', '', '', '2018-10-26', 14, 'Personal de la empresa que está encargada del Internet, junto con personal del IQIT desconectó el servicio del Oficial y conectó el Internet del evento deportivo de footboll , por  lo que procedí a reconectar al equipo del usuario al inalambrico que tenemos en el despacho, con lo cual quedó resulta la problemática de la falta de Internet.', '2018-10-26', 3, ' ', '2018-10-26 11:15:39', '2018-10-26 11:19:18', 14),
-(229, '2018-10-26', 'usuario solicita conectar su computadora a la red de gobierno ', 26, 1, 'Usuario solicita conectar a la red de gobierno, su computadora para poder subir información al servidor ', '', 1, 10, 18899, 'Eduardo Liceas Ramírez ', 'JEFE DPTO ACCESO A LA INFORMACIÓN ', '', '', '2018-10-26', 14, 'Fui a la oficina del usuario, e hice una instalación encontrando que se requieren los siguientes materiales para hacer la instalación :\r\n20 metros utp cat 5e o 6\r\n4 conectores rj45\r\n20 grapas para concreto para cable de red utp cat5e/6\r\n', '2018-10-26', 3, ' ', '2018-10-26 11:52:33', '2018-10-26 11:57:42', 14);
-INSERT INTO `servicios` (`servicio_id`, `fecha_solicitud`, `descripcion_corta`, `tipo_servicio_id`, `tipo_incidencia_id`, `problematica`, `no_inventario`, `prioridade_id`, `cat_institucione_id`, `cat_adscripcione_id`, `nombre_solicitante`, `cargo_solicitante`, `telefono_solicitante`, `email_solicitante`, `fecha_limite_solucion`, `co_user_id`, `solucion`, `fecha_solucion`, `statu_id`, `notas`, `created`, `modified`, `created_by`) VALUES
-(230, '2018-10-26', 'Instalar cableado', 26, 1, 'Usuario solicita instalar 20 metros de cableado utp para conectar su computadora a la red de gobierno.', '', 1, 10, 18899, 'Eduardo Liceas Ramírez ', 'JEDE DPTO.', '', '', '2018-10-26', 14, ' Fuimos Adolfo,Roman y yo he hicimos la instalación del cableado , asignándole la ip 10.1.3.65 ,conectándolo a Internet y mostrandole como hacer el switcheo entre el Internet de cablemás y la red de gobierno.', '2018-10-26', 3, ' ', '2018-10-26 15:13:52', '2018-10-26 15:16:01', 14),
-(231, '2018-10-26', 'Computadora no escribe la letra A', 6, 1, 'El usuario reporta que la computadora no le sirve la tecla A', 'S/N', 1, 10, 18368, 'Oscar de luna pérez', 'JEFE DE OFICINA', '', '', '2018-10-26', 14, ' Se revisó la laptop encontrando que  el teclado está sellado  , por lo que es necesario sustituir el teclado para que  pueda funcionar con normalidad. O en su caso conectarle un teclado usb o inalámbrico.', '2018-10-26', 3, ' ', '2018-10-26 15:33:48', '2018-10-26 15:35:21', 14),
-(232, '2018-10-26', 'Instalar sistema subastas de forma local para inventarios', 9, 1, 'necesitan tener el sistema de subastas de forma local para poder realizar pruebas y capacitación', '', 1, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-26', 4, ' se instaló el sistema de subastas en una computadora que trajo el departamento de inventarios', '2018-10-26', 3, ' ', '2018-10-26 17:10:40', '2018-10-26 17:11:03', 4),
-(233, '2018-10-26', 'Reunión con inventarios y blue ocean', 9, 1, 'Reunión con el departamento de inventarios y personal de blue ocean para determinar datos del layout de bienes y vehiculos', '', 1, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-26', 4, ' Reunión con el área de inventarios y personal de blue ocean para determinar que datos se necesitan en el layout de bienes muebles y vehículos', '2018-10-26', 3, ' ', '2018-10-26 17:13:10', '2018-10-26 17:13:55', 4),
-(234, '2018-10-29', 'Permiso de borrar candados para expedientes', 9, 1, 'Que el usuario de Dulce Mariana pueda quitar candados a los PDF', '', 1, 10, 18356, 'ING. ALMA ROSMERY SIERRA SOLIS', '', '', '', '2018-10-29', 6, ' Se agregó el usuario al usuario Cortes05', '2018-10-29', 3, ' ', '2018-10-29 09:47:33', '2018-10-29 09:47:48', 6),
-(236, '2018-10-29', 'Al generar el reporte Adscripciones Incorrectas muestra errores de configuración', 11, 1, 'Al general el reporte de Adscripciones incorrectas de todas las dependencias muestra este texto: "Non-static method Configure::read() should not be called statically in...."', '', 1, 10, 18684, 'MARIA DEL CARMEN ALVARADO', '', '', '', '2018-10-29', 9, ' Se revisó el y se detectó que las dependencias que dan el error son las inactivas y que tienen registros en la plantilla de dependencias. Se permitió que el reporte también contemple a las dependencias que ya se desactivaron', '2018-10-29', 3, ' ', '2018-10-29 13:27:00', '2018-10-29 13:41:27', 9),
-(237, '2018-10-29', 'Subir informacion de incidencias', 10, 1, 'Descargar los registros del reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-10-29', 12, ' Se descargo la información del reloj checador y se subió al sistema de Recursos Humanos', '2018-10-29', 3, ' ', '2018-10-29 13:54:41', '2018-10-29 13:55:21', 12),
-(238, '2018-10-29', 'Antivirus', 11, 1, 'Se monitorea la actualización  para una correcta administración correcto', '', 3, 10, 19238, 'Ing. Jesus Varela', '', '', '', '2018-10-29', 12, ' Se monitorearon las actualizaciones de la base de datos del antivirus, para una correcta administración de los equipos clientes', '2018-10-29', 3, ' ', '2018-10-29 13:58:47', '2018-10-29 13:59:55', 12),
-(239, '2018-10-26', 'EQUIPO EN MAL ESTADO ', 1, 1, 'SE RECIBIÓ EQUIPO DONDE EL USUARIO REPORTO QUE AL ENCENDER FUNCIONO POR UN MOMENTO, QUE POSTERIORMENTE EMPEZÓ A  EMITIR HUMO DE LA MISMA.\r\n\r\n', '', 3, 10, 18717, 'JAVIER RODRIGUEZ HERNADEZ', '', '', '', '2018-10-30', 16, ' \r\nSE PROCEDIÓ A LA REVISIÓN DE LA FUENTE DE PODER Y COMO RESULTADO DE LAS MEDICIONES  VOLTAJES Y TENSIONES FUERON NULAS, CONCLUYENDO QUE LA FUENTE DE PODER RESULTO CON DAÑO DE CORTO CIRCUITO (QUEMADA)\r\n\r\nSE LE IMPROVISO UNA FUENTE DE PODER Y SE REALIZARON MEDICIONES A LA PLACA BASE Y COMPONENTES MEDIANTE EQUIPO DE MEDICION Y TESTEO (MULTIMETRO), EL RESULTADO FUE QUE NO LLEGABA VOLTAJE EN TODOS LOS COMPONESTE REQUERIDOS POR LA PLACA BASE POR LO TANTO SE DISCTAMINA QUE SE ENCUENTRA EN DAÑO TOTAL Y SE RECOMIENDA LA BAJA Y SUSTICION DEL EQUIPO DE COMPUTO POR UN EQUIPO DE LAS MISMAS CARACTERISCAS O SUPERIOR \r\n EL EQUIPO SE RECIBE CON LAS SIGUIENTES CARACTERISCAS:\r\n 1 UN 1GB DE MEMORIA RAM \r\n2 UN DISCO DURO DE 500GB  \r\n', '2018-10-29', 3, ' ', '2018-10-30 11:15:47', '2018-10-30 11:16:47', 16),
-(240, '2018-10-30', 'Reunión con inventarios y blue ocean', 9, 1, 'Reunión para detallar el layout a enviar', '', 1, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-30', 4, ' Se llevó a cabo la reunión para determinar la información que contendrá el layout', '2018-10-30', 3, ' ', '2018-10-30 15:41:30', '2018-10-30 15:42:05', 4),
-(241, '2018-10-30', 'Adecuaciones al sistema de subastas', 9, 1, 'Cambiar encabezados en los formatos de registro y garantías, ademas de eliminar la paleta 005', '', 1, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-30', 4, ' Modificación de los encabezados de los formatos de registro y garantías, ademas de eliminar la paleta 005', '2018-10-30', 3, ' ', '2018-10-30 16:07:54', '2018-10-30 16:08:35', 4),
-(242, '2018-10-31', 'Pagina de subastas', 20, 1, 'Pagina de subastas', '', 1, 10, 18862, 'DULCE CABALLERO', '', '', '', '2018-10-26', 6, ' ', NULL, 1, ' ', '2018-10-31 12:12:31', '2018-10-31 12:12:31', 6),
-(243, '2018-10-31', 'Pagina de subastas - anexar banners', 20, 1, 'banners', '', 1, 10, 18862, 'DULCE CABALLERO', '', '', '', '2018-10-26', 6, ' Se agregaron los banners, tuvieron que editarse, el formato era desconocido', '2018-10-31', 3, ' ', '2018-10-31 12:14:03', '2018-10-31 12:14:20', 6),
-(244, '2018-10-31', 'Cambio de empleados de SEFIPLAN a SEGOB', 10, 1, 'Cambiaron de ultima hora a segob, moviendo los recibos , y nuevos firmantes', '', 1, 10, 18890, 'LIC. ERIKA VAZQUEZ CALDERON', '', '', '', '2018-10-31', 6, ' sólo eran 3 personas, las demás eran de TD, que está en proceso de entrega', '2018-10-31', 3, ' ', '2018-10-31 12:15:51', '2018-10-31 12:16:14', 6),
-(245, '2018-10-31', 'Opción de exportar a excel', 9, 1, 'Opción de exportar a excel de la lista de usuarios activos del sistema', '', 1, 10, 18356, 'FRANKLIN CASTILLO IXTEPAN', '', '', '', '2018-10-31', 6, ' Se anexó la opción para exportar', '2018-10-31', 3, ' ', '2018-10-31 12:22:10', '2018-10-31 12:22:29', 6),
-(246, '2018-10-31', 'Layout de vehículos para inventarios', 9, 1, 'Generar layout de vehículos para inventarios', '', 1, 10, 18862, 'Dulce Caballero', '', '', '', '2018-10-31', 4, ' layout de vehículos generado', '2018-10-31', 3, ' ', '2018-10-31 15:17:25', '2018-10-31 15:17:39', 4),
-(247, '2018-10-31', 'impresora no imprime', 6, 1, 'El usuario reporta que al momento de mandar a imprimir algun documento, sale en blanco', '', 1, 10, 18542, 'SERGIO MANZANERO SALAZAR', 'SECRETARIO PARTICULAR', '', '', '2018-11-01', 14, ' Fui y revisé la impresora, hice pruebas  y encontré que las  tintas  #122 estaban agotadas, razon por la cual  no salia nada en las impresiones. Le cambie el par de tintas a la impresora con lo que se resolvió la problematica', '2018-10-31', 3, ' ', '2018-11-01 09:34:58', '2018-11-01 09:36:33', 14),
-(248, '2018-11-01', 'Instalar  cableado para nuevo servicio de Internet', 26, 1, 'Se me solicitó instalar un servicio de Internet al departamento de proveeduría , desde el palacio de gobierno.', '', 1, 10, 18369, 'Israel Augusto Ayuso Coaña', 'JEFE DPTO', '', '', '2018-10-31', 14, ' Procedí a comprar  un switch de 8 puertos  y lo conecté en la oficina del oficial mayor , y el microtik que estaba en la  oficina del oficial mayor  lo conecté en el área del conmutador, esto así para poder darle el servicio al Dpto. de proveeduría.\r\nLuego desconectamos  los cables e hicimos los cambios necesarios. Configuramos  nuevas  ips a todas las computadoras y quedaron  con el nuevo enlace de 100 Mbps en funcionamiento.', '2018-10-31', 3, ' ', '2018-11-01 09:38:51', '2018-11-01 09:42:58', 14),
-(249, '2018-11-01', 'Falla del servicio de Internet', 6, 1, 'Usuario reporta que los usuarios que estan conectados al Arris en recursos humanos no tienen Internet.', '', 1, 10, 18861, 'FREDDY GOMEZ', 'JEFE DE DEPARTAMENTO', '', '', '2018-11-01', 14, ' Se hicieron los cambios  correspondientes  para conectar al personal  al servicio  de RH que lo provee un modem linksys con Internet de Telmex, ya que en toda la ciudad se fue el Internet de cablemás', '2018-10-31', 3, ' ', '2018-11-01 09:45:31', '2018-11-01 09:47:08', 14),
-(250, '2018-11-05', 'Quitar banner y pagina de enajenación de bienes', 20, 1, 'Quitar pagina y quitar banner', '', 1, 10, 19238, 'Ing. Gabriel Ulises Rodriguez Arevalo', '', '', '', '2018-11-05', 6, ' Se renombró  la página. esta accesible en : \r\nhttps://qroo.gob.mx/om/enajenacion-de-vehiculos2', '2018-11-05', 3, ' ', '2018-11-05 10:02:58', '2018-11-05 10:03:46', 6),
-(251, '2018-11-05', 'Subir informacion de incidencias', 13, 1, 'Descargar informacion del reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-11-05', 0, ' Se descargo la información del reloj checador y se subio al sistema de recursos humanos', '2018-11-05', 3, ' ', '2018-11-05 11:19:57', '2018-11-05 11:20:32', 12),
-(252, '2018-11-05', 'Subir informacion de incidencias', 10, 1, 'Descargar la información del reloj checado', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-11-05', 12, ' Se descargo la informacion del reloj checador y se subio al sistema de recursos humanos', '2018-11-05', 3, ' ', '2018-11-05 11:26:59', '2018-11-05 11:27:31', 12),
-(253, '2018-11-05', 'creacion de usuario', 6, 1, 'El usuario solicita  la creación de  una cuenta de usuario en la compútadora', '', 1, 10, 18356, 'ELISEO TALAVERA SANCHEZ', 'ANALISTA', '', '', '2018-11-05', 14, ' Se creo la cuenta del usuario  en la computadora  con el nombre de usuarioInvitado', '2018-11-05', 3, ' ', '2018-11-05 12:11:30', '2018-11-05 12:12:31', 14),
-(254, '2018-11-05', 'Reporte AVP', 21, 1, 'Se le entrego un reporte de las dependencias notificadas. Esto fue desde la BD a espera de que soliciten por oficio la programación de un reporte', '', 1, 10, 18685, 'Miguel Cumul', '', '', '', '2018-11-05', 2, ' Se le entrego un reporte generado directamente de la Base de Datos', '2018-11-05', 3, ' ', '2018-11-05 12:32:12', '2018-11-05 12:32:28', 2),
-(255, '2018-11-05', 'Solicitud de modificación de Solicitudes', 10, 1, 'Se solicita corregir una opción erronea escogida por el usuario', '', 1, 15, 18917, 'Issac Mendez', '', '', '', '2018-11-05', 2, ' Se modifico las solicitudes 102111,102112,102115,102117,102128', '2018-11-05', 3, ' ', '2018-11-05 12:34:52', '2018-11-05 12:35:44', 2),
-(256, '2018-11-05', 'La compu presenta mucha publicidad', 6, 1, 'El usuario reporta que la computadora al momento de abrir el explorador aparece  una pagina con publicidad', '67582', 1, 10, 18368, 'JORGE CONCEPCIÓN  DZUL RAMIREZ', 'ANALISTA PROFESIONAL', '', '', '2018-11-05', 14, ' Se cambió la  página de inicio  del explorador  con lo que  quedó resuelta la problemática.', '2018-11-05', 3, ' ', '2018-11-05 12:54:04', '2018-11-05 12:54:47', 14),
-(257, '2018-10-31', 'Ajustes al Padrón de Proveedores', 10, 1, 'Correcciones al padrón de proveedores', '', 1, 10, 18366, 'Arq. Mariana Gómez', '', '', '', '2018-11-06', 8, ' Se realizaron los ajustes solicitados', '2018-11-06', 3, ' ', '2018-11-06 09:21:53', '2018-11-06 09:22:02', 8),
-(258, '2018-11-06', 'Subir suplencias de SESA de la primera qna de noviembre de 2018 en SIDEOL', 13, 1, 'Subir la información de plazas de tipo suplencias de SESA, correspondiente a la qna21 (primera qna de noviembre) de 2018, en SIDEOL', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-11-06', 9, ' Se validó y convirtió el archivo excel en formato csv. Y se importó a la base de datos\r\n', '2018-11-06', 3, ' ', '2018-11-06 10:31:15', '2018-11-06 10:33:03', 9),
-(259, '2018-11-06', 'Subir las percepciones variables de SESA correspondiente a la primera qna de noviembre de 2018', 13, 1, 'Subir a SIDEOL las percepciones variables de la qna 21 ( primera de noviembre ) de 2018 de SESA', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-11-06', 9, ' Se importó del archivo de excel a la tabla de la base de datos, y se ejecutaron las consultas correspondientes para guardar la información en el sistema.', '2018-11-06', 3, ' ', '2018-11-06 10:34:16', '2018-11-06 10:34:28', 9),
-(260, '2018-11-06', 'Encuesta necesidades de capacitación 2019', 9, 1, 'Página para llevar el control de quienes han tomado la encuesta y evitar que la tomen 2 veces', '', 1, 10, 18646, 'MONICA MARCELA HERNANDEZ MENDOZA', '', '', '', '2018-11-06', 6, ' Se creó la pagina \r\nhttps://tramitesrh.qroo.gob.mx/portal/encuesta.php', '2018-11-06', 3, ' ', '2018-11-06 10:35:22', '2018-11-06 10:35:43', 6),
-(261, '2018-11-06', 'Reunión con inventarios y blue ocean', 9, 1, 'reunión donde se entregó y verificó el layout de vehiculos y bienes muebles', '', 1, 10, 18862, 'Dulce Caballero', '', '', '', '2018-11-06', 4, ' se entregó el layout de bienes y vehículos', '2018-11-06', 3, ' ', '2018-11-06 12:40:04', '2018-11-06 12:40:29', 4),
-(262, '2018-11-06', 'Archivo Anexo D siri', 10, 1, 'Anexo D ahorro solidario SIRI', '', 1, 10, 18861, 'ROSA IDALIA ROMERO RAMIREZ', '', '', '', '2018-11-06', 6, ' Se cargó el archivo SIRI', '2018-11-06', 3, ' ', '2018-11-06 13:12:22', '2018-11-06 13:12:49', 6),
-(263, '2018-11-06', 'Instalación programa', 2, 1, 'La usuaria solicita la instalación de Microsoft Visio en dos computadoras', '', 1, 10, 18356, 'Dulce mariana Cortez', 'asistente', '', '', '2018-11-06', 14, ' Fui a la oficina de la usuaria ubicada en la planta alta del archivo general y procedí  a instalar visio 2010 en las  dos computadoras solicitadas, quedando así atendida la petición.', '2018-11-06', 3, ' ', '2018-11-06 16:08:39', '2018-11-06 16:09:40', 14),
-(264, '2018-11-06', 'Instalar regulador de voltaje', 6, 1, 'Usuario  solicita apoyo para instalar un regulador de voltaje en el despacho del Oficial mayor.', '', 1, 10, 18542, 'SERGIO MANZANERO SALAZAR', 'SECRETARIO PARTICULAR', '', '', '2018-11-06', 14, ' Fui al despacho e instalé el regulador en compañía de Elias. ', '2018-11-06', 3, ' ', '2018-11-06 16:11:11', '2018-11-06 16:11:47', 14),
-(265, '2018-11-06', 'varios usuarios sin Internet', 6, 1, 'Varios usuarios del Dpto. de nominas reportan que no tienen Internet', '', 1, 0, 0, 'Doña gloria', 'Secretaria de la directora de R.H', '', '', '2018-11-06', 14, ' Se procedió a conectar todos los usuarios al servicio de Infinitum , ya que  el servicio cablemás por cuarto día consecutivo, deja sin Internet a los usuarios.', '2018-11-06', 3, ' ', '2018-11-06 16:13:31', '2018-11-06 16:14:38', 14),
-(266, '2018-11-06', 'Llevar equipos de cablemás a Patty en proveeduría', 6, 1, 'El usuario solicita que desconectemos  y llevemos los  Modems cablemás  A Patricia la cual se encuentra en la oficina de la 5 de mayo .Abajo del Jurídico.', '', 1, 10, 19238, 'Rodrigo Poot', 'TÉCNICO EN REDES(ASESOR)', '', '', '2018-11-06', 14, 'Fui al lugar donde se encontraban los equipos , los desconecté y llevé a  Patricia, en Proveeduría , y los entregué a ella en persona.', '2018-11-06', 3, ' ', '2018-11-06 16:17:24', '2018-11-06 16:18:59', 14),
-(267, '2018-11-06', 'Plantilla quincena 19', 10, 1, 'Quincena 19 2018', '', 1, 10, 18356, 'ING. ALMA ROSMERY SIERRA SOLIS', '', '', '', '2018-11-06', 6, ' Se subieron los archivos', '2018-11-06', 3, ' ', '2018-11-06 20:28:03', '2018-11-06 20:28:13', 6),
-(268, '2018-11-06', 'Subir las percepciones variables de COBAQROO correspondiente a la 1a. qna de noviembre de 2018', 13, 1, 'Subir a SIDEOL las percepciones variables de la qna 21 (primera de noviembre ) de 2018 del COBAQROO', '', 1, 10, 18684, 'WENDY MORENO PENICHE', '', '', '', '2018-11-06', 9, ' Se importó del archivo de excel a la tabla de la base de datos, y se ejecutaron las consultas correspondientes para guardar la información en el sistema.', '2018-11-07', 3, ' ', '2018-11-07 09:59:04', '2018-11-07 09:59:16', 9),
-(269, '2018-11-07', 'Subir informacion de incidencias', 10, 1, 'Descargar información del aparato reloj checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-11-07', 12, ' Se descargo la información del reloj checador de inventarios y se subio al sistema de incidencias de recursos humanos de la Oficialia Mayor.', '2018-11-07', 3, ' ', '2018-11-07 11:26:53', '2018-11-07 11:28:09', 12),
-(270, '2018-11-05', 'Respaldar Archivos', 12, 1, 'Se Respaldan los archivos de las bases de datos de Rec Hum y la de PAOM', '', 3, 10, 19238, 'Lic. Roonny Ruiz', '', '', '', '2018-11-05', 12, ' Se efectuo el respaldo de los archivos de las bases de datos de Rec Hum y Paom', '2018-11-07', 3, ' ', '2018-11-07 11:31:04', '2018-11-07 11:31:42', 12),
-(271, '2018-11-07', 'Reunión con Recursos Humanos tema timbrado', 22, 4, 'Analizar implementación del timbrado de la nómina', '', 1, 10, 18685, 'Marisol Canto', '', '', '', '2018-11-07', 4, ' Reunión llevada acabo, llegando a ciertos acuerdos', '2018-11-07', 3, ' ', '2018-11-07 13:47:02', '2018-11-07 13:47:24', 4),
-(272, '2018-11-08', 'Archivos terceros y fovissste quincena 20 2018', 13, 1, 'Terceros y fovisste 20 2018', '', 1, 10, 18870, 'SANTOS SAN ROMAN GARCÍA', '', '', '', '2018-11-08', 6, ' Se subieron los dos archivos', '2018-11-08', 3, ' ', '2018-11-08 08:33:26', '2018-11-08 08:33:40', 6),
-(273, '2018-11-08', 'Permiso para Dulce Cortes', 9, 1, 'Permiso especial para ver los candidatos a quinquenios', '', 1, 10, 18356, 'ING. ALMA ROSMERY SIERRA SOLIS', '', '', '', '2018-11-08', 6, ' Se le  otorgó el permiso al usuario Dulce Cortes', '2018-11-08', 3, ' ', '2018-11-08 08:52:04', '2018-11-08 08:52:33', 6),
-(274, '2018-11-08', 'Anexar la adscripción del empleado a las encuestas NC 2019', 9, 1, 'para saber a que departamento o dirección pertenecen', '', 1, 10, 18646, 'MONICA MARCELA HERNANDEZ MENDOZA', '', '', '', '2018-11-08', 6, 'Se consultó en sideol para imprimir su departamento actual', '2018-11-08', 3, ' ', '2018-11-08 09:30:36', '2018-11-08 09:32:08', 6),
-(275, '2018-11-08', 'Asesoría sobre el sistema PAOM', 21, 1, 'Asesorar a un usuario de seguridad pública en diversas etapas para sus procedimientos', '', 1, 15, 18618, 'Roxana', '', '', '', '2018-11-08', 4, ' Asesorar a un usuario de la Secretaría de Seguridad Pública en relación a las etapas y que debe hacer en cada una en diversos procedimientos que tenía pendiente en continuar', '2018-11-08', 3, ' ', '2018-11-08 11:34:13', '2018-11-08 11:35:56', 4),
-(276, '2018-11-07', 'Autoatización de mayúsculas', 9, 3, 'El formulario del registro a Ceneval no detectava si se escrbia con mayúsculas o minusculas. ', '', 1, 10, 19238, 'Roonny Ruiz', '', '', '', '2018-11-08', 10, 'Se creo la función para convertir las letras a mayúsculas en los inputs del formulario de manera automatica.', '2018-11-08', 3, ' ', '2018-11-08 12:54:24', '2018-11-08 12:54:51', 10),
-(277, '2018-10-22', 'Seguridad e Higiene', 9, 3, 'Falta de campos en un formulario de verificación del sistema de seguridad e higiene.', '', 1, 10, 19238, 'Roonny Ruiz', '', '', '', '2018-10-31', 10, ' Se anexaron los campos faltantes al formulario de verificación de uno de los módulos del sistema de seguridad e higiene.', '2018-10-31', 3, ' ', '2018-11-08 12:57:14', '2018-11-08 12:58:58', 10),
-(278, '2018-11-09', 'Reporte de compras para el PAOM', 9, 3, 'Generar un reporte específico para el sistema de procedimientos', '', 1, 10, 18542, 'Carlos Leal', '', '', '', '2018-11-09', 4, ' Se realizó el reporte solicitado en el sistema de compras del PAOM', '2018-11-09', 3, ' ', '2018-11-09 16:27:52', '2018-11-09 16:28:11', 4),
-(279, '2018-11-09', 'MANTENIMIENTO', 1, 1, ' EL EQUIPO LLEGA CON REFERENCIAS DE QUE SE APAGABA EN OCASIONES REPENTINAS Y TENÍAN QUE REINICIARLA ', '', 3, 10, 18473, 'DANIEL MAGAÑA', '', '', '', '2018-11-12', 16, 'SE REALIZO LA REPARACIÓN DE SECTORES EN SU DISCO DURO Y MANTENIMIENTO FÍSICO DE LA MISMA \r\nY SE PROBO EN SUS MÁXIMO RENDIMIENTO Y NO SE PRESENTO LA FALLA INICIAL. ', '2018-11-12', 3, '', '2018-11-12 12:24:55', '2018-11-12 12:28:04', 16),
-(280, '2018-11-12', 'Plantilla quincena 20', 10, 1, 'Quincena 20 2018', '', 1, 10, 18356, 'ING. ALMA ROSMERY SIERRA SOLIS', '', '', '', '2018-11-12', 6, ' Aplicada', '2018-11-12', 3, ' ', '2018-11-12 13:33:57', '2018-11-12 13:34:01', 6),
-(281, '2018-11-12', 'NO CARGA ALGUNAS OPCIONES DE CAPTURA', 8, 1, 'NO CARGA ALGUNAS OPCIONES DE CAPTURA LA POAM', '3400', 1, 10, 18366, 'ELDA VAZQUEZ CALDERON', '', '41337', '', '2018-11-12', 13, ' SE ELIMINARON LOS COOKIES DEL NAVEGADOR  Y SE INFORMO DE FUNCIONES DEL SISTEMA.', '2018-11-12', 3, ' ', '2018-11-12 14:26:11', '2018-11-12 14:28:00', 13),
-(282, '2018-11-12', 'NO CARGA ALGUNAS OPCIONES DE CAPTURA', 8, 1, 'NO CARGA ALGUNAS OPCIONES DE CAPTURA LA POAM', '29861', 1, 10, 18369, 'LIGIA ROJAS MARTIN', '', '41435', '', '2018-11-12', 13, ' SE ELIMINARON LOS COOKIES DEL NAVEGADOR', '2018-11-12', 3, ' ', '2018-11-12 14:29:39', '2018-11-12 14:30:01', 13),
-(283, '2018-11-12', 'Subir informacion de incidencias', 10, 1, 'Descargar la informacion del aparato checador', '', 3, 10, 18862, 'Jose Caceres', '', '', '', '2018-11-12', 12, ' Se descargo la informacion del reloj checador y se subio al sistema de recursos humanos.', '2018-11-12', 3, ' ', '2018-11-12 15:20:18', '2018-11-12 15:20:57', 12),
-(284, '2018-11-12', 'Adecuaciones sistema PAOM en reportes', 9, 3, 'Mejoras en los reportes de PAOM compras', '', 1, 10, 18542, 'José Dacak', '', '', '', '2018-11-12', 4, 'Se realizaron adecuaciones a reportes del PAOM en compras', '2018-11-12', 3, ' ', '2018-11-12 15:48:46', '2018-11-12 15:50:13', 4),
-(285, '2018-11-12', 'Asesoría y creación de usuarios en el sistema de Combustible', 21, 1, 'Asesorar a usuarios con dudas que tenían en el sistema de combustible además de generar cuentas de usuarios para que puedan ingresar al sistema', '', 1, 10, 18369, 'Israel Ayuso', '', '', '', '2018-11-12', 4, ' Asesorar a usuarios con dudas que tenían en el sistema de combustible además de generar cuentas de usuarios para que puedan ingresar al sistema', '2018-11-12', 3, ' ', '2018-11-12 15:53:36', '2018-11-12 15:53:41', 4),
-(286, '2018-11-12', 'Adecuaciones al sistema de subastas', 9, 1, 'Adecuar la parte de la garantías para que me visualice que tipo de garantía se adquirió (Efectivo, Cheque Caja, Cheque Certificado)', '', 1, 10, 18862, 'Landy Pinto', '', '', '', '2018-11-12', 4, ' Realizar adecuaciones al sistema de subastas en relación a las garantías y devoluciones de estas, visualizando el tipo de garantía adquirida', '2018-11-12', 3, ' ', '2018-11-12 15:55:32', '2018-11-12 15:56:07', 4),
-(287, '2018-11-13', 'Entrega de liga CENEVAL', 21, 1, 'Comenta Enna que urge la liga para mandar sus oficios, ', '', 1, 10, 18646, 'ENNA CEBALLOS', '', '', '', '2018-11-13', 6, ' Se le explicó mediante un correo : \r\n\r\nBuenos días, la plataforma para inscripción al ceneval es la siguiente: \r\nhttps://capacitaom.qroo.gob.mx/inscripcioncenevalacuerdo286/ \r\n\r\nComo me comenta Enna, urgía esta liga para enviar los oficios, pero en base a los acuerdos tomados, el día 15 del presente se entregará para REVISION y PRUEBAS. \r\n\r\nPor lo tanto si alguna persona llega a entrar en esa liga podrá ir viendo los cambios que se estén realizando, por eso siempre recomendamos tener la plataforma lista ANTES de publicar o enviar.\r\n\r\nEs necesario que se hagan las pruebas mínimo una semana, durante este periodo si llegan a presentarse cambios, es importante los notifiquen cuanto antes para tener la plataforma lista para el día 3 de diciembre.\r\n\r\nLa liga para ir consultando a las personas registradas en el Sistema de Administración de la Capacitación, \r\nhttps://capacitaom.qroo.gob.mx/sistema/index.php \r\n\r\nEn el menú Bachillerato, opción Registro CENEVAL. Y con la opción de exportar como se solicitó. \r\n\r\nNOTA: Cabe aclarar que como se solicitó en la parte de registro, aparecerán:\r\n•	Dependencias\r\n•	Órganos desconcentrados\r\n•	Órganos descentralizados\r\n•	Escuelas\r\n\r\nPor tanto es necesario que en la opción del sistema Catálogos, Dependencias, opción Búsquedas y botón Buscar, para ver toda la lista de entidades, órganos, dependencias, etc. \r\n\r\nAquí deberán colocar cada órgano donde corresponde, por ejemplo Oficialía Mayor, en dependencias del ejecutivo, H. ayuntamiento de Bacalar, en ayuntamientos, Poder Legislativo, en Poderes, etc.\r\n\r\nPor tanto si alguna entidad no aparece, deberá estar en la lista mencionada anteriormente, o en su defecto, si aparece alguna que no deba listarse, tal es el caso en el sistema que hotel Villanueva aparece como Dependencias del Ejecutivo, aquí es importante quitarlo como dependencia del ejecutivo, ya que aparecerá listado al momento de la inscripción.', '2018-11-13', 3, ' ', '2018-11-13 09:34:10', '2018-11-13 09:34:48', 6),
-(288, '2018-11-13', 'Permisos para capturar honorarios', 9, 1, 'Que el usuario de Lilia, pueda ver ademas al despacho del gobernador', '', 1, 10, 18861, 'RIGOBERTO ECHEVERRIA CORAL', '', '', '', '2018-11-13', 6, ' Se anexó la cláusula IN para incluir a la entidad', '2018-11-13', 3, ' ', '2018-11-13 11:08:22', '2018-11-13 11:08:35', 6),
-(289, '2018-11-13', 'Desarrollo de PDF para servicio social', 7, 1, 'Desarrollo del modulo del Servicio Social', '', 1, 10, 18646, 'Wendy', '', '', '', '2018-11-13', 11, ' Desarollo del PDF para Servicio Social', '2018-11-13', 3, ' ', '2018-11-13 11:23:15', '2018-11-13 11:23:46', 11),
-(290, '2018-11-12', 'Respaldar Archivos', 18, 1, 'Se respaldan los archivos de los servidores', '', 3, 10, 19238, 'Lic. Roonny Ruiz', '', '', '', '2018-11-12', 12, ' Se respaldan los archivos de los servidores de PAOM y Rec Hum de la OM', '2018-11-12', 3, ' ', '2018-11-13 11:27:31', '2018-11-13 11:28:30', 12),
-(291, '2018-11-13', 'Permisos para usuario IQIT', 9, 1, 'se requiere el permiso de Empleados busqueda para IQIT', '', 1, 10, 18356, 'FRANKLIN CASTILLO IXTEPAN', '', '', '', '2018-11-13', 6, ' Se anexó el permiso', '2018-11-13', 3, ' ', '2018-11-13 11:42:27', '2018-11-13 11:42:32', 6),
-(292, '2018-11-13', 'Adecuaciones al buscador del PAOM', 9, 3, 'Adecuar el Buscador del PAOM mostrando a detalle los periodos del personal', '', 1, 10, 18542, 'José Dacak', '', '', '', '2018-11-13', 4, ' Actualización del buscador del PAOM', '2018-11-13', 3, ' ', '2018-11-13 16:00:40', '2018-11-13 16:01:00', 4),
-(293, '2018-11-13', 'Asesoría a usuarios en el sistema de Combustible', 21, 1, 'Acudir al departamento de proveeduría para apoyar a los usuarios con las dudas que tenían para el uso del sistema de combustibles', '', 1, 10, 18369, 'Javier Malaga', '', '', '', '2018-11-13', 4, ' Acudir al departamento de proveeduría para asesorar a los usuario en el uso del sistema de combustlble', '2018-11-13', 3, ' ', '2018-11-13 16:03:36', '2018-11-13 16:04:09', 4),
-(294, '2018-11-14', 'SIN ACCESO A INTERNET', 6, 1, 'LA TARJETA DE RED INALAMBRICA USB NO FUNCIONA', '33330', 1, 10, 18472, 'DOMINGA HOIL NOH', 'ALMACENISTA', '41033', '', '2018-11-14', 13, ' SE REVISÓ EL ADAPTADOR DE RED INALAMBRICO USB Y SE ENCONTRÓ DESHABILITADO. SE HABILITÓ Y CONECTO AL SERVICIO DE INTERNET CON RESULTADOS SATISFACTORIOS. SE DEJÓ EL EQUIPO FUNCIONANDO CORRECTAMENTE', '2018-11-14', 3, ' ', '2018-11-14 10:29:16', '2018-11-14 10:31:15', 13),
-(295, '2018-11-14', 'Actualizar sistema local para pruebas de inventarios', 9, 1, 'Actualizar el sistema que usan de forma local el área de inventarios con las nuevas adecuaciones que solicitaron', '', 1, 10, 18862, 'Landy Pinto', '', '', '', '2018-11-14', 4, ' Actualizar el sistema de subastas que utilizan en el departamento de inventarios para sus pruebas y capacitación', '2018-11-14', 3, ' ', '2018-11-14 13:00:51', '2018-11-14 13:01:40', 4),
-(296, '2018-11-12', 'subir percepciones de las dependencias correspondiente a qna 20 de 2018 al PAOM', 13, 1, 'Se solicita subir la las percepciones de la quincena 20 (segunda quincena de octubre de 2018) de las dependencias al PAOM', '', 1, 10, 19238, 'LIC. EDER PASTRANA', '', '', '', '2018-11-12', 9, ' Se verificó, se convirtió el archivo a csv y se subió al PAOM', '2018-11-12', 3, ' ', '2018-11-14 13:44:06', '2018-11-14 13:44:28', 9),
-(297, '2018-11-12', 'subir movimientos de las dependencias correspondiente a qna 20 de 2018 al PAOM', 13, 1, 'Se solicita subir la los movimientos de la quincena 20 (segunda quincena de octubre de 2018) de las dependencias al PAOM', '', 1, 10, 19238, 'LIC. EDER PASTRANA', '', '', '', '2018-11-12', 9, ' Se verificó, se convirtió el archivo a csv y se subió al PAOM', '2018-11-12', 3, ' ', '2018-11-14 13:47:24', '2018-11-14 13:47:39', 9),
-(298, '2018-11-12', 'Desarrollo del reporte del tablero de control de sideol para PAOM', 7, 1, 'Se solicita desarrollar un reporte para PAOM del tablero de control que tiene sideol para las entidades.', '', 1, 10, 18543, 'LIC. EDER PASTRANA', '', '', '', '2018-11-13', 9, ' Se desarrolló la vista y el reporte en excel', '2018-11-13', 3, ' ', '2018-11-14 13:51:31', '2018-11-14 16:36:14', 9),
-(299, '2018-11-14', 'creación de usuarios y contraseñas', 13, 1, 'Crear usuarios y contraseñas para servicio social de profesionalización.', '', 1, 10, 18646, 'Lic. Roonny Ruiz', '', '', '', '2018-11-15', 12, ' Se crearon los usuarios y contraseñas requeridas para el personal de servicio social de la cooerdinacion  de profesionalizacion', '2018-11-14', 3, ' ', '2018-11-15 09:56:15', '2018-11-15 09:57:05', 12),
-(300, '2018-11-13', 'instalacion de adobe acrobat', 6, 1, 'La usuaria solicita la instalación de adobe acrobat para realizar trabajos y la visualización de archivos pdf.', '43747', 1, 10, 18646, 'Mónica Marcela Hernández Mendoza', 'jefe de departamento', '20039', '', '2018-11-13', 17, ' Se llevo a cabo la instalación del software adobe acrobat.', '2018-11-13', 3, ' ', '2018-11-15 13:42:15', '2018-11-15 13:42:53', 17),
-(301, '2018-11-14', 'No podia guardar un documento de excel', 6, 1, 'La usuaria no podía guardar un documento de excel.', '316', 1, 10, 18368, 'Alondra Magaly Rovelo Alamilla', 'Analista', '', '', '2018-11-14', 17, ' Se procedió a guardar el documento de excel en un archivo nuevo.', '2018-11-14', 3, ' ', '2018-11-15 13:49:55', '2018-11-15 13:51:47', 17),
-(302, '2018-11-15', 'Cambio de firmantes para SSP, PEP y FASP', 9, 1, 'De nueva cuenta cambiar que solo el titular sea el firmante, sin director administrativo', '', 1, 10, 18861, 'FREDDIE GOMEZ HERNANDEZ', '', '', '', '2018-11-15', 6, ' Se agregó un IF para cuando sea ssp, pep y fasp', '2018-11-15', 3, ' ', '2018-11-15 14:08:21', '2018-11-15 14:08:42', 6);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `status`
---
-
-CREATE TABLE IF NOT EXISTS `status` (
-  `statu_id` int(11) NOT NULL,
-  `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `color` varchar(10) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `status`
---
-
-INSERT INTO `status` (`statu_id`, `descripcion`, `color`) VALUES
-(1, 'Registrado', '#0000FF'),
-(2, 'En Proceso', '#FFFF00'),
-(3, 'Finalizado', '#008000'),
-(4, 'Cancelado', '#FF0000');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tipo_incidencias`
---
-
-CREATE TABLE IF NOT EXISTS `tipo_incidencias` (
-  `tipo_incidencia_id` int(11) NOT NULL,
-  `descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `tipo_incidencias`
---
-
-INSERT INTO `tipo_incidencias` (`tipo_incidencia_id`, `descripcion`) VALUES
-(1, 'Trabajo Operativo'),
-(2, 'Error de Software'),
-(3, 'Nuevas Funciones de Software'),
-(4, 'Nuevo Desarrollo');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `tipo_servicios`
---
-
-CREATE TABLE IF NOT EXISTS `tipo_servicios` (
-  `tipo_servicio_id` int(11) NOT NULL,
-  `descripcion` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
-  `grupo_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `tipo_servicios`
---
-
-INSERT INTO `tipo_servicios` (`tipo_servicio_id`, `descripcion`, `grupo_id`) VALUES
-(1, 'Mantenimiento preventivo y/o correctivo a equipos de cómputo', 1),
-(2, 'Instalación y/o mantenimiento de Paqueterías', 1),
-(3, 'Respaldos de información', 1),
-(4, 'Redes', 2),
-(5, 'Telefonía', 2),
-(6, 'Asesoría tecnológica', 1),
-(7, 'Nuevos módulos de software', 3),
-(8, 'Corrección de errores de software', 3),
-(9, 'Adecuaciones a los  sistemas', 3),
-(10, 'Agregar registros a  la base de datos', 3),
-(11, 'Mantenimiento a sistemas', 3),
-(12, 'Mantenimiento a base de datos', 3),
-(13, 'Carga de información a las base de datos', 3),
-(14, 'Administración de servidores', 4),
-(15, 'Seguridad Perimetral', 4),
-(16, 'Administración de correos electrónicos', 4),
-(17, 'Mantenimiento a servidores', 4),
-(18, 'Respaldos de información', 4),
-(19, 'Desarrollo nuevo sistema', 4),
-(20, 'Publicación de Información a página web', 3),
-(21, 'Asesoría y/o capacitación a usuarios', 3),
-(22, 'Análisis, diseño y/o desarrollo nuevo', 3),
-(23, 'Oficios', 5),
-(24, 'Diligencias', 5),
-(25, 'Tramites', 5),
-(26, 'Instalación de Cableado', 1);
+(1, 'admin', '$2y$10$7mtYMxqRbvwvIQHH/ObGY.dO6A9zgTeG4JafRjD2Z3OheHxym12dG', 'Administrador del Sistema', 1, '2018-11-16 11:03:10', 'mail@mail.com', '2011-11-14 15:46:33', '2018-11-15 16:52:51', 1, 1, 1, NULL, '1537556178_659114.png');
 
 --
 -- Índices para tablas volcadas
 --
 
 --
--- Indices de la tabla `adjuntos`
---
-ALTER TABLE `adjuntos`
-  ADD PRIMARY KEY (`adjunto_id`);
-
---
 -- Indices de la tabla `bitacoras`
 --
 ALTER TABLE `bitacoras`
   ADD PRIMARY KEY (`bitacora_id`);
-
---
--- Indices de la tabla `bitacoraservs`
---
-ALTER TABLE `bitacoraservs`
-  ADD PRIMARY KEY (`bitacoraserv_id`);
 
 --
 -- Indices de la tabla `cat_adscripciones`
@@ -4393,12 +3490,6 @@ ALTER TABLE `cat_adscripciones`
 --
 ALTER TABLE `cat_instituciones`
   ADD PRIMARY KEY (`cat_institucione_id`);
-
---
--- Indices de la tabla `coordinaciones`
---
-ALTER TABLE `coordinaciones`
-  ADD PRIMARY KEY (`coordinacione_id`);
 
 --
 -- Indices de la tabla `co_groups`
@@ -4438,135 +3529,64 @@ ALTER TABLE `co_users`
   ADD PRIMARY KEY (`co_user_id`);
 
 --
--- Indices de la tabla `grupos`
---
-ALTER TABLE `grupos`
-  ADD PRIMARY KEY (`grupo_id`);
-
---
--- Indices de la tabla `prioridades`
---
-ALTER TABLE `prioridades`
-  ADD PRIMARY KEY (`prioridade_id`);
-
---
--- Indices de la tabla `servicios`
---
-ALTER TABLE `servicios`
-  ADD PRIMARY KEY (`servicio_id`);
-
---
--- Indices de la tabla `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`statu_id`);
-
---
--- Indices de la tabla `tipo_incidencias`
---
-ALTER TABLE `tipo_incidencias`
-  ADD PRIMARY KEY (`tipo_incidencia_id`);
-
---
--- Indices de la tabla `tipo_servicios`
---
-ALTER TABLE `tipo_servicios`
-  ADD PRIMARY KEY (`tipo_servicio_id`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `adjuntos`
---
-ALTER TABLE `adjuntos`
-  MODIFY `adjunto_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
---
 -- AUTO_INCREMENT de la tabla `bitacoras`
 --
 ALTER TABLE `bitacoras`
-  MODIFY `bitacora_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `bitacoraservs`
---
-ALTER TABLE `bitacoraservs`
-  MODIFY `bitacoraserv_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=300;
+  MODIFY `bitacora_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `cat_adscripciones`
 --
 ALTER TABLE `cat_adscripciones`
-  MODIFY `cat_adscripcione_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19976;
+  MODIFY `cat_adscripcione_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19976;
+
 --
 -- AUTO_INCREMENT de la tabla `cat_instituciones`
 --
 ALTER TABLE `cat_instituciones`
-  MODIFY `cat_institucione_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=115;
---
--- AUTO_INCREMENT de la tabla `coordinaciones`
---
-ALTER TABLE `coordinaciones`
-  MODIFY `coordinacione_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `cat_institucione_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+
 --
 -- AUTO_INCREMENT de la tabla `co_groups`
 --
 ALTER TABLE `co_groups`
-  MODIFY `co_group_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `co_group_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `co_groups_menus`
 --
 ALTER TABLE `co_groups_menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `co_groups_permissions`
 --
 ALTER TABLE `co_groups_permissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `co_menus`
 --
 ALTER TABLE `co_menus`
-  MODIFY `co_menu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=14;
+  MODIFY `co_menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `co_permissions`
 --
 ALTER TABLE `co_permissions`
-  MODIFY `co_permission_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=33;
+  MODIFY `co_permission_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT de la tabla `co_users`
 --
 ALTER TABLE `co_users`
-  MODIFY `co_user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
---
--- AUTO_INCREMENT de la tabla `grupos`
---
-ALTER TABLE `grupos`
-  MODIFY `grupo_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `prioridades`
---
-ALTER TABLE `prioridades`
-  MODIFY `prioridade_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT de la tabla `servicios`
---
-ALTER TABLE `servicios`
-  MODIFY `servicio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=303;
---
--- AUTO_INCREMENT de la tabla `status`
---
-ALTER TABLE `status`
-  MODIFY `statu_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `tipo_incidencias`
---
-ALTER TABLE `tipo_incidencias`
-  MODIFY `tipo_incidencia_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT de la tabla `tipo_servicios`
---
-ALTER TABLE `tipo_servicios`
-  MODIFY `tipo_servicio_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=27;
+  MODIFY `co_user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
